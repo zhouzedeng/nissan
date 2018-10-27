@@ -12,7 +12,7 @@ class ContactController extends Controller
     {
 
         //dd(get_plugin_open_api_access_token());
-        dd (session('user_info'));
+        //dd (session('user_info'));
         echo config('dndc.contact.msg'); //配置文件
         return view('dndc.contact.contact');//视图文件
     }

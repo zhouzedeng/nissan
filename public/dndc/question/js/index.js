@@ -3,11 +3,11 @@ layui.use('table', function(){
     //方法级渲染
     table.render({
         elem: '#LAY_table_user'
-        ,url: 'list'
+        ,url: 'question_list'
         ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         ,cols: [[
             {checkbox: true, fixed: true}
-            ,{field:'id', title: 'I', sort: true, fixed: true}
+            ,{field:'id', title: 'ID', sort: true, fixed: true}
             ,{field:'question', title: '问题'}
             ,{field:'anwsers', title: '答案'}
             ,{field:'right_anwser_id', title: '正确答案', sort: true}

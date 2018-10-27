@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace Dndc\Question\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Model\Users;
-use App\Service\UserService;
+use App\Service\QuestionService;
 
 /**
- * 用户控制器
+ * 问题控制器
  * Class UserController
  * @package App\Http\Controllers
  */
-class UserController extends Controller
+class QuestionController extends Controller
 {
     /**
      * 列表页
@@ -19,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-       return view('user.index');
+        return view('dndc.question.index');
     }
 
     /**
@@ -28,25 +27,7 @@ class UserController extends Controller
      */
     public function add()
     {
-        return view('user.add');
-    }
-
-    /**
-     * 编辑页
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function edit()
-    {
-        return view('user.edit');
-    }
-
-    /**
-     * 查看页
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function show()
-    {
-        return view('user.show');
+        return view('dndc.question.add');
     }
 
     /**
@@ -56,7 +37,7 @@ class UserController extends Controller
     public function getList()
     {
         // 业务处理
-        $result = UserService::getUserList(self::$allParams);
+        $result = QuestionService::getQuestionList(self::$allParams);
 
         // 返回数据
         return $result;

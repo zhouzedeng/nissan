@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace Dndc\Common\Model;
 
 class Questions extends Base
 {

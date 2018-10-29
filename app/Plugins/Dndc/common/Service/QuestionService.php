@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Service;
+namespace Dndc\Common\Service;
 
-
-use App\Model\Questions;
+use Dndc\Common\Model\Questions;
 
 class QuestionService
 {

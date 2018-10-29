@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace Dndc\Common\Model;
 
 use Illuminate\Support\Facades\DB;
 

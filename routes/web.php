@@ -1,6 +1,6 @@
 <?php
 Route::get('getCouponList', 'CouponController@getCouponList')->name('getCouponList');
-Route::get('/', 'HomeController@index')->name('home.index');
+Route::get('/', 'IndexController@index')->name('index.index');
 
 
 

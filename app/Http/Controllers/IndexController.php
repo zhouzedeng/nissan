@@ -8,13 +8,18 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 /**
- * 后台主页
- * Class HomeController
+ * IndexController
+ * Class IndexController
  * @package App\Http\Controllers
  */
-class HomeController extends Controller
+class IndexController extends Controller
 {
 
+    /**
+     * index
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function index()
     {
         if (!isset($_GET['token'])) {
@@ -23,13 +28,19 @@ class HomeController extends Controller
         $userInfo = $this->tokenApi($_GET['token']);
         if (!empty($userInfo) && isset($userInfo->user_name)) {
             Session::put('user_info',$userInfo);
+            return redirect(route('home.index'));
         } else {
             Log::info('token_api获取用户数据失败');
             return redirect(config('plugin.login_page'));
         }
-        echo '登录成功,用户信息保存session成功';
     }
 
+    /**
+     * tokenApi
+     * @param $token
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     protected function tokenApi($token)
     {
         try {
@@ -49,5 +60,4 @@ class HomeController extends Controller
             return redirect(config('plugin.login_page'));
         }
     }
-
 }

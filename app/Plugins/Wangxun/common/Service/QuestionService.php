@@ -1,8 +1,8 @@
 <?php
 
-namespace Dndc\Common\Service;
+namespace Wangxun\Common\Service;
 
-use Dndc\Common\Model\Questions;
+use Wangxun\Common\Model\Questions;
 
 class QuestionService
 {

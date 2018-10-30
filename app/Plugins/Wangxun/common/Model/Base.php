@@ -1,6 +1,6 @@
 <?php
 
-namespace Dndc\Common\Model;
+namespace Wangxun\Common\Model;
 
 use Illuminate\Support\Facades\DB;
 

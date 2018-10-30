@@ -1,9 +1,9 @@
 <?php
 
-namespace Dndc\Question\Controllers;
+namespace Wangxun\Activity\Controllers;
 
 use App\Http\Controllers\Controller;
-use Dndc\Common\Service\QuestionService;
+use Wangxun\Common\Service\QuestionService;
 
 /**
  * 问题控制器
@@ -18,7 +18,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return view('dndc.question.index');
+        return view('wangxun.question.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class QuestionController extends Controller
      */
     public function add()
     {
-        return view('dndc.question.add');
+        return view('wangxun.question.add');
     }
 
     /**

@@ -1,5 +1,5 @@
 <?php
-namespace Dndc\Contact\Controllers;
+namespace Wangxun\Contact\Controllers;
 
 use App\Http\Controllers\Controller;
 

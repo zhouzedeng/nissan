@@ -6,7 +6,7 @@
 
     <!-- 搜索 -->
     <div class="search">
-        <a class="layui-btn" href="{{route('question.add')}}" type="button">新增</a>
+        <a class="layui-btn" href="" type="button">新增</a>
         <a class="layui-btn" id="export" type="button">导出</a>
     </div>
 
@@ -21,7 +21,7 @@
 
     <!-- js -->
     <script>
-        var export_url =  "{{route('user.export')}}";
+        var export_url =  "";
     </script>
     <script src="{{asset('/dndc/question/js/index.js')}}?v=4"></script>
 

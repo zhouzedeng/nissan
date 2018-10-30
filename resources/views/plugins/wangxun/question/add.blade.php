@@ -106,7 +106,7 @@
 
     <script>
         <!-- js全局变量 -->
-        var upload_url = "{{route('upload')}}";
+        var upload_url = "";
     </script>
     <script src="{{asset('js/user/add.js')}}?v=12"></script>
 

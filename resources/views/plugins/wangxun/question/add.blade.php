@@ -108,6 +108,6 @@
         <!-- js全局变量 -->
         var upload_url = "";
     </script>
-    <script src="{{asset('js/user/add.js')}}?v=12"></script>
+    <script src="{{asset('/wangxun/question/js/add.js')}}?v=12"></script>
 
 @endsection

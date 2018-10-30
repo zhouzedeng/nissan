@@ -23,6 +23,6 @@
     <script>
         var export_url =  "";
     </script>
-    <script src="{{asset('/dndc/question/js/index.js')}}?v=4"></script>
+    <script src="{{asset('/wangxun/question/js/index.js')}}?v=4"></script>
 
 @endsection

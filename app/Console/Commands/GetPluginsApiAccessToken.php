@@ -34,11 +34,6 @@ class GetPluginsApiAccessToken extends Command
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
         try {

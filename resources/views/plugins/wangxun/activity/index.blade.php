@@ -2,12 +2,11 @@
 
 @section('content')
     <!-- 面板 -->
-    <blockquote class="layui-elem-quote top-title"><h3>问题管理</h3></blockquote>
+    <blockquote class="layui-elem-quote top-title"><h3>活动列表</h3></blockquote>
 
     <!-- 搜索 -->
     <div class="search">
-        <a class="layui-btn" href="{{route('question.add')}}" type="button">新增</a>
-        <a class="layui-btn" id="export" type="button">导出</a>
+        <a class="layui-btn" href="{{route('activity.add')}}" type="button">新增</a>
     </div>
 
     <!-- 表格 -->
@@ -21,8 +20,7 @@
 
     <!-- js -->
     <script>
-        var export_url =  "";
     </script>
-    <script src="{{asset('/wangxun/question/js/index.js')}}?v=4"></script>
+    <script src="{{asset('/wangxun/activity/js/index.js')}}?v=15"></script>
 
 @endsection

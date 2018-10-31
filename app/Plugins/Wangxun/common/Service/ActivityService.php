@@ -2,19 +2,19 @@
 
 namespace Wangxun\Common\Service;
 
-use Wangxun\Common\Model\Questions;
+use Wangxun\Common\Model\Activity;
 
-class QuestionService
+class ActivityService
 {
-    public static function getQuestionList($data = [])
+    public static function getList($data = [])
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
 
         // 查询数据
         $param = [];
         $order = array('id' , 'desc');
-        $user_list = Questions::getListByParam($param, $data['page'], $data['limit'], null, $order);
-        $total = Questions::getCntByParam($param);
+        $user_list = Activity::getListByParam($param, $data['page'], $data['limit'], null, $order);
+        $total = Activity::getCntByParam($param);
 
         // return
         $result['data'] = $user_list;

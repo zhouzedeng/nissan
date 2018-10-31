@@ -2,8 +2,8 @@
 
 namespace Wangxun\Common\Model;
 
-class Questions extends Base
+class Activity extends Base
 {
     const ID = 'id';
-    const TABLE = 'questions';
+    const TABLE = 'activity';
 }

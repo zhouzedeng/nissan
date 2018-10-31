@@ -37,9 +37,9 @@
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">问题管理</a>
+                    <a class="" href="javascript:;">活动管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('question.index')}}">问题列表</a></dd>
+                        <dd><a href="{{route('activity.index')}}">活动列表</a></dd>
                     </dl>
                 </li>
             </ul>

@@ -3,14 +3,15 @@
 namespace Wangxun\Activity\Controllers;
 
 use App\Http\Controllers\Controller;
+use Wangxun\Common\Service\ActivityService;
 use Wangxun\Common\Service\QuestionService;
 
 /**
- * 问题控制器
+ * 活动控制器
  * Class UserController
  * @package App\Http\Controllers
  */
-class QuestionController extends Controller
+class ActivityController extends Controller
 {
     /**
      * 列表页
@@ -18,7 +19,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return view('wangxun.question.index');
+        return view('wangxun.activity.index');
     }
 
     /**
@@ -27,7 +28,7 @@ class QuestionController extends Controller
      */
     public function add()
     {
-        return view('wangxun.question.add');
+        return view('wangxun.activity.add');
     }
 
     /**
@@ -37,7 +38,7 @@ class QuestionController extends Controller
     public function getList()
     {
         // 业务处理
-        $result = QuestionService::getQuestionList(self::$allParams);
+        $result = ActivityService::getList(self::$allParams);
 
         // 返回数据
         return $result;

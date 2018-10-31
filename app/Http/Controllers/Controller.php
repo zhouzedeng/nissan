@@ -17,4 +17,16 @@ class Controller extends BaseController
     {
         self::$allParams = array_merge($_GET, $_POST);
     }
+
+    public function apiSuccess($msg = 'success', $data = [])
+    {
+        $result = [
+            'code' => 0,
+            'msg' => $msg,
+            'data' => $data
+        ];
+        return $result;
+    }
+
+
 }

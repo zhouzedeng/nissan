@@ -14,13 +14,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 
     //自定义验证规则
     form.verify({
-        username: function(value){
-            if(value.length < 1 || value.length > 30){
-                return '用户名长度只能是1 - 30 个字符';
-            }
-        }
-        ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-        ,content: function(value){
+        content: function(value){
             layedit.sync(editIndex);
         }
     });
@@ -58,7 +52,7 @@ layui.use('upload', function(){
     var demoListView = $('#demoList')
         ,uploadListIns = upload.render({
         elem: '#testList'
-        ,url: upload_url
+        ,url: 'upload_upload'
         ,accept: 'file'
         ,multiple: true
         ,auto: false

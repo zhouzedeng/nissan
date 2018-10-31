@@ -4,9 +4,12 @@
 Route::get('/home_index', 'HomeController@index')->name('home.index');
 
 // 问题模块
-Route::get('/question_index', 'QuestionController@index')->name('question.index');
-Route::get('/question_list', 'QuestionController@getList')->name('question.list');
-Route::get('/question_add', 'QuestionController@add')->name('question.add');
+Route::get('/activity_index', 'ActivityController@index')->name('activity.index');
+Route::get('/activity_list', 'ActivityController@getList')->name('activity.list');
+Route::get('/activity_add', 'ActivityController@add')->name('activity.add');
+
+// 上传模块
+Route::post('/upload_upload', 'UploadController@upload')->name('upload.upload');
 
 
 // 第三方接口模块

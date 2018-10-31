@@ -10,16 +10,16 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-10-30 21:16:18
+Date: 2018-10-31 20:05:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for activity_cut_price
+-- Table structure for wangxun_activity_cut_price
 -- ----------------------------
-DROP TABLE IF EXISTS `activity_cut_price`;
-CREATE TABLE `activity_cut_price` (
+DROP TABLE IF EXISTS `wangxun_activity_cut_price`;
+CREATE TABLE `wangxun_activity_cut_price` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '砍价活动主键id',
   `act_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'activity表关联的id',
   `agency_id` int(11) NOT NULL,

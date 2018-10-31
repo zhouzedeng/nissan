@@ -10,16 +10,16 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-10-30 21:16:12
+Date: 2018-10-31 20:05:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for activity
+-- Table structure for wangxun_activity
 -- ----------------------------
-DROP TABLE IF EXISTS `activity`;
-CREATE TABLE `activity` (
+DROP TABLE IF EXISTS `wangxun_activity`;
+CREATE TABLE `wangxun_activity` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `theme` varchar(32) NOT NULL DEFAULT '' COMMENT '活动主题',
   `brand` varchar(32) NOT NULL DEFAULT '' COMMENT '活动产品的品牌',

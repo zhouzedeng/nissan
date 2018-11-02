@@ -2,32 +2,33 @@
 
 @section('content')
     <!-- 面板 -->
-    <blockquote class="layui-elem-quote top-title"><h3><a onclick="history.back()">活动管理</a> / 添加活动</h3></blockquote>
+    <blockquote class="layui-elem-quote top-title"><h3><a onclick="history.back()">商品管理</a> / 添加商品</h3></blockquote>
     <form class="layui-form">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div class="layui-form-item">
-            <label class="layui-form-label">主题</label>
+            <label class="layui-form-label">商品名称</label>
             <div class="layui-input-block">
                 <input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="请输入主题" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">品牌</label>
+            <label class="layui-form-label">商品价格</label>
             <div class="layui-input-block">
-                <input type="text" name="brand" lay-verify="brand" autocomplete="off" placeholder="请输入品牌" class="layui-input" >
+                <input type="text" name="price" lay-verify="price" autocomplete="off" placeholder="请输入品牌" class="layui-input" >
             </div>
         </div>
 
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">活动说明</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">卡券ID</label>
             <div class="layui-input-block">
-                <textarea name="desc" placeholder="请输入活动说明" class="layui-textarea" required></textarea>
+                <input type="text" name="coupon_id" lay-verify="coupon_id" autocomplete="off" placeholder="请输入品牌" class="layui-input" >
             </div>
         </div>
+
         <input id="img" type="hidden" name="img" lay-verify="img">
 
         <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">活动背景图</label>
+            <label class="layui-form-label">商品图片</label>
             <div class="layui-input-block">
                 <div class="layui-upload">
                     <button type="button" class="layui-btn layui-btn-normal" id="testList">选择文件</button>
@@ -58,6 +59,6 @@
 
     <script>
     </script>
-    <script src="{{asset('/wangxun/activity/js/add.js')}}?v=19000"></script>
+    <script src="{{asset('/wangxun/goods/js/add.js')}}?v=19000"></script>
 
 @endsection

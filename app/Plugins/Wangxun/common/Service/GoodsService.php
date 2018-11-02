@@ -2,10 +2,14 @@
 
 namespace Wangxun\Common\Service;
 
-use Wangxun\Common\Model\Activity;
+use Wangxun\Common\Model\Goods;
 
-class ActivityService
+class GoodsService
 {
+    /**
+     * @param array $data
+     * @return array
+     */
     public static function getList($data = [])
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
@@ -13,11 +17,11 @@ class ActivityService
         // 查询数据
         $param = [];
         $order = array('id' , 'desc');
-        $user_list = Activity::getListByParam($param, $data['page'], $data['limit'], null, $order);
-        $total = Activity::getCntByParam($param);
+        $list = Goods::getListByParam($param, $data['page'], $data['limit'], null, $order);
+        $total = Goods::getCntByParam($param);
 
         // return
-        $result['data'] = $user_list;
+        $result['data'] = $list;
         $result['count'] = $total;
         return $result;
     }
@@ -31,17 +35,16 @@ class ActivityService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
         $userInfo = session('user_info');
         $data = [
-            'theme' => $params['name'],
-            'brand' => $params['brand'],
-            'desc'  => $params['desc'],
-            'bg_img_url' => $params['img'],
+            'goods_name' => $params['name'],
+            'goods_price' => $params['price'],
+            'coupon_id'  => $params['coupon_id'],
+            'goods_img' => $params['img'],
             'seller_id' => $userInfo->seller->sellerId,
-            'check_status' => 0,
-            'check_remark' => '',
+            'coupon_price' => 0,
             'created_at' => time(),
             'updated_at' => time()
         ];
-        $rs = Activity::add($data);
+        $rs = Goods::add($data);
         if (empty($rs)) {
             $result['code'] = '200001';
             $result['msg'] = '添加失败';

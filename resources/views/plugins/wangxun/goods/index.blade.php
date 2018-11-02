@@ -2,11 +2,11 @@
 
 @section('content')
     <!-- 面板 -->
-    <blockquote class="layui-elem-quote top-title"><h3>活动列表</h3></blockquote>
+    <blockquote class="layui-elem-quote top-title"><h3>商品列表</h3></blockquote>
 
     <!-- 搜索 -->
     <div class="search">
-        <a class="layui-btn" href="{{route('activity.add')}}" type="button">新增</a>
+        <a class="layui-btn" href="{{route('goods.add')}}" type="button">新增商品</a>
     </div>
 
     <!-- 表格 -->
@@ -21,6 +21,6 @@
     <!-- js -->
     <script>
     </script>
-    <script src="{{asset('/wangxun/activity/js/index.js')}}?v=16"></script>
+    <script src="{{asset('/wangxun/goods/js/index.js')}}?v=16"></script>
 
 @endsection

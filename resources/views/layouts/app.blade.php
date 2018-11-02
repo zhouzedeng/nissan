@@ -43,6 +43,14 @@
                     </dl>
                 </li>
             </ul>
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">商品管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{{route('goods.index')}}">商品列表</a></dd>
+                    </dl>
+                </li>
+            </ul>
         </div>
     </div>
 

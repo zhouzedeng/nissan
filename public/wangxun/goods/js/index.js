@@ -3,24 +3,16 @@ layui.use('table', function(){
     //方法级渲染
     table.render({
         elem: '#LAY_table_user'
-        ,url: 'activity_list'
+        ,url: 'goods_list'
         ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         ,cols: [[
             {checkbox: true, fixed: true}
             ,{field:'id', title: 'ID', sort: true, fixed: true}
-            ,{field:'theme', title: '主题'}
-            ,{field:'brand', title: '品牌'}
-            ,{field:'bg_img_url', title: '活动背景图', sort: true}
-            ,{field:'check_status', templet:function(data){
-                if (data.check_status == 0) {
-                    return '未审核';
-                } else if(data.check_status == 1) {
-                    return '审核通过';
-                } else {
-                    return '审核未通过';
-                }
-                } ,title: '审核状态', sort: true}
-            ,{field:'desc', title: '活动说明', sort: true}
+            ,{field:'goods_name', title: '商品名称'}
+            ,{field:'goods_price', title: '商品价格'}
+            ,{field:'goods_img', title: '商品图片', sort: true}
+            ,{field:'coupon_id', title: '卡券ID', sort: true}
+            ,{field:'coupon_price', title: '卡券价格', sort: true}
             ,{field:'created_at', title: '创建时间', sort: true}
             ,{field:'created_at', title: '操作', toolbar: '#bar'}
 

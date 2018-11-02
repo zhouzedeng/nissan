@@ -3,14 +3,14 @@
 namespace Wangxun\Activity\Controllers;
 
 use App\Http\Controllers\Controller;
-use Wangxun\Common\Service\ActivityService;
+use Wangxun\Common\Service\GoodsService;
 
 /**
- * 活动控制器
+ * 商品控制器
  * Class UserController
  * @package App\Http\Controllers
  */
-class ActivityController extends Controller
+class GoodsController extends Controller
 {
     /**
      * 列表页
@@ -18,7 +18,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        return view('wangxun.activity.index');
+        return view('wangxun.goods.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class ActivityController extends Controller
      */
     public function add()
     {
-        return view('wangxun.activity.add');
+        return view('wangxun.goods.add');
     }
 
     /**
@@ -36,7 +36,7 @@ class ActivityController extends Controller
      */
     public function getList()
     {
-        $result = ActivityService::getList(self::$allParams);
+        $result = GoodsService::getList(self::$allParams);
         return $result;
     }
 
@@ -45,19 +45,19 @@ class ActivityController extends Controller
     {
         $params = self::$allParams;
         if (empty($params['name'])) {
-            return $this->apiFail('100001', '主题必填');
+            return $this->apiFail('100001', '商品名称必填');
         }
-        if (empty($params['brand'])) {
-            return $this->apiFail('100002', '品牌必填');
+        if (empty($params['price'])) {
+            return $this->apiFail('100002', '商品价格必填');
         }
-        if (empty($params['desc'])) {
-            return $this->apiFail('100003', '活动描述必填');
+        if (empty($params['coupon_id'])) {
+            return $this->apiFail('100003', '卡券必填');
         }
         if (empty($params['img'])) {
             return $this->apiFail('100003', '图片过大或活动背景图还没传哦');
         }
 
-        $result = ActivityService::save($params);
+        $result = GoodsService::save($params);
         return $result;
     }
 }

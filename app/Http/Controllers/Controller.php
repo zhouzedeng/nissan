@@ -16,6 +16,7 @@ class Controller extends BaseController
     public function __construct()
     {
         self::$allParams = array_merge($_GET, $_POST);
+        self::$allParams['seller'] = session('user_info');
     }
 
     public function apiSuccess($msg = 'success', $data = [])
@@ -24,6 +25,15 @@ class Controller extends BaseController
             'code' => 0,
             'msg' => $msg,
             'data' => $data
+        ];
+        return $result;
+    }
+
+    public function apiFail($code, $msg = '操作失败')
+    {
+        $result = [
+            'code' => $code,
+            'msg' => $msg,
         ];
         return $result;
     }

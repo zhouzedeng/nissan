@@ -24,7 +24,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
         var data_obj = data.field;
         $.ajax({
             type: "post",
-            url: "activity_save",
+            url: "goods_save",
             data: data_obj,
             dataType: "json",
             success: function(data){
@@ -34,7 +34,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
                    layer.open({
                        content: '新增成功',
                        yes: function(){
-                           window.location.href = "activity_index";
+                           window.location.href = "goods_index";
                        }
                    });
                }

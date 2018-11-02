@@ -13,7 +13,6 @@ class ActivityController extends Controller
 {
     /**
      * 列表页
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -22,7 +21,6 @@ class ActivityController extends Controller
 
     /**
      * 添加页
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function add()
     {
@@ -30,8 +28,7 @@ class ActivityController extends Controller
     }
 
     /**
-     * 获取活动列表
-     * @return \Illuminate\Http\JsonResponse
+     * 获取活动接口
      */
     public function getList()
     {
@@ -39,7 +36,9 @@ class ActivityController extends Controller
         return $result;
     }
 
-
+    /**
+     * 新增活动接口
+     */
     public function save()
     {
         $params = self::$allParams;
@@ -53,7 +52,7 @@ class ActivityController extends Controller
             return $this->apiFail('100003', '活动描述必填');
         }
         if (empty($params['img'])) {
-            return $this->apiFail('100003', '图片过大或活动背景图还没传哦');
+            return $this->apiFail('100003', '图片过大或活动背景图还没传');
         }
 
         $result = ActivityService::save($params);

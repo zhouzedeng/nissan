@@ -8,25 +8,24 @@
         <div class="layui-form-item">
             <label class="layui-form-label">商品名称</label>
             <div class="layui-input-block">
-                <input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="请输入主题" class="layui-input">
+                <input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="请输入商品名称" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">商品价格</label>
             <div class="layui-input-block">
-                <input type="text" name="price" lay-verify="price" autocomplete="off" placeholder="请输入品牌" class="layui-input" >
+                <input type="text" name="price" lay-verify="price" autocomplete="off" placeholder="请输入商品价格" class="layui-input" >
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">卡券ID</label>
             <div class="layui-input-block">
-                <input type="text" name="coupon_id" lay-verify="coupon_id" autocomplete="off" placeholder="请输入品牌" class="layui-input" >
+                <input type="text" name="coupon_id" lay-verify="coupon_id" autocomplete="off" placeholder="请输入卡券ID" class="layui-input" >
             </div>
         </div>
 
         <input id="img" type="hidden" name="img" lay-verify="img">
-
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">商品图片</label>
             <div class="layui-input-block">

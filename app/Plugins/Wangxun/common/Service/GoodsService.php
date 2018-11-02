@@ -1,14 +1,21 @@
 <?php
-
 namespace Wangxun\Common\Service;
 
 use Wangxun\Common\Model\Goods;
 
+/**
+ * 商品业务
+ * Class GoodsService
+ * @package Wangxun\Common\Service
+ * @author zhouzedeng
+ */
 class GoodsService
 {
     /**
+     * 获取商品列表数据
      * @param array $data
      * @return array
+     * @author zhouzedeng
      */
     public static function getList($data = [])
     {
@@ -27,8 +34,10 @@ class GoodsService
     }
 
     /**
+     * 保存商品数据
      * @param array $params
      * @return array
+     * @author zhouzedeng
      */
     public static function save($params = array())
     {

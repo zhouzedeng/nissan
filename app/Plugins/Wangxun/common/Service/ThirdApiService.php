@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
  * 开放接口服务
  * Class ThirdApiService
  * @package Wangxun\Common\Service
+ * @author zhouzedeng
  */
 class ThirdApiService
 {
@@ -15,8 +16,7 @@ class ThirdApiService
      * 获取车系列表
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @by zed
-     * @since 2018-10-30
+     * @author zhouzedeng
      */
     public static function getCarSeriesInfo()
     {
@@ -41,8 +41,7 @@ class ThirdApiService
      * 获取卡券列表
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @by zed
-     * @since 2018-10-30
+     * @author zhouzedeng
      */
     public static function getCouponList($data = array())
     {
@@ -74,8 +73,7 @@ class ThirdApiService
      * 查询卡券详情
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @by zed
-     * @since 2018-10-30
+     * @author zhouzedeng
      */
     public static function getCouponInfo($data = array())
     {
@@ -107,8 +105,7 @@ class ThirdApiService
      * 发送业务短信
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @by zed
-     * @since 2018-10-30
+     * @author zhouzedeng
      */
     public static function sendSms($data = array())
     {

@@ -5,6 +5,7 @@ namespace Wangxun\Common\Model;
 use Illuminate\Support\Facades\DB;
 
 /**
+ * 基类
  * Class Base
  * @package App\Model
  */

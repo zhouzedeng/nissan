@@ -4,8 +4,20 @@ namespace Wangxun\Common\Service;
 
 use Wangxun\Common\Model\Activity;
 
+/**
+ * 活动业务
+ * Class ActivityService
+ * @package Wangxun\Common\Service
+ * @author zhouzedeng
+ */
 class ActivityService
 {
+    /**
+     * 获取活动列表数据
+     * @param array $data
+     * @return array
+     * @author zhouzedeng
+     */
     public static function getList($data = [])
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
@@ -23,8 +35,10 @@ class ActivityService
     }
 
     /**
+     * 新增活动数据
      * @param array $params
      * @return array
+     * @author zhouzedeng
      */
     public static function save($params = array())
     {

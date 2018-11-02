@@ -1,5 +1,4 @@
 <?php
-
 namespace Wangxun\Activity\Controllers;
 
 use App\Http\Controllers\Controller;

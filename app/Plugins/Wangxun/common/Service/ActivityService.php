@@ -23,7 +23,9 @@ class ActivityService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
 
         // 查询数据
+        $userInfo = session('user_info');
         $param = [];
+        $param['seller_id'] = $userInfo->seller->sellerId;
         $order = array('id' , 'desc');
         $user_list = Activity::getListByParam($param, $data['page'], $data['limit'], null, $order);
         $total = Activity::getCntByParam($param);

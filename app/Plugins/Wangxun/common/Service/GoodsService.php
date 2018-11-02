@@ -22,8 +22,10 @@ class GoodsService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
 
         // 查询数据
+        $userInfo = session('user_info');
         $param = [];
         $order = array('id' , 'desc');
+        $param['seller_id'] = $userInfo->seller->sellerId;
         $list = Goods::getListByParam($param, $data['page'], $data['limit'], null, $order);
         $total = Goods::getCntByParam($param);
 

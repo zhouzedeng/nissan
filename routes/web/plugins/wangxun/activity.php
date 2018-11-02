@@ -1,5 +1,4 @@
 <?php
-
 // 主页
 Route::get('/home_index', 'HomeController@index')->name('home.index');
 
@@ -10,7 +9,6 @@ Route::get('/activity_add', 'ActivityController@add')->name('activity.add');
 
 // 上传模块
 Route::post('/upload_upload', 'UploadController@upload')->name('upload.upload');
-
 
 // 第三方接口模块
 Route::get('/thirdApi_getCarSeriesInfo', 'ThridApiController@getCarSeriesInfo')->name('thirdApi.getCarSeriesInfo');

@@ -14,7 +14,13 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 
     //自定义验证规则
     form.verify({
-        content: function(value){
+        username: function(value){
+            if(value.length < 1 || value.length > 30){
+                return '用户名长度只能是1 - 30 个字符';
+            }
+        }
+        ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+        ,content: function(value){
             layedit.sync(editIndex);
         }
     });
@@ -24,17 +30,17 @@ layui.use(['form', 'layedit', 'laydate'], function(){
         var data_obj = data.field;
         $.ajax({
             type: "post",
-            url: "activity_save",
+            url: "save", // user/save
             data: data_obj,
             dataType: "json",
             success: function(data){
-               if (0 != data.code) {
+               if (200 != data.code) {
                    layer.alert(data.msg + ',错误码:'+ data.code);
                } else {
                    layer.open({
-                       content: '新增成功',
+                       content: '新增用户成功',
                        yes: function(){
-                           window.location.href = "activity_index";
+                           window.location.href = "index";
                        }
                    });
                }
@@ -52,7 +58,7 @@ layui.use('upload', function(){
     var demoListView = $('#demoList')
         ,uploadListIns = upload.render({
         elem: '#testList'
-        ,url: 'upload_upload'
+        ,url: upload_url
         ,accept: 'file'
         ,multiple: true
         ,auto: false
@@ -64,7 +70,6 @@ layui.use('upload', function(){
                 var tr = $(['<tr id="upload-'+ index +'">'
                     ,'<td>'+ file.name +'</td>'
                     ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
-                    ,'<td><img src="'+result+'"></td>'
                     ,'<td>等待上传</td>'
                     ,'<td>'
                     ,'<button class="layui-btn layui-btn-mini demo-reload layui-hide">重传</button>'
@@ -88,12 +93,11 @@ layui.use('upload', function(){
             });
         }
         ,done: function(res, index, upload){
-            if(res.code == 0){ //上传成功
+            if(res.code == 200){ //上传成功
                 var tr = demoListView.find('tr#upload-'+ index)
                     ,tds = tr.children();
                 tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
                 tds.eq(3).html(''); //清空操作
-                $('#img').val(res.data.path);
                 return delete this.files[index]; //删除文件队列已经上传成功的文件
             }
             this.error(index, upload);

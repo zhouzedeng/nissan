@@ -24,7 +24,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
         var data_obj = data.field;
         $.ajax({
             type: "post",
-            url: "activity_save",
+            url: "goods_edit",
             data: data_obj,
             dataType: "json",
             success: function(data){
@@ -32,9 +32,9 @@ layui.use(['form', 'layedit', 'laydate'], function(){
                    layer.alert(data.msg + ',错误码:'+ data.code);
                } else {
                    layer.open({
-                       content: '新增成功',
+                       content: '修改成功',
                        yes: function(){
-                           window.location.href = "activity_index";
+                           window.location.href = "goods_index";
                        }
                    });
                }
@@ -91,8 +91,8 @@ layui.use('upload', function(){
             if(res.code == 0){ //上传成功
                 var tr = demoListView.find('tr#upload-'+ index)
                     ,tds = tr.children();
-                tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
-                tds.eq(3).html(''); //清空操作
+                tds.eq(3).html('<span style="color: #5FB878;">上传成功</span>');
+                tds.eq(4).html(''); //清空操作
                 $('#img').val(res.data.path);
                 return delete this.files[index]; //删除文件队列已经上传成功的文件
             }

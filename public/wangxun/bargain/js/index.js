@@ -3,16 +3,14 @@ layui.use('table', function(){
     //方法级渲染
     table.render({
         elem: '#LAY_table_user'
-        ,url: 'goods_list'
+        ,url: 'question_list'
         ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         ,cols: [[
             {checkbox: true, fixed: true}
             ,{field:'id', title: 'ID', sort: true, fixed: true}
-            ,{field:'goods_name', title: '商品名称'}
-            ,{field:'goods_price', title: '商品价格'}
-            ,{field:'goods_img', title: '商品图片', sort: true}
-            ,{field:'coupon_id', title: '卡券ID', sort: true}
-            ,{field:'coupon_price', title: '卡券价格', sort: true}
+            ,{field:'question', title: '问题'}
+            ,{field:'anwsers', title: '答案'}
+            ,{field:'right_anwser_id', title: '正确答案', sort: true}
             ,{field:'created_at', title: '创建时间', sort: true}
             ,{field:'created_at', title: '操作', toolbar: '#bar'}
 
@@ -28,31 +26,11 @@ layui.use('table', function(){
             layer.msg('ID：'+ data.id + ' 的查看操作');
         } else if(obj.event === 'del'){
             layer.confirm('真的删除行么', function(index){
-                $.ajax({
-                    type: "POST",
-                    data: {'id':data.id},
-                    url:'goods_del',
-                    dataType: "json",
-                    success: function(data){
-                        if (0 != data.code) {
-                            layer.alert(data.msg + ',错误码:'+ data.code);
-                        } else {
-                            layer.open({
-                                content: '删除成功',
-                                yes: function(){
-                                    obj.del();
-                                    window.location.href = "goods_index";
-                                }
-                            });
-                        }
-                    }
-                });
+                obj.del();
                 layer.close(index);
             });
         } else if(obj.event === 'edit'){
-            //var data = JSON.stringify(data);
-           // layer.alert('编辑行：<br>'+ JSON.stringify(data));
-            window.location.href =  "goods_edit?id=" + data.id ;
+            layer.alert('编辑行：<br>'+ JSON.stringify(data))
         }
     });
 

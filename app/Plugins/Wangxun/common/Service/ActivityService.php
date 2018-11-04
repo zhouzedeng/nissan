@@ -25,7 +25,7 @@ class ActivityService
         // 查询数据
         $userInfo = session('user_info');
         $param = [];
-        $param['seller_id'] =4665;// $userInfo->seller->sellerId;
+        $param['seller_id'] = $userInfo->seller->sellerId;
         $param['deleted_at'] = 0;
         $order = array('id' , 'desc');
         $user_list = Activity::getListByParam($param, $data['page'], $data['limit'], null, $order);
@@ -93,7 +93,7 @@ class ActivityService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
         // 查询数据
         $userInfo = session('user_info');
-        $where['seller_id'] = 4665;//$userInfo->seller->sellerId;
+        $where['seller_id'] = $userInfo->seller->sellerId;
         $where['deleted_at'] = 0;
         $find = Activity::getOneByParam($where,'*');
         $find->storage_bg_img_url = '/storage/'.$find->bg_img_url;

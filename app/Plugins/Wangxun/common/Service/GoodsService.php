@@ -91,7 +91,7 @@ class GoodsService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
         // 查询数据
         $userInfo = session('user_info');
-        $where['seller_id'] = 4665;//$userInfo->seller->sellerId;
+        $where['seller_id'] = $userInfo->seller->sellerId;
         $where['deleted_at'] = 0;
         $find = Goods::getOneByParam($where,'*');
         $find->storage_goods_img = '/storage/'.$find->goods_img;

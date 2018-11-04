@@ -7,6 +7,9 @@ Route::get('/activity_index', 'ActivityController@index')->name('activity.index'
 Route::get('/activity_list', 'ActivityController@getList')->name('activity.list');
 Route::get('/activity_add', 'ActivityController@add')->name('activity.add');
 Route::POST('/activity_save', 'ActivityController@save')->name('activity.save');
+Route::POST('/activity_del', 'ActivityController@del')->name('activity.del');
+Route::POST('/activity_edit', 'ActivityController@edit')->name('activity.edit');
+Route::get('/activity_edit', 'ActivityController@edit')->name('activity.edit');
 
 // 商品模块
 Route::get('/goods_index', 'GoodsController@index')->name('goods.index');

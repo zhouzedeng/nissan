@@ -25,7 +25,7 @@ class GoodsService
         $userInfo = session('user_info');
         $param = [];
         $order = array('id' , 'desc');
-        $param['seller_id'] = $userInfo->seller->sellerId;
+        $param['seller_id'] = 4665;//$userInfo->seller->sellerId;
         $param['deleted_at'] = 0;
         $list = Goods::getListByParam($param, $data['page'], $data['limit'], null, $order);
         $total = Goods::getCntByParam($param);
@@ -91,10 +91,10 @@ class GoodsService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
         // 查询数据
         $userInfo = session('user_info');
-        $where['seller_id'] = $userInfo->seller->sellerId;
+        $where['seller_id'] = 4665;//$userInfo->seller->sellerId;
         $where['deleted_at'] = 0;
         $find = Goods::getOneByParam($where,'*');
-        $find->goods_img = '/storage/'.$find->goods_img;
+        $find->storage_goods_img = '/storage/'.$find->goods_img;
         $result['data'] = $find;
         return $result;
     }

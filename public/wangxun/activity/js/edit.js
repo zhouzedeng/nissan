@@ -24,7 +24,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
         var data_obj = data.field;
         $.ajax({
             type: "post",
-            url: "goods_edit",
+            url: "activity_edit",
             data: data_obj,
             dataType: "json",
             success: function(data){
@@ -34,7 +34,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
                    layer.open({
                        content: '修改成功',
                        yes: function(){
-                           window.location.href = "goods_index";
+                           window.location.href = "activity_index";
                        }
                    });
                }
@@ -61,7 +61,7 @@ layui.use('upload', function(){
             var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
             //读取本地文件
             obj.preview(function(index, file, result){
-                $('.storage_goods_img').html('');
+                $('.storage_bg_img_url').html('');
                 var tr = $(['<tr id="upload-'+ index +'">'
                     ,'<td>'+ file.name +'</td>'
                     ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'

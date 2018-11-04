@@ -36,11 +36,31 @@ layui.use('table', function(){
             layer.msg('ID：'+ data.id + ' 的查看操作');
         } else if(obj.event === 'del'){
             layer.confirm('真的删除行么', function(index){
+                $.ajax({
+                    type: "POST",
+                    data: {'id':data.id},
+                    url:'activity_del',
+                    dataType: "json",
+                    success: function(data){
+                        if (0 != data.code) {
+                            layer.alert(data.msg + ',错误码:'+ data.code);
+                        } else {
+                            layer.open({
+                                content: '删除成功',
+                                yes: function(){
+                                    obj.del();
+                                    window.location.href = "activity_index";
+                                }
+                            });
+                        }
+                    }
+                });
                 obj.del();
                 layer.close(index);
             });
         } else if(obj.event === 'edit'){
-            layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            //layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            window.location.href =  "activity_edit?id=" + data.id ;
         }
     });
 

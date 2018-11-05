@@ -21,6 +21,6 @@
     <!-- js -->
     <script>
     </script>
-    <script src="{{asset('/wangxun/activity/js/index.js')}}?v=17"></script>
+    <script src="{{asset('/wangxun/activity/js/index.js')}}?v=17555"></script>
 
 @endsection

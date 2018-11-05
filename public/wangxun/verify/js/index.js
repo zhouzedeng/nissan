@@ -3,7 +3,7 @@ layui.use('table', function(){
     //方法级渲染
     table.render({
         elem: '#LAY_table_user'
-        ,url: 'activity_list'
+        ,url: 'verify_list'
         ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         ,cols: [[
             {checkbox: true, fixed: true}
@@ -11,6 +11,7 @@ layui.use('table', function(){
             ,{field:'theme', title: '主题'}
             ,{field:'brand', title: '品牌'}
             ,{field:'bg_img_url', title: '活动背景图', sort: true}
+            ,{field:'seller_name', title: '经销商', sort: true}
             ,{field:'check_status', templet:function(data){
                 if (data.check_status == 0) {
                     return '未审核';
@@ -59,9 +60,64 @@ layui.use('table', function(){
                 obj.del();
                 layer.close(index);
             });
-        } else if(obj.event === 'edit'){
-            //layer.alert('编辑行：<br>'+ JSON.stringify(data))
-            window.location.href =  "activity_edit?id=" + data.id ;
+        } else if(obj.event === 'pass'){
+            layer.open({
+                content: '审核通过后活动即会生效，确认通过吗？',
+                yes: function(){
+                    $.ajax({
+                        type: "POST",
+                        data: {
+                            'id':data.id,
+                            'status':1
+                        },
+                        url:'verify_check',
+                        dataType: "json",
+                        success: function(data){
+                            if (0 != data.code) {
+                                layer.alert(data.msg + ',错误码:'+ data.code);
+                            } else {
+                                layer.open({
+                                    content: '操作成功',
+                                    yes: function(){
+                                        obj.del();
+                                        window.location.href = "verify_index";
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        } else if(obj.event === 'no_pass'){
+            layer.prompt({
+                formType: 0,
+                value: '',
+                title: '请输入审核不通过的原因（可不填）'
+            }, function(value,index){
+                $.ajax({
+                    type: "POST",
+                    data: {
+                        'remark':value,
+                        'id' : data.id,
+                        'status':2
+                    },
+                    url:'verify_check',
+                    dataType: "json",
+                    success: function(data){
+                        if (0 != data.code) {
+                            layer.alert(data.msg + ',错误码:'+ data.code);
+                        } else {
+                            layer.open({
+                                content: '操作成功',
+                                yes: function(){
+                                    obj.del();
+                                    window.location.href = "verify_index";
+                                }
+                            });
+                        }
+                    }
+                });
+            });
         }
     });
 

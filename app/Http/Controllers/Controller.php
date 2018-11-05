@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Request;
 
 class Controller extends BaseController
 {
@@ -16,7 +17,6 @@ class Controller extends BaseController
     public function __construct()
     {
         self::$allParams = array_merge($_GET, $_POST);
-        self::$allParams['seller'] = session('user_info');
     }
 
     public function apiSuccess($msg = 'success', $data = [])

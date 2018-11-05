@@ -51,6 +51,14 @@
                     </dl>
                 </li>
             </ul>
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">活动审核管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{{route('verify.index')}}">审核列表</a></dd>
+                    </dl>
+                </li>
+            </ul>
         </div>
     </div>
 

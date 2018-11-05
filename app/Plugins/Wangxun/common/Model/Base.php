@@ -79,7 +79,7 @@ class Base
     /**
      * 查询第一条记录
      */
-    public static function getOneByParam($where, $field)
+    public static function getOneByParam($where = [], $field = '*')
     {
         $query = DB::table(self::getTable());
         $where && $query->where($where);

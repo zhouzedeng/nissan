@@ -20,7 +20,10 @@ Route::POST('/goods_del', 'GoodsController@del')->name('goods.del');
 Route::get('/goods_edit', 'GoodsController@edit')->name('goods.edit');
 Route::post('/goods_edit', 'GoodsController@edit')->name('goods.edit');
 
-
+// 审核模块
+Route::get('/verify_index', 'VerifyController@index')->name('verify.index');
+Route::get('/verify_list', 'VerifyController@getList')->name('verify.list');
+Route::post('/verify_check', 'VerifyController@check')->name('verify.check');
 
 
 // 上传模块

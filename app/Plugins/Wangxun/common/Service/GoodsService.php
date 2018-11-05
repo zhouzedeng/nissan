@@ -63,6 +63,7 @@ class GoodsService
         }
         return $result;
     }
+
     /**
      * 删除商品数据
      * @param array $params
@@ -80,6 +81,7 @@ class GoodsService
         }
         return $result;
     }
+
     /**
      * 获取一条商品数据
      * @param array $data
@@ -98,6 +100,7 @@ class GoodsService
         $result['data'] = $find;
         return $result;
     }
+
     /**
      * 修改商品数据
      * @param array $params
@@ -122,3 +125,4 @@ class GoodsService
         return $result;
     }
 }
+

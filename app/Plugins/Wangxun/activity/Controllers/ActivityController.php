@@ -59,6 +59,7 @@ class ActivityController extends Controller
         $result = ActivityService::save($params);
         return $result;
     }
+
     /**
      * 删除活动
      *  @return \Illuminate\Http\JsonResponse
@@ -72,7 +73,8 @@ class ActivityController extends Controller
         $result = ActivityService::del($params);
         return $result;
     }
-    /*
+
+    /**
     * 编辑页面
     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     */

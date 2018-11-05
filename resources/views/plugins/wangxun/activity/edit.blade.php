@@ -5,7 +5,7 @@
     <blockquote class="layui-elem-quote top-title"><h3><a onclick="history.back()">活动管理</a> / 修改活动</h3></blockquote>
     <form class="layui-form">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
-        <input type="hidden" name="id" value="{{$activity_info->id}}">
+        <input type="hidden" name="id" value="{{$activity_info->id}}" id="activity_id">
         <div class="layui-form-item">
             <label class="layui-form-label">主题</label>
             <div class="layui-input-block">
@@ -23,6 +23,11 @@
             <label class="layui-form-label">活动说明</label>
             <div class="layui-input-block">
                 <textarea name="desc" placeholder="请输入活动说明" class="layui-textarea" required> {{$activity_info->desc}} </textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text" lay-filter="goodslist">
+            <label class="layui-form-label">关联商品</label>
+            <div class="layui-input-block" style="max-height:120px;overflow: hidden;overflow-y:scroll;" id="goodslist">
             </div>
         </div>
         <input id="img" type="hidden" name="img" lay-verify="img" value="{{$activity_info->bg_img_url}}">
@@ -68,6 +73,6 @@
 
     <script>
     </script>
-    <script src="{{asset('/wangxun/activity/js/edit.js')}}?v=21000"></script>
+    <script src="{{asset('/wangxun/activity/js/edit.js')}}?v=24000"></script>
 
 @endsection

@@ -5,7 +5,7 @@
     <blockquote class="layui-elem-quote top-title"><h3><a onclick="history.back()">商品管理</a> / 修改商品</h3></blockquote>
     <form class="layui-form">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
-        <input type="hidden" name="id" value="{{$goods_info->id}}">
+        <input type="hidden" name="id" value="{{$goods_info->id}}" >
         <div class="layui-form-item">
             <label class="layui-form-label">商品名称</label>
             <div class="layui-input-block">

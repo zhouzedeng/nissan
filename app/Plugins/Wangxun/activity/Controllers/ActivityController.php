@@ -3,6 +3,7 @@ namespace Wangxun\Activity\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Wangxun\Common\Model\ActivityGoods;
 use Wangxun\Common\Service\ActivityService;
 
 /**
@@ -99,6 +100,22 @@ class ActivityController extends Controller
         $where ['id'] = $params ['id'];
         $result = ActivityService::getFind($where);
         return view('wangxun.activity.edit',['activity_info'=>$result['data']]);
+    }
+    /**
+     * 查询活动关联商品
+     *  @return \Illuminate\Http\JsonResponse
+     */
+    public function fingActivityGoods()
+    {
+        $params = self::$allParams;
+        if (empty($params['wangxun_activity_id'])) {
+            return $this->apiFail('100001', '活动ID必填');
+        }
+        $result = ActivityGoods::getOneByParam($params);
+        if(empty($result)){
+            return ['code'=> 100001];
+        }
+        return $this->apiSuccess('success',$result);
     }
 }
 

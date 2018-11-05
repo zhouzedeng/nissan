@@ -1,9 +1,9 @@
-layui.use(['form', 'layedit', 'laydate'], function(){
+layui.use(['form', 'layedit', 'laydate','flow'], function(){
     var form = layui.form
         ,layer = layui.layer
         ,layedit = layui.layedit
-        ,laydate = layui.laydate;
-
+        ,laydate = layui.laydate
+        ,flow = layui.flow ;
     //日期
     laydate.render({
         elem: '#birthday'
@@ -18,7 +18,43 @@ layui.use(['form', 'layedit', 'laydate'], function(){
             layedit.sync(editIndex);
         }
     });
-
+    var activity_goods = [];
+    $.ajax({
+        type: "get",
+        url: "fing_activity_goods",
+        data: {'wangxun_activity_id':$('#activity_id').val()},
+        dataType: "json",
+        success: function(data){
+            activity_goods = (data.data.goods_id).split(",");
+        }
+    });
+    flow.load({
+        elem: '#goodslist' //流加载容器
+        ,scrollElem: '#goodslist' //滚动条所在元素，一般不用填，此处只是演示需要。
+        ,done: function(page, next){ //执行下一页的回调
+            var limit = 100000;
+            //加载商品列表
+            $.ajax({
+                type: "get",
+                url: "goods_list",
+                data: {'page':page,'limit':limit},
+                dataType: "json",
+                success: function(data){
+                    var lis = [];
+                    for (var i = 0; i < data.data.length; i++) {
+                        if(activity_goods.indexOf(String(data.data[i].id)) != -1){
+                            lis.push('<input type="checkbox"  checked name="goods_id['+data.data[i].id+']" title="'+data.data[i].goods_name+'">')
+                        }else{
+                            lis.push('<input type="checkbox"  name="goods_id['+data.data[i].id+']" title="'+data.data[i].goods_name+'">')
+                        }
+                    }
+                    next(lis.join(''), page < (data.count/10));
+                    //$('#goodslist').html(lis);
+                    form.render();
+                }
+            });
+        }
+    });
     //监听提交
     form.on('submit(mycommit)', function(data){
         var data_obj = data.field;

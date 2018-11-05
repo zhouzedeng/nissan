@@ -3,6 +3,7 @@
 namespace Wangxun\Common\Service;
 
 use Wangxun\Common\Model\Activity;
+use Wangxun\Common\Model\ActivityGoods;
 
 /**
  * 活动业务
@@ -59,6 +60,12 @@ class ActivityService
             'updated_at' => time()
         ];
         $rs = Activity::add($data);
+        $actGoods = [
+            'wangxun_activity_id' => $rs,
+            'goods_id' => implode(',',array_keys($params ['goods_id'])),
+            'need_cut_num'=>1
+        ];
+        ActivityGoods::add($actGoods);
         if (empty($rs)) {
             $result['code'] = '200001';
             $result['msg'] = '添加失败';
@@ -121,6 +128,17 @@ class ActivityService
             'updated_at' => time()
         ];
         $rs = Activity::updateById($data,$params['id']);
+        $act_goods_info = ActivityGoods::getOneByParam(['wangxun_activity_id'=>$params['id']]);
+        $actGoods = [
+            'wangxun_activity_id' => $params['id'],
+            'goods_id' => implode(',',array_keys($params ['goods_id'])),
+            'need_cut_num'=>1
+        ];
+        if($act_goods_info){
+            ActivityGoods::updateById($actGoods,$act_goods_info->id);
+        }else{
+            ActivityGoods::add($actGoods);
+        }
         if (empty($rs)) {
             $result['code'] = '100004';
             $result['msg'] = '修改失败';

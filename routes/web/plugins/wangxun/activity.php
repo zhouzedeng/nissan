@@ -10,6 +10,7 @@ Route::POST('/activity_save', 'ActivityController@save')->name('activity.save');
 Route::POST('/activity_del', 'ActivityController@del')->name('activity.del');
 Route::POST('/activity_edit', 'ActivityController@edit')->name('activity.edit');
 Route::get('/activity_edit', 'ActivityController@edit')->name('activity.edit');
+Route::get('/fing_activity_goods', 'ActivityController@fingActivityGoods')->name('activity.fingActivityGoods');
 
 // 商品模块
 Route::get('/goods_index', 'GoodsController@index')->name('goods.index');

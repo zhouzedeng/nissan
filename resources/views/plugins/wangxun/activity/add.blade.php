@@ -24,6 +24,11 @@
                 <textarea name="desc" placeholder="请输入活动说明" class="layui-textarea" required></textarea>
             </div>
         </div>
+        <div class="layui-form-item layui-form-text" lay-filter="goodslist">
+            <label class="layui-form-label">关联商品</label>
+            <div class="layui-input-block" style="max-height:120px;overflow: hidden;overflow-y:scroll;" id="goodslist">
+            </div>
+        </div>
         <input id="img" type="hidden" name="img" lay-verify="img">
 
         <div class="layui-form-item layui-form-text">
@@ -58,6 +63,6 @@
 
     <script>
     </script>
-    <script src="{{asset('/wangxun/activity/js/add.js')}}?v=19000"></script>
+    <script src="{{asset('/wangxun/activity/js/add.js')}}?v=19006"></script>
 
 @endsection

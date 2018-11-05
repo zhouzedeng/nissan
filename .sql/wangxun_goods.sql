@@ -55,7 +55,7 @@ DROP TABLE IF EXISTS `wangxun_activity_goods`;
 CREATE TABLE `wangxun_activity_goods` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `wangxun_activity_id` int(11) NOT NULL COMMENT '活动ID',
-  `goods_id` int(11) NOT NULL COMMENT '商品ID',
+  `goods_id` varchar(255) NOT NULL COMMENT '商品ID',
   `need_cut_num` int(11) NOT NULL COMMENT '某个活动中一个商品需砍的次数',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

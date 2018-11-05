@@ -25,7 +25,7 @@ class GoodsService
         $userInfo = session('user_info');
         $param = [];
         $order = array('id' , 'desc');
-        $param['seller_id'] = 4665;//$userInfo->seller->sellerId;
+        $param['seller_id'] = $userInfo->seller->sellerId;
         $param['deleted_at'] = 0;
         $list = Goods::getListByParam($param, $data['page'], $data['limit'], null, $order);
         $total = Goods::getCntByParam($param);

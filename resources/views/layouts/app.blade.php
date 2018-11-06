@@ -44,6 +44,9 @@
                     <dl class="layui-nav-child">
                         <dd><a href="{{route('goods.index')}}">商品列表</a></dd>
                     </dl>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{{route('user.index')}}">用户列表</a></dd>
+                    </dl>
                 </li>
             </ul>
 
@@ -53,7 +56,11 @@
                     <dl class="layui-nav-child">
                         <dd><a href="{{route('verify.index')}}">审核列表</a></dd>
                     </dl>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{{route('user.allIndex')}}">用户列表</a></dd>
+                    </dl>
                 </li>
+
             </ul>
         </div>
     </div>

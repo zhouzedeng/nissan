@@ -26,6 +26,11 @@ Route::get('/verify_index', 'VerifyController@index')->name('verify.index');
 Route::get('/verify_list', 'VerifyController@getList')->name('verify.list');
 Route::post('/verify_check', 'VerifyController@check')->name('verify.check');
 
+// 用户模块
+Route::get('/user_index', 'UserController@index')->name('user.index');
+Route::get('/user_list', 'UserController@getList')->name('user.list');
+Route::get('/user_allIndex', 'UserController@allIndex')->name('user.allIndex');
+Route::get('/user_allList', 'UserController@allList')->name('user.allList');
 
 // 上传模块
 Route::post('/upload_upload', 'UploadController@upload')->name('upload.upload');

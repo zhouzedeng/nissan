@@ -1,5 +1,4 @@
 <?php
-
 namespace Wangxun\Common\Service;
 
 use Wangxun\Common\Model\Activity;

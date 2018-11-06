@@ -5,7 +5,7 @@
     <blockquote class="layui-elem-quote top-title"><h3><a onclick="history.back()">活动管理</a> / 修改活动</h3></blockquote>
     <form class="layui-form">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
-        <input type="hidden" name="id" value="{{$activity_info->id}}" id="activity_id">
+        <input type="hidden" name="id" value="{{$activity_info->id}}">
         <div class="layui-form-item">
             <label class="layui-form-label">主题</label>
             <div class="layui-input-block">
@@ -16,6 +16,20 @@
             <label class="layui-form-label">品牌</label>
             <div class="layui-input-block">
                 <input type="text" name="brand" value="{{$activity_info->brand}}" lay-verify="brand" autocomplete="off" placeholder="请输入品牌" class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">开始时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="{{$activity_info->start_time}}" name="start_time" id="start_time" lay-verify="start_time" placeholder="请选择日期" autocomplete="off" class="layui-input">
+                </div>
+            </div>  ------
+            <div class="layui-inline">
+                <label class="layui-form-label">结束时间</label>
+                <div class="layui-input-inline">
+                    <input value="{{$activity_info->end_time}}"  type="text" name="end_time" id="end_time" lay-verify="end_time" placeholder="请选择日期" autocomplete="off" class="layui-input">
+                </div>
             </div>
         </div>
 
@@ -73,6 +87,6 @@
 
     <script>
     </script>
-    <script src="{{asset('/wangxun/activity/js/edit.js')}}?v=24000"></script>
+    <script src="{{asset('/wangxun/activity/js/edit.js')}}?v=210000"></script>
 
 @endsection

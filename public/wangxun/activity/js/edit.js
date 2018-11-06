@@ -6,7 +6,13 @@ layui.use(['form', 'layedit', 'laydate','flow'], function(){
         ,flow = layui.flow ;
     //日期
     laydate.render({
-        elem: '#birthday'
+        elem: '#end_time',
+        type:"datetime"
+    });
+    //日期
+    laydate.render({
+        elem: '#start_time',
+        type:"datetime"
     });
 
     //创建一个编辑器

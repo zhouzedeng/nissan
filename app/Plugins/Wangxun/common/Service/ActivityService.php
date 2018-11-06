@@ -29,11 +29,16 @@ class ActivityService
         $param['seller_id'] = $userInfo->seller->sellerId;
         $param['deleted_at'] = 0;
         $order = array('id' , 'desc');
-        $user_list = Activity::getListByParam($param, $data['page'], $data['limit'], null, $order);
+        $list = Activity::getListByParam($param, $data['page'], $data['limit'], null, $order);
         $total = Activity::getCntByParam($param);
+        foreach ($list as $k => $v) {
+            $list[$k]->start = date("Y-m-d H:i:s", $v->start_time);
+            $list[$k]->end = date("Y-m-d H:i:s", $v->end_time);
+            $list[$k]->created_at = date("Y-m-d H:i:s", $v->created_at);
+        }
 
         // return
-        $result['data'] = $user_list;
+        $result['data'] = $list;
         $result['count'] = $total;
         return $result;
     }
@@ -54,6 +59,8 @@ class ActivityService
             'desc'  => $params['desc'],
             'bg_img_url' => $params['img'],
             'seller_id' => $userInfo->seller->sellerId,
+            'start_time' => strtotime($params['start_time']),
+            'end_time' => strtotime($params['end_time']),
             'check_status' => 0,
             'check_remark' => '',
             'created_at' => time(),
@@ -106,6 +113,8 @@ class ActivityService
         $where['deleted_at'] = 0;
         $find = Activity::getOneByParam($where,'*');
         $find->storage_bg_img_url = '/storage/'.$find->bg_img_url;
+        $find->end_time = date("Y-m-d H:i:s", $find->end_time);
+        $find->start_time = date("Y-m-d H:i:s", $find->start_time);
         $result['data'] = $find;
         return $result;
     }
@@ -125,6 +134,8 @@ class ActivityService
             'desc'  => $params['desc'],
             'bg_img_url' => $params['img'],
             'check_status' => 0,
+            'start_time' => strtotime($params['start_time']),
+            'end_time' => strtotime($params['end_time']),
             'updated_at' => time()
         ];
         $rs = Activity::updateById($data,$params['id']);

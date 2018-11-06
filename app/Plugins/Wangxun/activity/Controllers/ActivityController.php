@@ -54,7 +54,16 @@ class ActivityController extends Controller
             return $this->apiFail('100003', '活动描述必填');
         }
         if (empty($params['img'])) {
-            return $this->apiFail('100003', '图片过大或活动背景图还没传');
+            return $this->apiFail('100004', '图片过大或活动背景图还没传');
+        }
+        if (empty($params['start_time'])) {
+            return $this->apiFail('100005', '活动开始时间不能为空');
+        }
+        if (empty($params['end_time'])) {
+            return $this->apiFail('100006', '活动结束时间不能为空');
+        }
+        if (strtotime($params['start_time']) >= strtotime($params['end_time'])) {
+            return $this->apiFail('100007', '活动结束时间必须大于活动开始时间');
         }
 
         $result = ActivityService::save($params);
@@ -93,6 +102,15 @@ class ActivityController extends Controller
             }
             if (empty($params['img'])) {
                 return $this->apiFail('100003', '图片过大或活动背景图还没传');
+            }
+            if (empty($params['start_time'])) {
+                return $this->apiFail('100005', '活动开始时间不能为空');
+            }
+            if (empty($params['end_time'])) {
+                return $this->apiFail('100006', '活动结束时间不能为空');
+            }
+            if (strtotime($params['start_time']) >= strtotime($params['end_time'])) {
+                return $this->apiFail('100007', '活动结束时间必须大于活动开始时间');
             }
             $result =  ActivityService::updata_goods($params);
             return $result;

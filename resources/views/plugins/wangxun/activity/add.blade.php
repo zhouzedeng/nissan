@@ -18,6 +18,21 @@
             </div>
         </div>
 
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">开始时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="start_time" id="start_time" lay-verify="start_time" placeholder="请选择日期" autocomplete="off" class="layui-input">
+                </div>
+            </div>  ------
+            <div class="layui-inline">
+                <label class="layui-form-label">结束时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="end_time" id="end_time" lay-verify="end_time" placeholder="请选择日期" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">活动说明</label>
             <div class="layui-input-block">
@@ -63,6 +78,6 @@
 
     <script>
     </script>
-    <script src="{{asset('/wangxun/activity/js/add.js')}}?v=19006"></script>
+    <script src="{{asset('/wangxun/activity/js/add.js')}}?v=190000"></script>
 
 @endsection

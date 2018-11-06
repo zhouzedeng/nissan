@@ -20,9 +20,21 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">卡券ID</label>
+            <label class="layui-form-label">卡券主题</label>
             <div class="layui-input-block">
-                <input type="text" name="coupon_id" lay-verify="coupon_id" value="{{$goods_info->coupon_id}}" autocomplete="off" placeholder="请输入卡券ID" class="layui-input" >
+                <input type="text"  lay-verify="coupon_title" value="{{$goods_info->coupon_title}} - (不可修改)" autocomplete="off"  class="layui-input" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">卡券描述</label>
+            <div class="layui-input-block">
+                <input type="text"  lay-verify="coupon_title" value="{{$goods_info->coupon_desc}} -（不可修改)" autocomplete="off"  class="layui-input" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">卡券价格</label>
+            <div class="layui-input-block">
+                <input type="text" name="coupon_id" lay-verify="coupon_price" value="{{$goods_info->coupon_price}}" autocomplete="off" placeholder="请根据卡款主题和描述输入卡券价格" class="layui-input" >
             </div>
         </div>
 

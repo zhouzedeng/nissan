@@ -8,7 +8,13 @@ layui.use(['form', 'layedit', 'laydate','flow'], function(){
 
     //日期
     laydate.render({
-        elem: '#birthday'
+        elem: '#end_time',
+        type:"datetime"
+    });
+    //日期
+    laydate.render({
+        elem: '#start_time',
+        type:"datetime"
     });
     flow.load({
         elem: '#goodslist' //流加载容器

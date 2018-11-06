@@ -10,7 +10,9 @@ layui.use('table', function(){
             ,{field:'id', title: 'ID', sort: true, fixed: true}
             ,{field:'theme', title: '主题'}
             ,{field:'brand', title: '品牌'}
-            ,{field:'bg_img_url', title: '活动背景图', sort: true}
+            ,{field:'bg_img_url', templet:function(data){
+                   return '<img style="width: 300px;height: 300px;" src="' + full_url + "/" + data.bg_img_url + '">'
+                } ,title: '活动背景图', sort: true}
             ,{field:'check_status', templet:function(data){
                 if (data.check_status == 0) {
                     return '未审核';
@@ -21,6 +23,8 @@ layui.use('table', function(){
                 }
                 } ,title: '审核状态', sort: true}
             ,{field:'check_remark', title: '审核备注', sort: true}
+            ,{field:'start', title: '活动开始时间', sort: true}
+            ,{field:'end', title: '活动结束时间', sort: true}
             ,{field:'desc', title: '活动说明', sort: true}
             ,{field:'created_at', title: '创建时间', sort: true}
             ,{field:'created_at', title: '操作', toolbar: '#bar'}

@@ -20,7 +20,8 @@
 
     <!-- js -->
     <script>
+        var full_url = "{{asset('storage')}}";
     </script>
-    <script src="{{asset('/wangxun/activity/js/index.js')}}?v=17555"></script>
+    <script src="{{asset('/wangxun/activity/js/index.js')}}?v=175555505"></script>
 
 @endsection

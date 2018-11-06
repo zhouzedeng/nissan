@@ -29,6 +29,9 @@ class GoodsService
         $param['deleted_at'] = 0;
         $list = Goods::getListByParam($param, $data['page'], $data['limit'], null, $order);
         $total = Goods::getCntByParam($param);
+        foreach ($list as $k => $v) {
+            $list[$k]->goods_img = asset('/storage/'.$v->goods_img);
+        }
 
         // return
         $result['data'] = $list;
@@ -40,12 +43,22 @@ class GoodsService
      * 保存商品数据
      * @param array $params
      * @return array
-     * @author zhouzedeng
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function save($params = array())
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
         $userInfo = session('user_info');
+        $res = ThirdApiService::getCouponInfo(['couponId' => $params['coupon_id']]);
+        if (!empty($res['code'])) {
+            $result = array('code' => 200001,  'msg' => '卡券ID错误', 'data' => array());
+            return $result;
+        }
+        if (empty($res['data']->card_id)) {
+            $result = array('code' => 200001,  'msg' => '卡券ID错误', 'data' => array());
+            return $result;
+        }
+
         $data = [
             'goods_name' => $params['name'],
             'goods_price' => $params['price'],
@@ -53,6 +66,10 @@ class GoodsService
             'goods_img' => $params['img'],
             'seller_id' => $userInfo->seller->sellerId,
             'coupon_price' => 0,
+            'card_code' => empty($res['data']->card_code) ? '' : $res['data']->card_code,
+            'card_id' => empty($res['data']->card_id) ? 0 : $res['data']->card_id,
+            'coupon_title' => empty($res['data']->coupon_title) ? '' : $res['data']->coupon_title,
+            'coupon_desc' => empty($res['data']->coupon_desc) ? '' : $res['data']->coupon_desc,
             'created_at' => time(),
             'updated_at' => time()
         ];

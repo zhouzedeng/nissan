@@ -34,11 +34,17 @@
         <div class="layui-form-item">
             <label class="layui-form-label">卡券价格</label>
             <div class="layui-input-block">
-                <input type="text" name="coupon_id" lay-verify="coupon_price" value="{{$goods_info->coupon_price}}" autocomplete="off" placeholder="请根据卡款主题和描述输入卡券价格" class="layui-input" >
+                <input type="text" name="coupon_price" lay-verify="coupon_price" value="{{$goods_info->coupon_price}}" autocomplete="off" placeholder="请根据卡款主题和描述输入卡券价格" class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">砍价总次数</label>
+            <div class="layui-input-block">
+                <input type="number" value="{{$goods_info->need_cut_num}}" name="need_cut_num" lay-verify="need_cut_num" autocomplete="off" placeholder="请输入需砍价总次数" class="layui-input" >
             </div>
         </div>
 
-        <input id="img" type="hidden" name="img" lay-verify="img" value="{{$goods_info->goods_img}}}">
+        <input id="img" type="hidden" name="img" lay-verify="img" value="{{$goods_info->goods_img}}">
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">商品图片</label>
             <div class="layui-input-block">

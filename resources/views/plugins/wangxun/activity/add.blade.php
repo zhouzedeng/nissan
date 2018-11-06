@@ -78,6 +78,6 @@
 
     <script>
     </script>
-    <script src="{{asset('/wangxun/activity/js/add.js')}}?v=190000"></script>
+    <script src="{{asset('/wangxun/activity/js/add.js')}}?v=19000000"></script>
 
 @endsection

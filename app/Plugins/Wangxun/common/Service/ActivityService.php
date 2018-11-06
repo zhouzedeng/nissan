@@ -70,7 +70,6 @@ class ActivityService
         $actGoods = [
             'activity_id' => $rs,
             'goods_id' => implode(',',array_keys($params ['goods_id'])),
-            'need_cut_num'=>1
         ];
         ActivityGoods::add($actGoods);
         if (empty($rs)) {
@@ -139,11 +138,10 @@ class ActivityService
             'updated_at' => time()
         ];
         $rs = Activity::updateById($data,$params['id']);
-        $act_goods_info = ActivityGoods::getOneByParam(['wangxun_activity_id'=>$params['id']]);
+        $act_goods_info = ActivityGoods::getOneByParam(['activity_id'=>$params['id']]);
         $actGoods = [
             'activity_id' => $params['id'],
             'goods_id' => implode(',',array_keys($params ['goods_id'])),
-            'need_cut_num'=>1
         ];
         if($act_goods_info){
             ActivityGoods::updateById($actGoods,$act_goods_info->id);

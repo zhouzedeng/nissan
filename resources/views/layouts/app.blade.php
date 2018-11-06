@@ -37,23 +37,19 @@
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">活动管理</a>
+                    <a class="" href="javascript:;">经销商模块</a>
                     <dl class="layui-nav-child">
                         <dd><a href="{{route('activity.index')}}">活动列表</a></dd>
                     </dl>
-                </li>
-            </ul>
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">商品管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="{{route('goods.index')}}">商品列表</a></dd>
                     </dl>
                 </li>
             </ul>
+
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">活动审核管理</a>
+                    <a class="" href="javascript:;">管理员模块</a>
                     <dl class="layui-nav-child">
                         <dd><a href="{{route('verify.index')}}">审核列表</a></dd>
                     </dl>

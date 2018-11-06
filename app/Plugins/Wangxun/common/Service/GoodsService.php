@@ -31,6 +31,7 @@ class GoodsService
         $total = Goods::getCntByParam($param);
         foreach ($list as $k => $v) {
             $list[$k]->goods_img = asset('/storage/'.$v->goods_img);
+            $list[$k]->created_at = date("Y-m-d H:i:s", $v->created_at);
         }
 
         // return
@@ -66,6 +67,7 @@ class GoodsService
             'goods_img' => $params['img'],
             'seller_id' => $userInfo->seller->sellerId,
             'coupon_price' => 0,
+            'need_cut_num' => $params['need_cut_num'],
             'card_code' => empty($res['data']->card_code) ? '' : $res['data']->card_code,
             'card_id' => empty($res['data']->card_id) ? 0 : $res['data']->card_id,
             'coupon_title' => empty($res['data']->coupon_title) ? '' : $res['data']->coupon_title,
@@ -130,7 +132,8 @@ class GoodsService
         $data = [
             'goods_name' => $params['name'],
             'goods_price' => $params['price'],
-            'coupon_id'  => $params['coupon_id'],
+            'coupon_price'  => $params['coupon_price'],
+            'need_cut_num'  => $params['need_cut_num'],
             'goods_img' => $params['img'],
             'updated_at' => time()
         ];

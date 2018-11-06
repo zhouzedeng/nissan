@@ -126,7 +126,7 @@ class ActivityController extends Controller
     public function fingActivityGoods()
     {
         $params = self::$allParams;
-        if (empty($params['wangxun_activity_id'])) {
+        if (empty($params['activity_id'])) {
             return $this->apiFail('100001', '活动ID必填');
         }
         $result = ActivityGoods::getOneByParam($params);

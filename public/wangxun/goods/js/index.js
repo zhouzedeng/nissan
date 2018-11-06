@@ -10,12 +10,12 @@ layui.use('table', function(){
             ,{field:'id', title: 'ID', sort: true, fixed: true}
             ,{field:'goods_name', title: '商品名称'}
             ,{field:'goods_price', title: '商品价格'}
-            ,{field:'goods_img', title: '商品图片', sort: true}
             ,{field:'goods_img', templet:function(data){
                     return '<img style="width: 300px;height: 300px;" src="' +  data.goods_img + '">'
                 } ,title: '商品图片', sort: true}
             ,{field:'coupon_id', title: '卡券ID', sort: true}
             ,{field:'coupon_price', title: '卡券价格', sort: true}
+            ,{field:'need_cut_num', title: '需砍价总次数', sort: true}
             ,{field:'coupon_title', title: '卡券主题', sort: true}
             ,{field:'coupon_desc', title: '卡券描述', sort: true}
             ,{field:'card_id', title: '卡ID', sort: true}

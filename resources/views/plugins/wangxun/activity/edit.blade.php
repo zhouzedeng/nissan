@@ -5,7 +5,7 @@
     <blockquote class="layui-elem-quote top-title"><h3><a onclick="history.back()">活动管理</a> / 修改活动</h3></blockquote>
     <form class="layui-form">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
-        <input type="hidden" name="id" value="{{$activity_info->id}}">
+        <input type="hidden" id="activity_id" name="id" value="{{$activity_info->id}}">
         <div class="layui-form-item">
             <label class="layui-form-label">主题</label>
             <div class="layui-input-block">
@@ -87,6 +87,6 @@
 
     <script>
     </script>
-    <script src="{{asset('/wangxun/activity/js/edit.js')}}?v=210000"></script>
+    <script src="{{asset('/wangxun/activity/js/edit.js')}}?v=2100000"></script>
 
 @endsection

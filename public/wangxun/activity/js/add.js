@@ -20,7 +20,7 @@ layui.use(['form', 'layedit', 'laydate','flow'], function(){
         elem: '#goodslist' //流加载容器
         ,scrollElem: '#goodslist' //滚动条所在元素，一般不用填，此处只是演示需要。
         ,done: function(page, next){ //执行下一页的回调
-            var limit = 10;
+            var limit = 100000;
             //加载商品列表
             $.ajax({
                 type: "get",

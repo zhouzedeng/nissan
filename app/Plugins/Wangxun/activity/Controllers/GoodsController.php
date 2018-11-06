@@ -53,6 +53,9 @@ class GoodsController extends Controller
         if (empty($params['coupon_id'])) {
             return $this->apiFail('100003', '卡券必填');
         }
+        if (empty($params['need_cut_num'])) {
+            return $this->apiFail('100004', '砍价总数必须大于0');
+        }
         if (empty($params['img'])) {
             return $this->apiFail('100003', '图片过大或活动背景图还没传哦');
         }
@@ -86,8 +89,8 @@ class GoodsController extends Controller
             if (empty($params['price'])) {
                 return $this->apiFail('100002', '商品价格必填');
             }
-            if (empty($params['coupon_id'])) {
-                return $this->apiFail('100003', '卡券必填');
+            if (empty($params['coupon_price'])) {
+                return $this->apiFail('100003', '卡券价格必须大于0');
             }
             if (empty($params['img'])) {
                 return $this->apiFail('100003', '图片过大或活动背景图还没传哦');

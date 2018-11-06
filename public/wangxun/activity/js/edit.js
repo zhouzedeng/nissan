@@ -27,8 +27,8 @@ layui.use(['form', 'layedit', 'laydate','flow'], function(){
     var activity_goods = [];
     $.ajax({
         type: "get",
-        url: "fing_activity_goods",
-        data: {'wangxun_activity_id':$('#activity_id').val()},
+        url: "fing_activity_goods?activity_id=" + $('#activity_id').val(),
+        data: {},
         dataType: "json",
         success: function(data){
             activity_goods = (data.data.goods_id).split(",");
@@ -61,6 +61,7 @@ layui.use(['form', 'layedit', 'laydate','flow'], function(){
             });
         }
     });
+
     //监听提交
     form.on('submit(mycommit)', function(data){
         var data_obj = data.field;

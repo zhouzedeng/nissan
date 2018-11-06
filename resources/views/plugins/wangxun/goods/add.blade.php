@@ -14,14 +14,20 @@
         <div class="layui-form-item">
             <label class="layui-form-label">商品价格</label>
             <div class="layui-input-block">
-                <input type="text" name="price" lay-verify="price" autocomplete="off" placeholder="请输入商品价格" class="layui-input" >
+                <input type="number" name="price" lay-verify="price" autocomplete="off" placeholder="请输入商品价格" class="layui-input" >
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">卡券ID</label>
             <div class="layui-input-block">
-                <input type="text" name="coupon_id" lay-verify="coupon_id" autocomplete="off" placeholder="请输入卡券ID" class="layui-input" >
+                <input type="number" name="coupon_id" lay-verify="coupon_id" autocomplete="off" placeholder="请输入卡券ID" class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">砍价总次数</label>
+            <div class="layui-input-block">
+                <input type="number" name="need_cut_num" lay-verify="need_cut_num" autocomplete="off" placeholder="请输入需砍价总次数" class="layui-input" >
             </div>
         </div>
 

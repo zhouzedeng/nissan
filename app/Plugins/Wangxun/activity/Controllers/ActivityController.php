@@ -129,6 +129,7 @@ class ActivityController extends Controller
         $result = ActivityService::getFind($where);
         return view('wangxun.activity.edit',['activity_info'=>$result['data']]);
     }
+
     /**
      * 查询活动关联商品
      *  @return \Illuminate\Http\JsonResponse

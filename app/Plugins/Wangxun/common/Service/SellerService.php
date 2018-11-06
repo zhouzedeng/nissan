@@ -4,10 +4,20 @@ namespace Wangxun\Common\Service;
 use Wangxun\Common\Model\Activity;
 use Wangxun\Common\Model\Seller;
 
+/**
+ * 经销商业务类
+ * Class SellerService
+ * @package Wangxun\Common\Service
+ * @author Zed
+ * @since 2018-11-4
+ */
 class SellerService
 {
     /**
+     * 获取经销商列表
      * @return mixed
+     * @author Zed
+     * @since 2018-11-4
      */
     public static function getSeller()
     {
@@ -15,10 +25,11 @@ class SellerService
     }
 
     /**
-     * 新增
+     * 新增经销商
      * @param array $seller
      * @return array
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-4
      */
     public static function save($seller)
     {
@@ -39,6 +50,7 @@ class SellerService
      * @param array $params
      * @return array
      * @author shengquan
+     * @since 2018-11-4
      */
     public static function del($params = array())
     {
@@ -57,6 +69,7 @@ class SellerService
      * @param array $data
      * @return array
      * @author shengquan
+     * @since 2018-11-4
      */
     public static function getFind($where = [])
     {
@@ -76,6 +89,7 @@ class SellerService
      * @param array $params
      * @return array
      * @author shengquan
+     * @since 2018-11-4
      */
     public static function updata_goods($params = array())
     {

@@ -10,11 +10,15 @@ use Wangxun\Common\Service\ActivityService;
  * 活动控制器
  * Class UserController
  * @package App\Http\Controllers
+ * @author Zed
+ * @since 2018-11-1
  */
 class ActivityController extends Controller
 {
     /**
      * 列表页
+     * @author Zed
+     * @since 2018-11-1
      */
     public function index()
     {
@@ -23,6 +27,8 @@ class ActivityController extends Controller
 
     /**
      * 添加页
+     * @author Zed
+     * @since 2018-11-1
      */
     public function add()
     {
@@ -31,6 +37,8 @@ class ActivityController extends Controller
 
     /**
      * 获取活动接口
+     * @author Zed
+     * @since 2018-11-1
      */
     public function getList()
     {
@@ -40,6 +48,8 @@ class ActivityController extends Controller
 
     /**
      * 新增活动接口
+     * @author Zed
+     * @since 2018-11-1
      */
     public function save()
     {

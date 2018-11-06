@@ -1,5 +1,4 @@
 <?php
-
 namespace Wangxun\Common\Model;
 
 use Illuminate\Support\Facades\DB;
@@ -8,6 +7,8 @@ use Illuminate\Support\Facades\DB;
  * 基类
  * Class Base
  * @package App\Model
+ * @author Zed
+ * @since 2018-10-30
  */
 class Base
 {
@@ -17,6 +18,8 @@ class Base
      * 新增记录
      * @param array $data
      * @return int 新增记录行的id
+     * @author Zed
+     * @since 2018-10-30
      */
     public static function add($data)
     {
@@ -28,6 +31,8 @@ class Base
      * 批量新增列表
      * @param array $data
      * @return int  插入的行数
+     * @author Zed
+     * @since 2018-10-30
      */
     public static function addList($data)
     {
@@ -56,6 +61,8 @@ class Base
      * @param int|null $limit
      * @param bool $hard
      * @return int 影响的行数
+     * @author Zed
+     * @since 2018-10-30
      */
     public static function delById($id)
     {
@@ -78,6 +85,8 @@ class Base
 
     /**
      * 查询第一条记录
+     * @author Zed
+     * @since 2018-10-30
      */
     public static function getOneByParam($where = [], $field = '*')
     {
@@ -90,6 +99,8 @@ class Base
 
     /**
      * 查询总数，通过参数
+     * @author Zed
+     * @since 2018-10-30
      */
     public static function getCntByParam($where)
     {
@@ -115,6 +126,8 @@ class Base
 
     /**
      * 更新列表，根据ID
+     * @author Zed
+     * @since 2018-10-30
      */
     public static function updateById($data, $id)
     {
@@ -133,6 +146,8 @@ class Base
     /**
      * 获取表主键
      * @return string
+     * @author Zed
+     * @since 2018-10-30
      */
     private static function getId()
     {
@@ -143,6 +158,8 @@ class Base
     /**
      * 获取表名
      * @return string
+     * @author Zed
+     * @since 2018-10-30
      */
     private static function getTable()
     {

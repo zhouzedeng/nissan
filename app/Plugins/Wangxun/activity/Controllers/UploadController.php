@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * 用户控制器
+ * 上传控制器类
  * Class UserController
  * @package App\Http\Controllers
+ * @author Zed
+ * @since 2018-11-1
  */
 class UploadController extends Controller
 {
     /**
      * 上传图片文件接口
      * @return \Illuminate\Http\JsonResponse
+     * @author Zed
+     * @since 2018-11-1
      */
     public function upload(Request $request)
     {

@@ -1,5 +1,4 @@
 <?php
-
 namespace Wangxun\Common\Service;
 
 use GuzzleHttp\Client;
@@ -8,7 +7,8 @@ use GuzzleHttp\Client;
  * 开放接口服务
  * Class ThirdApiService
  * @package Wangxun\Common\Service
- * @author zhouzedeng
+ * @author Zed
+ * @since 2018-11-5
  */
 class ThirdApiService
 {
@@ -16,7 +16,8 @@ class ThirdApiService
      * 获取车系列表
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-5
      */
     public static function getCarSeriesInfo()
     {
@@ -41,7 +42,8 @@ class ThirdApiService
      * 获取卡券列表
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-5
      */
     public static function getCouponList($data = array())
     {
@@ -73,7 +75,8 @@ class ThirdApiService
      * 查询卡券详情
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-5
      */
     public static function getCouponInfo($data = array())
     {
@@ -105,7 +108,8 @@ class ThirdApiService
      * 发送业务短信
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-5
      */
     public static function sendSms($data = array())
     {

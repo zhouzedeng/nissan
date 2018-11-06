@@ -4,13 +4,21 @@ namespace Wangxun\Common\Service;
 use Wangxun\Common\Model\Activity;
 use Wangxun\Common\Model\Seller;
 
+/**
+ * 审核业务
+ * Class VerifyService
+ * @package Wangxun\Common\Service
+ * @author Zed
+ * @since 2018-11-1
+ */
 class VerifyService
 {
     /**
      * 获取活动列表数据
      * @param array $data
      * @return array
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-1
      */
     public static function getCheckActivityList($data = [])
     {
@@ -42,6 +50,8 @@ class VerifyService
     /**
      * 审核
      * @return array
+     * @author Zed
+     * @since 2018-11-1
      */
     public static function check($params = [])
     {

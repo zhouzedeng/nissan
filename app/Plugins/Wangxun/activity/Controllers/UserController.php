@@ -8,11 +8,15 @@ use Wangxun\Common\Service\UserService;
  * UserController
  * Class UserController
  * @package Wangxun\Activity\Controllers
+ * @author Zed
+ * @since 2018-11-6
  */
 class UserController extends Controller
 {
     /**
      * 经销商用户列表页
+     * @author Zed
+     * @since 2018-11-6
      */
     public function index()
     {
@@ -21,6 +25,8 @@ class UserController extends Controller
 
     /**
      * 获取经销商用户列表数据
+     * @author Zed
+     * @since 2018-11-6
      */
     public function getList()
     {
@@ -30,6 +36,8 @@ class UserController extends Controller
 
     /**
      * 全部用户列表页
+     * @author Zed
+     * @since 2018-11-6
      */
     public function allIndex()
     {
@@ -38,6 +46,8 @@ class UserController extends Controller
 
     /**
      * 获取全部用户数据
+     * @author Zed
+     * @since 2018-11-6
      */
     public function allList()
     {

@@ -9,12 +9,16 @@ use Wangxun\Common\Service\GoodsService;
  * 商品控制器
  * Class UserController
  * @package App\Http\Controllers
+ * @author Zed
+ * @since 2018-11-2
  */
 class GoodsController extends Controller
 {
     /**
      * 列表页
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @author Zed
+     * @since 2018-11-2
      */
     public function index()
     {
@@ -24,6 +28,8 @@ class GoodsController extends Controller
     /**
      * 添加页
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @author Zed
+     * @since 2018-11-2
      */
     public function add()
     {
@@ -33,6 +39,8 @@ class GoodsController extends Controller
     /**
      * 获取活动列表
      * @return \Illuminate\Http\JsonResponse
+     * @author Zed
+     * @since 2018-11-2
      */
     public function getList()
     {
@@ -40,7 +48,13 @@ class GoodsController extends Controller
         return $result;
     }
 
-
+    /**
+     * 保存商品信息
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @author Zed
+     * @since 2018-11-2
+     */
     public function save()
     {
         $params = self::$allParams;
@@ -63,6 +77,7 @@ class GoodsController extends Controller
         $result = GoodsService::save($params);
         return $result;
     }
+
     /**
      * 删除商品
      *  @return \Illuminate\Http\JsonResponse
@@ -76,7 +91,9 @@ class GoodsController extends Controller
         $result = GoodsService::del($params);
         return $result;
     }
-    /*
+
+    /**
+     *
      * 编辑页面
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

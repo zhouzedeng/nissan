@@ -1,15 +1,14 @@
 <?php
-
 namespace Wangxun\Common\Service;
 
-use Wangxun\Common\Model\Activity;
-use Wangxun\Common\Model\ActivityGoods;
 use Wangxun\Common\Model\User;
 
 /**
  * UserService
  * Class UserService
  * @package Wangxun\Common\Service
+ * @author Zed
+ * @since 2018-11-6
  */
 class UserService
 {
@@ -17,7 +16,8 @@ class UserService
      * 获取列表数据
      * @param array $data
      * @return array
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-6
      */
     public static function getList($data = [])
     {
@@ -44,7 +44,8 @@ class UserService
      * 获取列表数据
      * @param array $data
      * @return array
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-6
      */
     public static function getAllList($data = [])
     {

@@ -9,7 +9,8 @@ use Wangxun\Common\Model\ActivityGoods;
  * 活动业务
  * Class ActivityService
  * @package Wangxun\Common\Service
- * @author zhouzedeng
+ * @author Zed
+ * @since 2018-11-1
  */
 class ActivityService
 {
@@ -17,7 +18,8 @@ class ActivityService
      * 获取活动列表数据
      * @param array $data
      * @return array
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-1
      */
     public static function getList($data = [])
     {
@@ -47,7 +49,8 @@ class ActivityService
      * 新增活动数据
      * @param array $params
      * @return array
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-1
      */
     public static function save($params = array())
     {
@@ -84,6 +87,7 @@ class ActivityService
      * @param array $params
      * @return array
      * @author shengquan
+     * @since 2018-11-1
      */
     public static function del($params = array())
     {
@@ -102,6 +106,7 @@ class ActivityService
      * @param array $data
      * @return array
      * @author shengquan
+     * @since 2018-11-1
      */
     public static function getFind($where = [])
     {
@@ -123,6 +128,7 @@ class ActivityService
      * @param array $params
      * @return array
      * @author shengquan
+     * @since 2018-11-1
      */
     public static function updata_goods($params = array())
     {

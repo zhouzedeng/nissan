@@ -7,7 +7,8 @@ use Wangxun\Common\Model\Goods;
  * 商品业务
  * Class GoodsService
  * @package Wangxun\Common\Service
- * @author zhouzedeng
+ * @author Zed
+ * @since 2018-11-2
  */
 class GoodsService
 {
@@ -15,7 +16,8 @@ class GoodsService
      * 获取商品列表数据
      * @param array $data
      * @return array
-     * @author zhouzedeng
+     * @author Zed
+     * @since 2018-11-2
      */
     public static function getList($data = [])
     {
@@ -45,6 +47,8 @@ class GoodsService
      * @param array $params
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @author Zed
+     * @since 2018-11-2
      */
     public static function save($params = array())
     {
@@ -88,6 +92,7 @@ class GoodsService
      * @param array $params
      * @return array
      * @author shengquan
+     * @since 2018-11-2
      */
     public static function del($params = array())
     {
@@ -125,6 +130,7 @@ class GoodsService
      * @param array $params
      * @return array
      * @author shengquan
+     * @since 2018-11-2
      */
     public static function updata_goods($params = array())
     {

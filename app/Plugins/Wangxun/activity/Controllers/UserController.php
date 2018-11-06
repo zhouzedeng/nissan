@@ -2,9 +2,6 @@
 namespace Wangxun\Activity\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Wangxun\Common\Model\ActivityGoods;
-use Wangxun\Common\Service\ActivityService;
 use Wangxun\Common\Service\UserService;
 
 /**

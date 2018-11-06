@@ -68,7 +68,7 @@ class ActivityService
         ];
         $rs = Activity::add($data);
         $actGoods = [
-            'wangxun_activity_id' => $rs,
+            'activity_id' => $rs,
             'goods_id' => implode(',',array_keys($params ['goods_id'])),
             'need_cut_num'=>1
         ];
@@ -141,7 +141,7 @@ class ActivityService
         $rs = Activity::updateById($data,$params['id']);
         $act_goods_info = ActivityGoods::getOneByParam(['wangxun_activity_id'=>$params['id']]);
         $actGoods = [
-            'wangxun_activity_id' => $params['id'],
+            'activity_id' => $params['id'],
             'goods_id' => implode(',',array_keys($params ['goods_id'])),
             'need_cut_num'=>1
         ];

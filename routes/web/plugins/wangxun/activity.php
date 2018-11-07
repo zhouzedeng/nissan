@@ -42,5 +42,11 @@ Route::group(['middleware' => 'auth_admin'], function () {
     Route::get('/user_allList', 'UserController@allList')->name('user.allList');
 });
 
+Route::get('/api_adduser', 'ApiController@adduser')->name('user.adduser');
+Route::get('/api_getAllSellerGoods', 'ApiController@getAllSellerGoods')->name('user.getAllSellerGoods');
+Route::get('/api_getaddGoodsToCut', 'ApiController@addGoodsToCut')->name('user.addGoodsToCut');
+Route::get('/api_getCutInfo', 'ApiController@getCutInfo')->name('user.getCutInfo');
+Route::get('/api_getCutVisitor', 'ApiController@getCutVisitor')->name('user.getCutVisitor');
+Route::get('/api_cut', 'ApiController@cut')->name('user.cut');
 
 

@@ -166,4 +166,18 @@ class Base
         $full_class_name = get_called_class();
         return $full_class_name::TABLE;
     }
+    /**
+     * 获取列表
+     */
+    public static function getListByParamIn($where = array(),$whereIn = array(), $page = null, $pagesize = null, $field = null, $order = null)
+    {
+        $query = DB::table(self::getTable());
+        $where && $query->where($where);
+        $whereIn && $query->whereIn(self::getId(),$whereIn);
+        $field && $query->select($field);
+        $order && $query->orderBy($order[0], $order[1]);
+        !is_null($page) &&  $query->offset(($page - 1) * $pagesize)->limit($pagesize);
+        $result = $query->get()->all();
+        return $result;
+    }
 }

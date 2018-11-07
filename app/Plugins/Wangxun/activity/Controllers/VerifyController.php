@@ -1,7 +1,6 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
-use App\Http\Controllers\Controller;
 use Wangxun\Common\Service\VerifyService;
 
 /**
@@ -11,8 +10,13 @@ use Wangxun\Common\Service\VerifyService;
  * @author Zed
  * @since 2018-11-3
  */
-class VerifyController extends Controller
+class VerifyController extends BaseController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     /**
      * 列表页
      * @author Zed
@@ -30,7 +34,7 @@ class VerifyController extends Controller
      */
     public function getList()
     {
-        $result = VerifyService::getCheckActivityList(self::$allParams);
+        $result = VerifyService::getCheckActivityList($this->params);
         return $result;
     }
 
@@ -42,7 +46,7 @@ class VerifyController extends Controller
      */
     public function check()
     {
-        $result = VerifyService::check(self::$allParams);
+        $result = VerifyService::check($this->params);
         return $result;
     }
 }

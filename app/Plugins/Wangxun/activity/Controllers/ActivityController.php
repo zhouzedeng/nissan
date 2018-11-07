@@ -1,7 +1,6 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Wangxun\Common\Model\ActivityGoods;
 use Wangxun\Common\Service\ActivityService;
@@ -13,8 +12,13 @@ use Wangxun\Common\Service\ActivityService;
  * @author Zed
  * @since 2018-11-1
  */
-class ActivityController extends Controller
+class ActivityController extends BaseController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     /**
      * 列表页
      * @author Zed
@@ -42,7 +46,7 @@ class ActivityController extends Controller
      */
     public function getList()
     {
-        $result = ActivityService::getList(self::$allParams);
+        $result = ActivityService::getList($this->params);
         return $result;
     }
 
@@ -53,7 +57,7 @@ class ActivityController extends Controller
      */
     public function save()
     {
-        $params = self::$allParams;
+        $params = $this->params;
         if (empty($params['name'])) {
             return $this->apiFail('100001', '主题必填');
         }
@@ -86,7 +90,7 @@ class ActivityController extends Controller
      */
     public function del()
     {
-        $params = self::$allParams;
+        $params = $this->params;
         if (empty($params['id'])) {
             return $this->apiFail('100001', '活动ID必填');
         }
@@ -99,7 +103,7 @@ class ActivityController extends Controller
     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     */
     public function edit(Request $request){
-        $params = self::$allParams;
+        $params = $this->params;
         if($request->isMethod('post')){
             if (empty($params['name'])) {
                 return $this->apiFail('100001', '主题必填');
@@ -136,7 +140,7 @@ class ActivityController extends Controller
      */
     public function fingActivityGoods()
     {
-        $params = self::$allParams;
+        $params = $this->params;
         if (empty($params['activity_id'])) {
             return $this->apiFail('100001', '活动ID必填');
         }

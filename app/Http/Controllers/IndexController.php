@@ -1,11 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redis;
+use Wangxun\Activity\Controllers\BaseController;
+use Wangxun\Common\Service\SellerService;
+
 
 /**
  * IndexController
@@ -14,25 +17,40 @@ use Illuminate\Support\Facades\Session;
  */
 class IndexController extends Controller
 {
-
     /**
      * index
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function index()
+    public function index(Request $request)
     {
         if (!isset($_GET['token'])) {
             return redirect(config('plugin.login_page'));
         }
         $userInfo = $this->tokenApi($_GET['token']);
         if (!empty($userInfo) && isset($userInfo->user_name)) {
-            Session::put('user_info',$userInfo);
-            return redirect(route('home.index'));
+            $userInfo = json_decode(json_encode($userInfo), true);
+            if ($userInfo) {
+                SellerService::save($userInfo);
+            }
+            $token = $request->cookie('token');
+            if (empty($token)) {
+                $token = $this->getToken();
+            }
+            Redis::setex($token, 3600 * 2, json_encode($userInfo));
+            return redirect(route('home.index'))->cookie('token', $token, 120);
         } else {
-            Log::info('token_api获取用户数据失败');
             return redirect(config('plugin.login_page'));
         }
+    }
+
+    /**
+     * getToken
+     * @return string
+     */
+    protected function getToken()
+    {
+        return md5(uniqid() . uniqid());
     }
 
     /**

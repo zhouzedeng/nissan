@@ -1,7 +1,6 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Wangxun\Common\Service\GoodsService;
 
@@ -12,8 +11,14 @@ use Wangxun\Common\Service\GoodsService;
  * @author Zed
  * @since 2018-11-2
  */
-class GoodsController extends Controller
+class GoodsController extends BaseController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+
     /**
      * 列表页
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -44,7 +49,7 @@ class GoodsController extends Controller
      */
     public function getList()
     {
-        $result = GoodsService::getList(self::$allParams);
+        $result = GoodsService::getList($this->params);
         return $result;
     }
 
@@ -57,7 +62,7 @@ class GoodsController extends Controller
      */
     public function save()
     {
-        $params = self::$allParams;
+        $params = $this->params;
         if (empty($params['name'])) {
             return $this->apiFail('100001', '商品名称必填');
         }
@@ -84,7 +89,7 @@ class GoodsController extends Controller
      */
     public function del()
     {
-        $params = self::$allParams;
+        $params = $this->params;
         if (empty($params['id'])) {
             return $this->apiFail('100001', '商品ID必填');
         }
@@ -98,7 +103,7 @@ class GoodsController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Request $request){
-        $params = self::$allParams;
+        $params = $this->params;
         if($request->isMethod('post')){
             if (empty($params['name'])) {
                 return $this->apiFail('100001', '商品名称必填');

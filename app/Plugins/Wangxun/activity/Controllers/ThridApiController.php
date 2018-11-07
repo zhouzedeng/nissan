@@ -1,7 +1,6 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
-use App\Http\Controllers\Controller;
 use Wangxun\Common\Service\ThirdApiService;
 
 /**
@@ -11,8 +10,14 @@ use Wangxun\Common\Service\ThirdApiService;
  * @by zed
  * @since 2018-10-30
  */
-class ThridApiController extends Controller
+class ThridApiController extends BaseController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+
     /**
      * 获取车系列表
      * @by zed
@@ -20,7 +25,7 @@ class ThridApiController extends Controller
      */
     public function getCarSeriesInfo()
     {
-        $result = ThirdApiService::getCarSeriesInfo(self::$allParams);
+        $result = ThirdApiService::getCarSeriesInfo($this->params);
         return $result;
     }
 
@@ -29,9 +34,9 @@ class ThridApiController extends Controller
      * @by zed
      * @since 2018-10-30
      */
-    public static function getCouponList()
+    public function getCouponList()
     {
-        $result = ThirdApiService::getCouponList(self::$allParams);
+        $result = ThirdApiService::getCouponList($this->params);
         return $result;
     }
 
@@ -40,9 +45,9 @@ class ThridApiController extends Controller
      * @by zed
      * @since 2018-10-30
      */
-    public static function getCouponInfo()
+    public function getCouponInfo()
     {
-        $result = ThirdApiService::getCouponInfo(self::$allParams);
+        $result = ThirdApiService::getCouponInfo($this->params);
         return $result;
     }
 
@@ -53,9 +58,9 @@ class ThridApiController extends Controller
      * @by zed
      * @since 2018-10-30
      */
-    public static function sendSms()
+    public function sendSms()
     {
-        $result = ThirdApiService::sendSms(self::$allParams);
+        $result = ThirdApiService::sendSms($this->params);
         return $result;
     }
 }

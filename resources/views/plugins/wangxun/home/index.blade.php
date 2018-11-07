@@ -6,7 +6,7 @@
     </fieldset>
     <div class="layui-col-md6">
         <div class="layui-card">
-     {{--       <div class="layui-card-header">经销商：{{$user_info['seller_name']}}</div>
+       {{--  <div class="layui-card-header">经销商：{{$user_info['seller_name']}}</div>
             <div class="layui-card-header">账户：{{$user_info['user_name']}}</div>
             <div class="layui-card-header">经销商ID：{{$user_info['seller']['sellerId']}}</div>
             <div class="layui-card-header">会员编码：{{$user_info['seller']['memberId']}}</div>

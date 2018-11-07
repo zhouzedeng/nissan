@@ -1,8 +1,7 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
-use App\Http\Controllers\Controller;
-use Wangxun\Common\Service\SellerService;
+use Illuminate\Http\Request;
 
 /**
  * 首页控制器
@@ -11,15 +10,18 @@ use Wangxun\Common\Service\SellerService;
  * @author Zed
  * @since 2018-11-1
  */
-class HomeController extends Controller
+class HomeController extends BaseController
 {
-    public function index()
+    public function __construct()
     {
-        $user_info = SellerService::getSeller();
-        if ($user_info) {
-            SellerService::save($user_info);
-        }
-        return view('wangxun.home.index', ['user_info' => $user_info]);
+        parent::__construct();
+    }
+
+
+    public function index(Request  $request)
+    {
+        echo $request->cookie('token');
+        return view('wangxun.home.index');
     }
 }
 

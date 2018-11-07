@@ -1,7 +1,6 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
-use App\Http\Controllers\Controller;
 use Wangxun\Common\Service\UserService;
 
 /**
@@ -11,8 +10,14 @@ use Wangxun\Common\Service\UserService;
  * @author Zed
  * @since 2018-11-6
  */
-class UserController extends Controller
+class UserController extends BaseController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+
     /**
      * 经销商用户列表页
      * @author Zed
@@ -30,7 +35,7 @@ class UserController extends Controller
      */
     public function getList()
     {
-        $result = UserService::getList(self::$allParams);
+        $result = UserService::getList($this->params);
         return $result;
     }
 
@@ -51,7 +56,7 @@ class UserController extends Controller
      */
     public function allList()
     {
-        $result = UserService::getAllList(self::$allParams);
+        $result = UserService::getAllList($this->params);
         return $result;
     }
 

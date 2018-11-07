@@ -1,6 +1,7 @@
 <?php
 namespace Wangxun\Common\Service;
 
+use Illuminate\Http\Request;
 use Wangxun\Common\Model\Activity;
 use Wangxun\Common\Model\Seller;
 
@@ -13,17 +14,6 @@ use Wangxun\Common\Model\Seller;
  */
 class SellerService
 {
-    /**
-     * 获取经销商列表
-     * @return mixed
-     * @author Zed
-     * @since 2018-11-4
-     */
-    public static function getSeller()
-    {
-        return json_decode(json_encode(session('user_info')), true);
-    }
-
     /**
      * 新增经销商
      * @param array $seller
@@ -108,5 +98,10 @@ class SellerService
             $result['msg'] = '修改失败';
         }
         return $result;
+    }
+
+    public static function getCookieToken(Request $request)
+    {
+        return $request->cookie('token');
     }
 }

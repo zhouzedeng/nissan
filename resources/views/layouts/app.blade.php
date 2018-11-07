@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>后台大布局 - Layui</title>
+    <title>创意活动后台</title>
     <link rel="stylesheet" href="{{asset('layui/css/layui.css')}}">
     <link rel="stylesheet" href="{{asset('css/common.css')}}?v=1000">
 </head>
@@ -24,7 +24,7 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">配置系统</div>
+        <div class="layui-logo">后台管理系统</div>
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="{{route('home.index')}}">控制台</a></li>
         </ul>

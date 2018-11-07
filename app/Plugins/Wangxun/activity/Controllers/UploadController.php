@@ -1,7 +1,6 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,8 +11,13 @@ use Illuminate\Support\Facades\Storage;
  * @author Zed
  * @since 2018-11-1
  */
-class UploadController extends Controller
+class UploadController extends BaseController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     /**
      * 上传图片文件接口
      * @return \Illuminate\Http\JsonResponse

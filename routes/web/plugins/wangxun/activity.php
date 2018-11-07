@@ -1,11 +1,12 @@
 <?php
-Route::get('/home_index', 'HomeController@index')->name('home.index');
+
 Route::post('/upload_upload', 'UploadController@upload')->name('upload.upload');
 Route::get('/thirdApi_getCarSeriesInfo', 'ThridApiController@getCarSeriesInfo')->name('thirdApi.getCarSeriesInfo');
 Route::get('/thirdApi_getCouponInfo', 'ThridApiController@getCouponInfo')->name('thirdApi.getCouponInfo');
 Route::get('/thirdApi_sendSms', 'ThridApiController@sendSms')->name('thirdApi.sendSms');
 
 Route::group(['middleware' => 'auth_login'], function () {
+    Route::get('/home_index', 'HomeController@index')->name('home.index');
     // 活动模块
     Route::get('/activity_index', 'ActivityController@index')->name('activity.index');
     Route::get('/activity_list', 'ActivityController@getList')->name('activity.list');

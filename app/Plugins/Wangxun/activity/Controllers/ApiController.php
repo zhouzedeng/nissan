@@ -29,7 +29,7 @@ class ApiController extends BaseController
 
     }
     /**
-     * 获取某经销商全部活动下的商品列表
+     * 获取某经销商某个活动下的商品列表
      * @author shengquan
      * @since 2018-11-7
      */

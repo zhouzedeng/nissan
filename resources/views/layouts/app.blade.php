@@ -39,13 +39,16 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">经销商模块</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('activity.index')}}">活动列表</a></dd>
+                        <dd><a href="{{route('activity.index')}}">活动管理</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('goods.index')}}">商品列表</a></dd>
+                        <dd><a href="{{route('goods.index')}}">商品管理</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('user.index')}}">用户列表</a></dd>
+                        <dd><a href="{{route('user.index')}}">用户管理</a></dd>
+                    </dl>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{{route('visitor.index')}}">访客管理</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -54,10 +57,13 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">管理员模块</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('verify.index')}}">审核列表</a></dd>
+                        <dd><a href="{{route('verify.index')}}">活动审核</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('user.allIndex')}}">用户列表</a></dd>
+                        <dd><a href="{{route('user.allIndex')}}">全部用户</a></dd>
+                    </dl>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{{route('visitor.allIndex')}}">全部访客</a></dd>
                     </dl>
                 </li>
 

@@ -29,6 +29,10 @@ Route::group(['middleware' => 'auth_login'], function () {
     // 用户模块
     Route::get('/user_index', 'UserController@index')->name('user.index');
     Route::get('/user_list', 'UserController@getList')->name('user.list');
+
+    // 访客模块
+    Route::get('/visitor_index', 'VisitorController@index')->name('visitor.index');
+    Route::get('/visitor_list', 'VisitorController@getList')->name('visitor.list');
 });
 
 
@@ -40,6 +44,10 @@ Route::group(['middleware' => 'auth_admin'], function () {
 
     Route::get('/user_allIndex', 'UserController@allIndex')->name('user.allIndex');
     Route::get('/user_allList', 'UserController@allList')->name('user.allList');
+
+    // 访客模块
+    Route::get('/visitor_allIndex', 'VisitorController@allIndex')->name('visitor.allIndex');
+    Route::get('/visitor_allList', 'VisitorController@allList')->name('visitor.allList');
 });
 
 Route::get('/api_adduser', 'ApiController@adduser')->name('user.adduser');

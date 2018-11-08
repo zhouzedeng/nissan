@@ -10,7 +10,7 @@ use Wangxun\Common\Model\Goods;
  * @author Zed
  * @since 2018-11-2
  */
-class GoodsService
+class GoodsService extends BaseService
 {
     /**
      * 获取商品列表数据
@@ -24,10 +24,9 @@ class GoodsService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
 
         // 查询数据
-        $userInfo = session('user_info');
         $param = [];
         $order = array('id' , 'desc');
-        $param['seller_id'] = $userInfo->seller->sellerId;
+        $param['seller_id'] = $data['seller']['seller']['sellerId'];
         $param['deleted_at'] = 0;
         $list = Goods::getListByParam($param, $data['page'], $data['limit'], null, $order);
         $total = Goods::getCntByParam($param);
@@ -53,7 +52,6 @@ class GoodsService
     public static function save($params = array())
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
-        $userInfo = session('user_info');
         $res = ThirdApiService::getCouponInfo(['couponId' => $params['coupon_id']]);
         if (!empty($res['code'])) {
             $result = array('code' => 200001,  'msg' => '卡券ID错误', 'data' => array());
@@ -69,7 +67,7 @@ class GoodsService
             'goods_price' => $params['price'],
             'coupon_id'  => $params['coupon_id'],
             'goods_img' => $params['img'],
-            'seller_id' => $userInfo->seller->sellerId,
+            'seller_id' => $params['seller']['seller']['sellerId'],
             'coupon_price' => 0,
             'need_cut_num' => $params['need_cut_num'],
             'card_code' => empty($res['data']->card_code) ? '' : $res['data']->card_code,
@@ -112,12 +110,13 @@ class GoodsService
      * @return array
      * @author shengquan
      */
-    public static function getFind($where = [])
+    public static function getFind($params = [])
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
         // 查询数据
-        $userInfo = session('user_info');
-        $where['seller_id'] = $userInfo->seller->sellerId;
+        $where = [];
+        $where ['id'] = $params ['id'];
+        $where['seller_id'] = $params['seller']['seller']['sellerId'];
         $where['deleted_at'] = 0;
         $find = Goods::getOneByParam($where,'*');
         $find->storage_goods_img = '/storage/'.$find->goods_img;

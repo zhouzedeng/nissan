@@ -47,8 +47,9 @@ class GoodsController extends BaseController
      * @author Zed
      * @since 2018-11-2
      */
-    public function getList()
+    public function getList(Request $request)
     {
+        $this->setSellerToParams($request);
         $result = GoodsService::getList($this->params);
         return $result;
     }
@@ -60,8 +61,9 @@ class GoodsController extends BaseController
      * @author Zed
      * @since 2018-11-2
      */
-    public function save()
+    public function save(Request $request)
     {
+        $this->setSellerToParams($request);
         $params = $this->params;
         if (empty($params['name'])) {
             return $this->apiFail('100001', '商品名称必填');
@@ -102,7 +104,9 @@ class GoodsController extends BaseController
      * 编辑页面
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Request $request){
+    public function edit(Request $request)
+    {
+        $this->setSellerToParams($request);
         $params = $this->params;
         if($request->isMethod('post')){
             if (empty($params['name'])) {
@@ -120,8 +124,8 @@ class GoodsController extends BaseController
             $result =  GoodsService::updata_goods($params);
             return $result;
         }
-        $where ['id'] = $params ['id'];
-        $result = GoodsService::getFind($where);
+
+        $result = GoodsService::getFind($params);
         return view('wangxun.goods.edit',['goods_info'=>$result['data']]);
     }
 }

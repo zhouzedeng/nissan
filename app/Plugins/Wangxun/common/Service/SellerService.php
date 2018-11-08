@@ -12,7 +12,7 @@ use Wangxun\Common\Model\Seller;
  * @author Zed
  * @since 2018-11-4
  */
-class SellerService
+class SellerService extends BaseService
 {
     /**
      * 新增经销商

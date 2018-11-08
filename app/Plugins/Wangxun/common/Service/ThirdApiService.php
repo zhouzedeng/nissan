@@ -10,7 +10,7 @@ use GuzzleHttp\Client;
  * @author Zed
  * @since 2018-11-5
  */
-class ThirdApiService
+class ThirdApiService extends BaseService
 {
     /**
      * 获取车系列表

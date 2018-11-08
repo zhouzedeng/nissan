@@ -1,16 +1,16 @@
 <?php
 namespace Wangxun\Common\Service;
 
-use Wangxun\Common\Model\User;
+use Wangxun\Common\Model\Visitor;
 
 /**
- * UserService
- * Class UserService
+ * VisitorService
+ * Class VisitorService
  * @package Wangxun\Common\Service
  * @author Zed
  * @since 2018-11-6
  */
-class UserService extends BaseService
+class VisitorService extends BaseService
 {
     /**
      * 获取列表数据
@@ -27,8 +27,8 @@ class UserService extends BaseService
         $param = [];
         $param['seller_id'] = $data['seller']['seller']['sellerId'];
         $order = array('id' , 'desc');
-        $list = User::getListByParam($param, $data['page'], $data['limit'], null, $order);
-        $total = User::getCntByParam($param);
+        $list = Visitor::getListByParam($param, $data['page'], $data['limit'], null, $order);
+        $total = Visitor::getCntByParam($param);
         foreach ($list as $k => $v) {
             $list[$k]->created_at = date("Y-m-d H:i:s", $v->created_at);
         }
@@ -53,8 +53,8 @@ class UserService extends BaseService
         // 查询数据
         $param = [];
         $order = array('id' , 'desc');
-        $list = User::getListByParam($param, $data['page'], $data['limit'], null, $order);
-        $total = User::getCntByParam($param);
+        $list = Visitor::getListByParam($param, $data['page'], $data['limit'], null, $order);
+        $total = Visitor::getCntByParam($param);
         foreach ($list as $k => $v) {
             $list[$k]->created_at = date("Y-m-d H:i:s", $v->created_at);
         }

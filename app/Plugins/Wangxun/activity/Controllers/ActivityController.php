@@ -44,8 +44,9 @@ class ActivityController extends BaseController
      * @author Zed
      * @since 2018-11-1
      */
-    public function getList()
+    public function getList(Request $request)
     {
+        $this->setSellerToParams($request);
         $result = ActivityService::getList($this->params);
         return $result;
     }
@@ -55,8 +56,9 @@ class ActivityController extends BaseController
      * @author Zed
      * @since 2018-11-1
      */
-    public function save()
+    public function save(Request $request)
     {
+        $this->setSellerToParams($request);
         $params = $this->params;
         if (empty($params['name'])) {
             return $this->apiFail('100001', '主题必填');
@@ -102,7 +104,9 @@ class ActivityController extends BaseController
     * 编辑页面
     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     */
-    public function edit(Request $request){
+    public function edit(Request $request)
+    {
+        $this->setSellerToParams($request);
         $params = $this->params;
         if($request->isMethod('post')){
             if (empty($params['name'])) {
@@ -126,11 +130,13 @@ class ActivityController extends BaseController
             if (strtotime($params['start_time']) >= strtotime($params['end_time'])) {
                 return $this->apiFail('100007', '活动结束时间必须大于活动开始时间');
             }
+            if (empty($params['goods_id'])) {
+                $params['goods_id'] = [];
+            }
             $result =  ActivityService::updata_goods($params);
             return $result;
         }
-        $where ['id'] = $params ['id'];
-        $result = ActivityService::getFind($where);
+        $result = ActivityService::getFind($params);
         return view('wangxun.activity.edit',['activity_info'=>$result['data']]);
     }
 
@@ -138,13 +144,16 @@ class ActivityController extends BaseController
      * 查询活动关联商品
      *  @return \Illuminate\Http\JsonResponse
      */
-    public function fingActivityGoods()
+    public function fingActivityGoods(Request $request)
     {
+        $this->setSellerToParams($request);
         $params = $this->params;
         if (empty($params['activity_id'])) {
             return $this->apiFail('100001', '活动ID必填');
         }
-        $result = ActivityGoods::getOneByParam($params);
+        $where = [];
+        $where['activity_id'] = $params['activity_id'];
+        $result = ActivityGoods::getOneByParam($where);
         if(empty($result)){
             return ['code'=> 100001];
         }

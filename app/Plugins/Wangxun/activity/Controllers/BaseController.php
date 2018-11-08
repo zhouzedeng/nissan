@@ -2,6 +2,9 @@
 namespace Wangxun\Activity\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
+
 
 /**
  * 控制器基类
@@ -17,6 +20,17 @@ class BaseController extends Controller
         parent::__construct();;
     }
 
+    /**
+     * getSellerInfo
+     * @param Request $request
+     * @return mixed
+     */
+    public function setSellerToParams(Request $request)
+    {
+        $token = $request->cookie('token');
+        $seller = json_decode(Redis::get($token), true);
+        $this->params['seller'] = $seller;
+    }
 
     /**
      * api操作成功

@@ -3,15 +3,16 @@ namespace Wangxun\Activity\Controllers;
 
 use Illuminate\Http\Request;
 use Wangxun\Common\Service\UserService;
+use Wangxun\Common\Service\VisitorService;
 
 /**
- * UserController
+ * VisitorController
  * Class UserController
  * @package Wangxun\Activity\Controllers
  * @author Zed
  * @since 2018-11-6
  */
-class UserController extends BaseController
+class VisitorController extends BaseController
 {
     public function __construct()
     {
@@ -20,47 +21,46 @@ class UserController extends BaseController
 
 
     /**
-     * 经销商用户列表页
+     * index
      * @author Zed
      * @since 2018-11-6
      */
     public function index()
     {
-        return view('wangxun.user.index');
+        return view('wangxun.visitor.index');
     }
 
     /**
-     * 获取经销商用户列表数据
+     * getList
      * @author Zed
      * @since 2018-11-6
      */
     public function getList(Request $request)
     {
         $this->setSellerToParams($request);
-        $result = UserService::getList($this->params);
+        $result = VisitorService::getList($this->params);
         return $result;
     }
 
     /**
-     * 全部用户列表页
+     * allIndex
      * @author Zed
      * @since 2018-11-6
      */
     public function allIndex()
     {
-        return view('wangxun.user.allIndex');
+        return view('wangxun.visitor.allIndex');
     }
 
     /**
-     * 获取全部用户数据
+     * allList
      * @author Zed
      * @since 2018-11-6
      */
     public function allList()
     {
-        $result = UserService::getAllList($this->params);
+        $result = VisitorService::getAllList($this->params);
         return $result;
     }
-
 }
 

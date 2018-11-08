@@ -11,7 +11,7 @@ use Wangxun\Common\Model\Seller;
  * @author Zed
  * @since 2018-11-1
  */
-class VerifyService
+class VerifyService extends BaseService
 {
     /**
      * 获取活动列表数据

@@ -11,7 +11,7 @@ use Wangxun\Common\Model\ActivityGoods;
  * @author Zed
  * @since 2018-11-1
  */
-class ActivityService
+class ActivityService extends BaseService
 {
     /**
      * 获取活动列表数据
@@ -25,9 +25,8 @@ class ActivityService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
 
         // 查询数据
-        $userInfo = session('user_info');
         $param = [];
-        $param['seller_id'] = $userInfo->seller->sellerId;
+        $param['seller_id'] = $data['seller']['seller']['sellerId'];
         $param['deleted_at'] = 0;
         $order = array('id' , 'desc');
         $list = Activity::getListByParam($param, $data['page'], $data['limit'], null, $order);
@@ -54,13 +53,12 @@ class ActivityService
     public static function save($params = array())
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
-        $userInfo = session('user_info');
         $data = [
             'theme' => $params['name'],
             'brand' => $params['brand'],
             'desc'  => $params['desc'],
             'bg_img_url' => $params['img'],
-            'seller_id' => $userInfo->seller->sellerId,
+            'seller_id' =>$params['seller']['seller']['sellerId'],
             'start_time' => strtotime($params['start_time']),
             'end_time' => strtotime($params['end_time']),
             'check_status' => 0,
@@ -107,12 +105,13 @@ class ActivityService
      * @author shengquan
      * @since 2018-11-1
      */
-    public static function getFind($where = [])
+    public static function getFind($params = [])
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
         // 查询数据
-        $userInfo = session('user_info');
-        $where['seller_id'] = $userInfo->seller->sellerId;
+        $where = [];
+        $where ['id'] = $params ['id'];
+        $where['seller_id'] = $params['seller']['seller']['sellerId'];
         $where['deleted_at'] = 0;
         $find = Activity::getOneByParam($where,'*');
         $find->storage_bg_img_url = '/storage/'.$find->bg_img_url;

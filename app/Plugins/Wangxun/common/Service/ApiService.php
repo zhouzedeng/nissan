@@ -91,7 +91,9 @@ class ApiService
             return $result;
         }
 
-        $goods_list = Goods::getListByParamIn([], explode(',', $goods_ids->goods_id));
+        $goods_id_list = explode(',', $goods_ids->goods_id);
+        $param = ['id', $goods_id_list];
+        $goods_list = Goods::getListByParamIn([], $param);
         $result ['data'] = $goods_list;
         return $result;
     }
@@ -212,7 +214,8 @@ class ApiService
         }
         $visitor_ids_arr = json_decode(json_encode(CutVisitor::getListByParam(['cut_id' => $cut_id])), true);
         $visitor_ids = array_column($visitor_ids_arr, 'visitor_id');
-        $visitor_list = Visitor::getListByParamIn([], $visitor_ids, null, null, ['id', 'wx_name', 'wx_head_img_url']);
+        $param = ['id', $visitor_ids];
+        $visitor_list = Visitor::getListByParamIn([], $param, null, null, ['id', 'wx_name', 'wx_head_img_url']);
 
         $result ['data'] ['visitor_cut_list'] = $visitor_list;
         return $result;

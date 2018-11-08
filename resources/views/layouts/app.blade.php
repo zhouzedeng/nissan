@@ -45,6 +45,9 @@
                         <dd><a href="{{route('goods.index')}}">商品管理</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
+                        <dd><a href="{{route('cut.index')}}">砍价管理</a></dd>
+                    </dl>
+                    <dl class="layui-nav-child">
                         <dd><a href="{{route('user.index')}}">用户管理</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
@@ -58,6 +61,9 @@
                     <a class="" href="javascript:;">管理员模块</a>
                     <dl class="layui-nav-child">
                         <dd><a href="{{route('verify.index')}}">活动审核</a></dd>
+                    </dl>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{{route('cut.allIndex')}}">砍价管理</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
                         <dd><a href="{{route('user.allIndex')}}">全部用户</a></dd>

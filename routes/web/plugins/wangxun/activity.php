@@ -35,6 +35,10 @@ Route::group(['middleware' => 'auth_login'], function () {
     // 访客模块
     Route::get('/visitor_index', 'VisitorController@index')->name('visitor.index');
     Route::get('/visitor_list', 'VisitorController@getList')->name('visitor.list');
+
+    // 砍价模块
+    Route::get('/cut_index', 'CutController@index')->name('cut.index');
+    Route::get('/cut_list', 'CutController@getList')->name('cut.list');
 });
 
 
@@ -50,6 +54,10 @@ Route::group(['middleware' => 'auth_admin'], function () {
     // 访客模块
     Route::get('/visitor_allIndex', 'VisitorController@allIndex')->name('visitor.allIndex');
     Route::get('/visitor_allList', 'VisitorController@allList')->name('visitor.allList');
+
+    // 砍价模块
+    Route::get('/cut_allIndex', 'CutController@allIndex')->name('cut.allIndex');
+    Route::get('/cut_allList', 'CutController@allList')->name('cut.allList');
 });
 
 Route::get('/api_adduser', 'ApiController@adduser')->name('user.adduser');

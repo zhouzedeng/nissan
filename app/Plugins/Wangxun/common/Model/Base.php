@@ -173,11 +173,25 @@ class Base
     {
         $query = DB::table(self::getTable());
         $where && $query->where($where);
-        $whereIn && $query->whereIn(self::getId(),$whereIn);
+        $whereIn && $query->whereIn($whereIn[0],$whereIn[1]);
         $field && $query->select($field);
         $order && $query->orderBy($order[0], $order[1]);
         !is_null($page) &&  $query->offset(($page - 1) * $pagesize)->limit($pagesize);
         $result = $query->get()->all();
+        return $result;
+    }
+
+    /**
+     * 查询总数，通过参数
+     * @author Zed
+     * @since 2018-10-30
+     */
+    public static function getCntByParamIn($where = [], $whereIn = [])
+    {
+        $query = DB::table(self::getTable());
+        $where && $query->where($where);
+        $whereIn && $query->whereIn($whereIn[0],$whereIn[1]);
+        $result = $query->count();
         return $result;
     }
 }

@@ -65,5 +65,17 @@ class ThridApiController extends BaseController
         $result = ThirdApiService::sendSms($this->params);
         return $result;
     }
+    /**
+     * 发送手机验证码api
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @by quan
+     * @since 2018-11-8
+     */
+    public function sendSmsCode()
+    {
+        $result = ThirdApiService::sendSmsCode($this->params);
+        return $result;
+    }
 }
 

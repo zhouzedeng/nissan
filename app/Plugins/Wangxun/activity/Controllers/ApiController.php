@@ -84,6 +84,17 @@ class ApiController extends BaseController
         return $result;
 
     }
+    /**
+     * 通过活动ID和seller_id获取活动详情
+     * @author shengquan
+     * @since 2018-11-8
+     */
+    public function getActivity()
+    {
+        $result = ApiService::getActivity($this->params);
+        return $result;
+
+    }
 
 }
 

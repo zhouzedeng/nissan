@@ -60,15 +60,17 @@ Route::group(['middleware' => 'auth_admin'], function () {
 });
 
 
-Route::group(['middleware' => 'cross'], function () {
-    Route::get('/api_adduser', 'ApiController@adduser')->name('user.adduser');
-    Route::get('/api_getAllSellerGoods', 'ApiController@getAllSellerGoods')->name('user.getAllSellerGoods');
-    Route::get('/api_getaddGoodsToCut', 'ApiController@addGoodsToCut')->name('user.addGoodsToCut');
-    Route::get('/api_getCutInfo', 'ApiController@getCutInfo')->name('user.getCutInfo');
-    Route::get('/api_getCutVisitor', 'ApiController@getCutVisitor')->name('user.getCutVisitor');
-    Route::get('/api_cut', 'ApiController@cut')->name('user.cut');
+//Route::group(['middleware' => 'cross'], function () {
+    Route::get('/api_adduser', 'ApiController@adduser')->name('api.adduser');
+    Route::get('/api_getAllSellerGoods', 'ApiController@getAllSellerGoods')->name('api.getAllSellerGoods');
+    Route::get('/api_getaddGoodsToCut', 'ApiController@addGoodsToCut')->name('api.addGoodsToCut');
+    Route::get('/api_getCutInfo', 'ApiController@getCutInfo')->name('api.getCutInfo');
+    Route::get('/api_getCutVisitor', 'ApiController@getCutVisitor')->name('api.getCutVisitor');
+    Route::get('/api_cut', 'ApiController@cut')->name('api.cut');
     Route::get('/thirdApi_getCarSeriesInfo', 'ThridApiController@getCarSeriesInfo')->name('thirdApi.getCarSeriesInfo');
-});
+    Route::get('/thirdApi_sendSmsCode', 'ThridApiController@sendSmsCode')->name('thirdApi.sendSmsCode');
+    Route::get('/api_getActivity', 'ApiController@getActivity')->name('api.getActivity');
+//});
 
 
 

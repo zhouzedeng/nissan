@@ -24,7 +24,7 @@ class ActivityController extends BaseController
      * @author Zed
      * @since 2018-11-1
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('wangxun.activity.index');
     }

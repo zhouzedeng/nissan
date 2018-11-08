@@ -12,7 +12,7 @@ layui.use('table', function(){
             ,{field:'brand', title: '品牌'}
             ,{field:'bg_img_url', templet:function(data){
                    return '<img style="width: 300px;height: 300px;" src="' + full_url + "/" + data.bg_img_url + '">'
-                } ,title: '活动背景图', sort: true}
+                } ,title: '活动背景图'}
             ,{field:'check_status', templet:function(data){
                 if (data.check_status == 0) {
                     return '未审核';
@@ -22,10 +22,13 @@ layui.use('table', function(){
                     return '审核未通过';
                 }
                 } ,title: '审核状态', sort: true}
-            ,{field:'check_remark', title: '审核备注', sort: true}
+            ,{field:'check_remark', title: '审核备注'}
             ,{field:'start', title: '活动开始时间', sort: true}
             ,{field:'end', title: '活动结束时间', sort: true}
-            ,{field:'desc', title: '活动说明', sort: true}
+            ,{field:'desc', title: '活动说明'}
+            ,{field:'check_status', templet:function(data){
+                   return h5_url + "?activity=" + data.id + "&seller_id=" + data.seller_id;
+                } ,title: '活动链接'}
             ,{field:'created_at', title: '创建时间', sort: true}
             ,{field:'created_at', title: '操作', toolbar: '#bar'}
 

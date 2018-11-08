@@ -60,5 +60,6 @@ class Kernel extends HttpKernel
         'plugin_web' => \App\Http\Middleware\PluginWeb::class,
         'auth_login' => \App\Http\Middleware\AuthMiddleware::class,
         'auth_admin' => \App\Http\Middleware\adminMiddleware::class,
+        'cross' =>  \App\Http\Middleware\EnableCrossRequestMiddleware::class,
     ];
 }

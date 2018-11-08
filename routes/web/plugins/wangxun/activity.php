@@ -1,7 +1,6 @@
 <?php
 
 Route::post('/upload_upload', 'UploadController@upload')->name('upload.upload');
-Route::get('/thirdApi_getCarSeriesInfo', 'ThridApiController@getCarSeriesInfo')->name('thirdApi.getCarSeriesInfo');
 Route::get('/thirdApi_getCouponInfo', 'ThridApiController@getCouponInfo')->name('thirdApi.getCouponInfo');
 Route::get('/thirdApi_sendSms', 'ThridApiController@sendSms')->name('thirdApi.sendSms');
 
@@ -60,11 +59,17 @@ Route::group(['middleware' => 'auth_admin'], function () {
     Route::get('/cut_allList', 'CutController@allList')->name('cut.allList');
 });
 
-Route::get('/api_adduser', 'ApiController@adduser')->name('user.adduser');
-Route::get('/api_getAllSellerGoods', 'ApiController@getAllSellerGoods')->name('user.getAllSellerGoods');
-Route::get('/api_getaddGoodsToCut', 'ApiController@addGoodsToCut')->name('user.addGoodsToCut');
-Route::get('/api_getCutInfo', 'ApiController@getCutInfo')->name('user.getCutInfo');
-Route::get('/api_getCutVisitor', 'ApiController@getCutVisitor')->name('user.getCutVisitor');
-Route::get('/api_cut', 'ApiController@cut')->name('user.cut');
+
+Route::group(['middleware' => 'cross'], function () {
+    Route::get('/api_adduser', 'ApiController@adduser')->name('user.adduser');
+    Route::get('/api_getAllSellerGoods', 'ApiController@getAllSellerGoods')->name('user.getAllSellerGoods');
+    Route::get('/api_getaddGoodsToCut', 'ApiController@addGoodsToCut')->name('user.addGoodsToCut');
+    Route::get('/api_getCutInfo', 'ApiController@getCutInfo')->name('user.getCutInfo');
+    Route::get('/api_getCutVisitor', 'ApiController@getCutVisitor')->name('user.getCutVisitor');
+    Route::get('/api_cut', 'ApiController@cut')->name('user.cut');
+    Route::get('/thirdApi_getCarSeriesInfo', 'ThridApiController@getCarSeriesInfo')->name('thirdApi.getCarSeriesInfo');
+});
+
+
 
 

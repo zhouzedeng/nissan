@@ -1,12 +1,32 @@
-layui.use(['form', 'layedit', 'laydate'], function(){
+layui.use(['form', 'layedit', 'laydate','flow'], function(){
     var form = layui.form
         ,layer = layui.layer
         ,layedit = layui.layedit
-        ,laydate = layui.laydate;
+        ,flow = layui.flow ;
 
-    //日期
-    laydate.render({
-        elem: '#birthday'
+
+    flow.load({
+        elem: '#series_list' //流加载容器
+        ,scrollElem: '#series_list' //滚动条所在元素，一般不用填，此处只是演示需要。
+        ,done: function(page, next){ //执行下一页的回调
+            var limit = 100000;
+            //加载商品列表
+            $.ajax({
+                type: "get",
+                url: "thirdApi_getCarSeriesInfo",
+                data: {'page':1,'limit':limit},
+                dataType: "json",
+                success: function(data){
+                    var lis = [];
+                    for (var i = 0; i < data.data.carSeriesInfos.length; i++) {
+                        lis.push('<input type="checkbox"  name="series['+data.data.carSeriesInfos[i].gcId+']" title="'+data.data.carSeriesInfos[i].gcName+'">')
+                    }
+                    next(lis.join(''), page < 1);
+                    //$('#goodslist').html(lis);
+                    form.render();
+                }
+            });
+        }
     });
 
     //创建一个编辑器

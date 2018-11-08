@@ -31,6 +31,12 @@
             </div>
         </div>
 
+        <div class="layui-form-item layui-form-text" lay-filter="series_list">
+            <label class="layui-form-label">适用车系</label>
+            <div class="layui-input-block" style="max-height:120px;overflow: hidden;overflow-y:scroll;" id="series_list">
+            </div>
+        </div>
+
         <input id="img" type="hidden" name="img" lay-verify="img">
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">商品图片</label>
@@ -66,6 +72,6 @@
 
     <script>
     </script>
-    <script src="{{asset('/wangxun/goods/js/add.js')}}?v=21000"></script>
+    <script src="{{asset('/wangxun/goods/js/add.js')}}?v=51009000000"></script>
 
 @endsection

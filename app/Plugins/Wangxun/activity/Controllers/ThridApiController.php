@@ -1,6 +1,7 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
+use Wangxun\Common\Service\SeriesService;
 use Wangxun\Common\Service\ThirdApiService;
 
 /**
@@ -26,6 +27,7 @@ class ThridApiController extends BaseController
     public function getCarSeriesInfo()
     {
         $result = ThirdApiService::getCarSeriesInfo($this->params);
+        SeriesService::save($result['data']);
         return $result;
     }
 

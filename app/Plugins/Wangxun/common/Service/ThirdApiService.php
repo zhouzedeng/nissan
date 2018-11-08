@@ -32,7 +32,6 @@ class ThirdApiService extends BaseService
         $body = $response->getBody();
         $string_body = (string)$body;
         $car_info = json_decode($string_body);
-
         // 数据返回
         $result['data'] = $car_info;
         return $result;

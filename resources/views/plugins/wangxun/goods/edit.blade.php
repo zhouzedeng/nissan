@@ -5,7 +5,7 @@
     <blockquote class="layui-elem-quote top-title"><h3><a onclick="history.back()">商品管理</a> / 修改商品</h3></blockquote>
     <form class="layui-form">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
-        <input type="hidden" name="id" value="{{$goods_info->id}}" >
+        <input type="hidden" name="id" id="id" value="{{$goods_info->id}}" >
         <div class="layui-form-item">
             <label class="layui-form-label">商品名称</label>
             <div class="layui-input-block">
@@ -41,6 +41,12 @@
             <label class="layui-form-label">砍价总次数</label>
             <div class="layui-input-block">
                 <input type="number" value="{{$goods_info->need_cut_num}}" name="need_cut_num" lay-verify="need_cut_num" autocomplete="off" placeholder="请输入需砍价总次数" class="layui-input" >
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text" lay-filter="goodslist">
+            <label class="layui-form-label">适用车系</label>
+            <div class="layui-input-block" style="max-height:120px;overflow: hidden;overflow-y:scroll;" id="goodslist">
             </div>
         </div>
 

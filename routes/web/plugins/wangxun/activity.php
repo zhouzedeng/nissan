@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth_login'], function () {
     Route::POST('/goods_del', 'GoodsController@del')->name('goods.del');
     Route::get('/goods_edit', 'GoodsController@edit')->name('goods.edit');
     Route::post('/goods_edit', 'GoodsController@edit')->name('goods.edit');
+    Route::get('/find_goods_series', 'GoodsController@findGoodsSeries')->name('goods.find_goods_series');
+
 
     // 用户模块
     Route::get('/user_index', 'UserController@index')->name('user.index');

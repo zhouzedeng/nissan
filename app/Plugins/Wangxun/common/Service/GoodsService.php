@@ -2,6 +2,7 @@
 namespace Wangxun\Common\Service;
 
 use Wangxun\Common\Model\Goods;
+use Wangxun\Common\Model\GoodsSeries;
 
 /**
  * 商品业务
@@ -82,6 +83,11 @@ class GoodsService extends BaseService
             $result['code'] = '200001';
             $result['msg'] = '添加失败';
         }
+        $actGoods = [
+            'goods_id' => $rs,
+            'series_ids' => implode(',',array_keys($params ['series'])),
+        ];
+        GoodsSeries::add($actGoods);
         return $result;
     }
 
@@ -146,6 +152,17 @@ class GoodsService extends BaseService
         if (empty($rs)) {
             $result['code'] = '100004';
             $result['msg'] = '修改失败';
+        }
+
+        $act_goods_info = GoodsSeries::getOneByParam(['goods_id'=>$params['id']]);
+        $actGoods = [
+            'goods_id' => $params['id'],
+            'series_ids' => implode(',',array_keys($params ['series'])),
+        ];
+        if($act_goods_info){
+            GoodsSeries::updateById($actGoods,$act_goods_info->id);
+        }else{
+            GoodsSeries::add($actGoods);
         }
         return $result;
     }

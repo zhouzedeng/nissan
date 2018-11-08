@@ -2,6 +2,7 @@
 namespace Wangxun\Activity\Controllers;
 
 use Illuminate\Http\Request;
+use Wangxun\Common\Model\GoodsSeries;
 use Wangxun\Common\Service\GoodsService;
 
 /**
@@ -127,6 +128,26 @@ class GoodsController extends BaseController
 
         $result = GoodsService::getFind($params);
         return view('wangxun.goods.edit',['goods_info'=>$result['data']]);
+    }
+
+    /**
+     * findGoodsSeries
+     *  @return \Illuminate\Http\JsonResponse
+     */
+    public function findGoodsSeries(Request $request)
+    {
+        $this->setSellerToParams($request);
+        $params = $this->params;
+        if (empty($params['goods_id'])) {
+            return $this->apiFail('100001', '商品ID必填');
+        }
+        $where = [];
+        $where['goods_id'] = $params['goods_id'];
+        $result = GoodsSeries::getOneByParam($where);
+        if(empty($result)){
+            return ['code'=> 100001];
+        }
+        return $this->apiSuccess('success',$result);
     }
 }
 

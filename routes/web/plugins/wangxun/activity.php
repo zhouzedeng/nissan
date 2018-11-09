@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth_admin'], function () {
 });
 
 
-//Route::group(['middleware' => 'cross'], function () {
+Route::group(['middleware' => 'cross'], function () {
     Route::get('/api_adduser', 'ApiController@adduser')->name('api.adduser');
     Route::get('/api_getAllSellerGoods', 'ApiController@getAllSellerGoods')->name('api.getAllSellerGoods');
     Route::get('/api_getaddGoodsToCut', 'ApiController@addGoodsToCut')->name('api.addGoodsToCut');
@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth_admin'], function () {
     Route::get('/thirdApi_getCarSeriesInfo', 'ThridApiController@getCarSeriesInfo')->name('thirdApi.getCarSeriesInfo');
     Route::get('/thirdApi_sendSmsCode', 'ThridApiController@sendSmsCode')->name('thirdApi.sendSmsCode');
     Route::get('/api_getActivity', 'ApiController@getActivity')->name('api.getActivity');
-//});
+});
 
 
 

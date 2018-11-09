@@ -127,7 +127,7 @@ class ApiService
             return $result;
         }
 
-        $goods_ids = ActivityGoods::getOneByParam(['activity_id' => $activity_id,'seller_id'=>$seller_id]);
+        $goods_ids = ActivityGoods::getOneByParam(['activity_id' => $activity_id]);
         if (empty($goods_ids)) {
             return $result;
         }
@@ -135,6 +135,9 @@ class ApiService
         $goods_id_list = explode(',', $goods_ids->goods_id);
         $param = ['id', $goods_id_list];
         $goods_list = Goods::getListByParamIn([], $param);
+        foreach ($goods_list as $k=>$v){
+            $v->goods_img = config('plugin.api.open.app_img_url'). $v->goods_img;
+        }
         $result ['data'] = $goods_list;
         return $result;
     }
@@ -244,6 +247,8 @@ class ApiService
         }
         $activity_info = Activity::getOneByParam(['id' => $cut_info->activity_id]);
         $goods_info = Goods::getOneByParam(['id' => $cut_info->goods_id]);
+        $activity_info->bg_img_url = config('plugin.api.open.app_img_url').$activity_info->bg_img_url;
+        $goods_info->goods_img = config('plugin.api.open.app_img_url').$goods_info->goods_img;
         $result ['data'] ['activity_info'] = $activity_info;
         $result ['data'] ['goods_info'] = $goods_info;
         $result ['data'] ['cut_info'] = $cut_info;
@@ -395,7 +400,9 @@ class ApiService
             $result = array('code' => 100001, 'msg' => '商家ID不能为空', 'data' => array());
             return $result;
         }
+
         $activity_info = Activity::getOneByParam(['id'=>$activity_id,'seller_id'=>$seller_id]);
+        $activity_info->bg_img_url = config('plugin.api.open.app_img_url').$activity_info->bg_img_url;
         $result ['data'] = $activity_info;
         return $result;
     }

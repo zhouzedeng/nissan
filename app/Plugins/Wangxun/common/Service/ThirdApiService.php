@@ -201,7 +201,7 @@ class ThirdApiService extends BaseService
         ];
         $api_url = config('plugin.api.open.api') . '/open/v1/api/clue';
         $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()],
-            'body' => $body];
+            'json' => $body];
         $response = $client->request('POST', $api_url, $header);
         $body = $response->getBody();
         $string_body = (string)$body;
@@ -229,15 +229,15 @@ class ThirdApiService extends BaseService
             'mobile' => $data['mobile'],
             'surname' => $data['name'],
             'source' => 1,
-            'activity_store_code' => '',
+            'activity_store_code' => 'H2901X',
         ];
         $api_url = config('plugin.api.open.api') . '/open/v1/api/coupon/common-coupon';
         $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()],
-            'body' => $body];
+            'json' => $body];
         $response = $client->request('POST', $api_url, $header);
         $body = $response->getBody();
         $string_body = (string)$body;
-        $info = json_decode($string_body);
+        $info = json_decode($string_body, true);
         // 数据返回
         $result['data'] = $info;
         return $result;

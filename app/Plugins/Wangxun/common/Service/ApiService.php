@@ -32,6 +32,28 @@ class ApiService
     public static function addUser($param = [])
     {
         $result = array('code' => 0, 'msg' => '', 'data' => array());
+
+        if (empty( $param['username'])) {
+            $result = array('code' => 100001, 'msg' => '姓名不能为空', 'data' => array());
+            return $result;
+        }
+        if (empty( $param['phone'])) {
+            $result = array('code' => 100002, 'msg' => '手机号不能为空', 'data' => array());
+            return $result;
+        }
+        if (empty( $param['code'])) {
+            $result = array('code' => 100003, 'msg' => '验证码不能为空', 'data' => array());
+            return $result;
+        }
+        if (empty( $param['car_series_id'])) {
+            $result = array('code' => 100007, 'msg' => '车系ID不能为空', 'data' => array());
+            return $result;
+        }
+        if (empty( $param['wx_name']) || empty( $param['wx_openid']) || empty( $param['wx_head_img_url'])) {
+            $result = array('code' => 100004, 'msg' => '微信参数不能为空', 'data' => array());
+            return $result;
+        }
+
         $username = $param['username'];
         $phone = $param['phone'];
         $code = $param['code'];
@@ -40,26 +62,6 @@ class ApiService
         $wx_name = $param['wx_name'];
         $wx_openid = $param['wx_openid'];
         $wx_head_img_url = $param['wx_head_img_url'];
-        if (empty($username)) {
-            $result = array('code' => 100001, 'msg' => '姓名不能为空', 'data' => array());
-            return $result;
-        }
-        if (empty($phone)) {
-            $result = array('code' => 100002, 'msg' => '手机号不能为空', 'data' => array());
-            return $result;
-        }
-        if (empty($code)) {
-            $result = array('code' => 100003, 'msg' => '验证码不能为空', 'data' => array());
-            return $result;
-        }
-        if (empty($car_series_id)) {
-            $result = array('code' => 100007, 'msg' => '车系ID不能为空', 'data' => array());
-            return $result;
-        }
-        if (empty($wx_name) || empty($wx_openid) || empty($wx_head_img_url)) {
-            $result = array('code' => 100004, 'msg' => '微信参数不能为空', 'data' => array());
-            return $result;
-        }
         //验证验证码
     /*    $verifyCode = ThirdApiService::verifyCode($param);
         if($verifyCode ['data'] ['code'] == 0){
@@ -111,9 +113,9 @@ class ApiService
     public static function getAllSellerGoods($param = [])
     {
         $result = array('code' => 0, 'msg' => '', 'data' => array());
-        $activity_id = $param ['activity_id'];
-        $seller_id = $param ['seller_id'];
-        $car_series_id = $param ['car_series_id'];
+        $activity_id = isset($param ['activity_id']) ? $param ['activity_id'] : 0 ;
+        $seller_id = isset($param ['seller_id']) ? $param ['seller_id'] : 0 ;
+        $car_series_id =  isset($param ['car_series_id']) ? $param ['car_series_id'] : 0 ;
         if (empty($activity_id)) {
             $result = array('code' => 100001, 'msg' => '活动id不能为空', 'data' => array());
             return $result;
@@ -152,10 +154,10 @@ class ApiService
     public static function addGoodsToCut($param = [])
     {
         $result = array('code' => 0, 'msg' => '', 'data' => array());
-        $activity_id = $param['activity_id'];
-        $goods_id = $param['goods_id'];
-        $user_id = $param['user_id'];
-        $token = $param['token'];
+        $activity_id = isset($param['activity_id'])? $param['activity_id'] : 0;
+        $goods_id = isset($param['goods_id'])? $param['goods_id'] : 0;
+        $user_id = isset($param['user_id'])? $param['user_id'] : 0;;
+        $token = isset($param['token'])? $param['token'] : '';
         if (empty($activity_id)) {
             $result = array('code' => 100001, 'msg' => '活动ID不能为空', 'data' => array());
             return $result;
@@ -235,7 +237,7 @@ class ApiService
     public static function getCutInfo($param = [])
     {
         $result = array('code' => 0, 'msg' => '', 'data' => array());
-        $cut_id = $param['cut_id'];
+        $cut_id = isset($param['cut_id']) ? $param['cut_id'] : 0;
         if (empty($cut_id)) {
             $result = array('code' => 100001, 'msg' => '砍价ID不能为空', 'data' => array());
             return $result;
@@ -265,7 +267,7 @@ class ApiService
     public static function getCutVisitor($param = [])
     {
         $result = array('code' => 0, 'msg' => '', 'data' => array());
-        $cut_id = $param['cut_id'];
+        $cut_id =  isset($param['cut_id']) ? $param['cut_id'] : 0;
         if (empty($cut_id)) {
             $result = array('code' => 100001, 'msg' => '砍价ID不能为空', 'data' => array());
             return $result;
@@ -360,11 +362,12 @@ class ApiService
                 if($user_info){
                     Redis::set('users:'.$cut_info->user_id,json_encode($user_info));
                 }
+                $user_info = json_decode(json_encode($user_info),true);
             }
             $coupon_data = [
                 'coupon_id' => $goods_info->coupon_id,
-                'mobile' => $goods_info->mobile,
-                'name' => $user_info->name,
+                'mobile' => $user_info['phone'],
+                'name' => $user_info['name'],
             ];
             //获取核销码
             $getCoupon = ThirdApiService::getCoupon($coupon_data);
@@ -380,6 +383,7 @@ class ApiService
         }
         return $result;
     }
+
     /**
      * 通过活动ID和seller_id获取活动详情
      * @param array $param
@@ -390,14 +394,14 @@ class ApiService
     public static function getActivity($param = [])
     {
         $result = array('code' => 0, 'msg' => '', 'data' => array());
-        $activity_id = $param['activity_id'];
-        $seller_id = $param['seller_id'];
+        $activity_id = isset($param['activity_id']) ? $param['activity_id'] : 0;
+        $seller_id = isset($param['seller_id']) ? $param['seller_id'] : 0;
         if (empty($activity_id)) {
             $result = array('code' => 100001, 'msg' => '活动ID不能为空', 'data' => array());
             return $result;
         }
         if (empty($seller_id)) {
-            $result = array('code' => 100001, 'msg' => '商家ID不能为空', 'data' => array());
+            $result = array('code' => 100001, 'msg' => 'ID不能为空', 'data' => array());
             return $result;
         }
 

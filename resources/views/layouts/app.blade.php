@@ -35,35 +35,38 @@
 
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
+            @if (IS_OWN_SHOP == 0)
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">经销商模块</a>
+                    <a class="" href="javascript:;">砍价游戏</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('activity.index')}}">活动管理</a></dd>
+                        <dd><a href="{{route('activity.index')}}">砍价活动</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('goods.index')}}">商品管理</a></dd>
+                        <dd><a href="{{route('goods.index')}}">砍价商品库</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('cut.index')}}">砍价管理</a></dd>
+                        <dd><a href="{{route('cut.index')}}">用户砍价数据</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('user.index')}}">用户管理</a></dd>
+                        <dd><a href="{{route('user.index')}}">用户列表</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('visitor.index')}}">访客管理</a></dd>
+                        <dd><a href="{{route('visitor.index')}}">访客列表</a></dd>
                     </dl>
                 </li>
             </ul>
+            @endif
 
+            @if (IS_ADMIN == 1)
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">管理员模块</a>
+                    <a class="" href="javascript:;"> 总部后台</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('verify.index')}}">活动审核</a></dd>
+                        <dd><a href="{{route('verify.index')}}">全部活动审核</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('cut.allIndex')}}">砍价管理</a></dd>
+                        <dd><a href="{{route('cut.allIndex')}}">全部用户砍价数据</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
                         <dd><a href="{{route('user.allIndex')}}">全部用户</a></dd>
@@ -74,6 +77,7 @@
                 </li>
 
             </ul>
+            @endif
         </div>
     </div>
 

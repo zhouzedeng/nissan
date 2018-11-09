@@ -24,6 +24,9 @@ class AuthMiddleware
         if (empty($user)) {
             return redirect(config('plugin.login_page'));
         }
+        $user = json_decode($user, true);
+        define('IS_ADMIN', $user['seller']['isAdmin']);
+        define('IS_OWN_SHOP', $user['is_own_shop']);
         return $next($request);
     }
 }

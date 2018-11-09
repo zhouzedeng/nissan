@@ -28,7 +28,8 @@ class adminMiddleware
         if ($user['seller']['isAdmin'] != 1) {
             exit('您没有权限访问审核页面！');
         }
-
+        define('IS_ADMIN', 1);
+        define('IS_OWN_SHOP', $user['is_own_shop']);
         return $next($request);
     }
 }

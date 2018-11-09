@@ -57,6 +57,8 @@ Route::group(['middleware' => 'auth_admin'], function () {
     // 砍价模块
     Route::get('/cut_allIndex', 'CutController@allIndex')->name('cut.allIndex');
     Route::get('/cut_allList', 'CutController@allList')->name('cut.allList');
+
+    Route::get('/count_index', 'CountController@index')->name('count.index');
 });
 
 

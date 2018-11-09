@@ -10,6 +10,7 @@
 </head>
 <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 <script src="{{asset('layui/layui.js')}}"></script>
+<script src="{{asset('js/echarts.min.js')}}"></script>
 <script>
     $.ajaxSetup({
         headers: {
@@ -73,6 +74,9 @@
                     </dl>
                     <dl class="layui-nav-child">
                         <dd><a href="{{route('visitor.allIndex')}}">全部访客</a></dd>
+                    </dl>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{{route('count.index')}}">数据统计</a></dd>
                     </dl>
                 </li>
 

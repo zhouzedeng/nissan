@@ -63,11 +63,11 @@ class ApiService
         $wx_openid = $param['wx_openid'];
         $wx_head_img_url = $param['wx_head_img_url'];
         //验证验证码
-    /*    $verifyCode = ThirdApiService::verifyCode($param);
+        $verifyCode = ThirdApiService::verifyCode($param);
         if($verifyCode ['data'] ['code'] == 0){
             $result = array('code' => 100006, 'msg' => '验证码错误', 'data' => array());
             return $result;
-        }*/
+        }
 
         $data = array(
             'name' => $username,

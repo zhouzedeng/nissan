@@ -1,7 +1,7 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
-use Wangxun\Common\Service\ApiService;
+use Wangxun\Activity\Service\ApiService;
 
 /**
  * ApiController

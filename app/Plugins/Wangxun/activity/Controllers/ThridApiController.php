@@ -1,8 +1,8 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
-use Wangxun\Common\Service\SeriesService;
-use Wangxun\Common\Service\ThirdApiService;
+use Wangxun\Activity\Service\SeriesService;
+use Wangxun\Activity\Service\ThirdApiService;
 
 /**
  * 第三方接口

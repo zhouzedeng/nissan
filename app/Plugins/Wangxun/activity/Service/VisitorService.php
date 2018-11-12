@@ -1,7 +1,7 @@
 <?php
-namespace Wangxun\Common\Service;
+namespace Wangxun\Activity\Service;
 
-use Wangxun\Common\Model\Visitor;
+use Wangxun\Activity\Model\Visitor;
 
 /**
  * VisitorService

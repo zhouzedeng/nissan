@@ -1,8 +1,5 @@
 <?php
-namespace Wangxun\Common\Service;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
+namespace Wangxun\Activity\Service;
 
 /**
  * BaseService

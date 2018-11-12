@@ -1,5 +1,5 @@
 <?php
-namespace Wangxun\Common\Model;
+namespace Wangxun\Activity\Model;
 
 /**
  * 活动表

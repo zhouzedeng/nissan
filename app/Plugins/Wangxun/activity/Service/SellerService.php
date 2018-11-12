@@ -1,9 +1,9 @@
 <?php
-namespace Wangxun\Common\Service;
+namespace Wangxun\Activity\Service;
 
 use Illuminate\Http\Request;
-use Wangxun\Common\Model\Activity;
-use Wangxun\Common\Model\Seller;
+use Wangxun\Activity\Model\Activity;
+use Wangxun\Activity\Model\Seller;
 
 /**
  * 经销商业务类

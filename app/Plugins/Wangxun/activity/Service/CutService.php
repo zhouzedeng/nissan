@@ -1,10 +1,10 @@
 <?php
-namespace Wangxun\Common\Service;
+namespace Wangxun\Activity\Service;
 
-use Wangxun\Common\Model\Activity;
-use Wangxun\Common\Model\Cut;
-use Wangxun\Common\Model\Goods;
-use Wangxun\Common\Model\User;
+use Wangxun\Activity\Model\Activity;
+use Wangxun\Activity\Model\Cut;
+use Wangxun\Activity\Model\Goods;
+use Wangxun\Activity\Model\User;
 
 /**
  * CutService

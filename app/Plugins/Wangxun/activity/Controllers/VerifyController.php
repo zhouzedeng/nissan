@@ -1,7 +1,7 @@
 <?php
 namespace Wangxun\Activity\Controllers;
 
-use Wangxun\Common\Service\VerifyService;
+use Wangxun\Activity\Service\VerifyService;
 
 /**
  * 活动控制器

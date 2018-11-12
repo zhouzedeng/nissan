@@ -1,6 +1,5 @@
 <?php
-
-namespace Wangxun\Common\Service;
+namespace Wangxun\Activity\Service;
 
 use GuzzleHttp\Client;
 

@@ -2,8 +2,8 @@
 namespace Wangxun\Activity\Controllers;
 
 use Illuminate\Http\Request;
-use Wangxun\Common\Model\ActivityGoods;
-use Wangxun\Common\Service\ActivityService;
+use Wangxun\Activity\Model\ActivityGoods;
+use Wangxun\Activity\Service\ActivityService;
 
 /**
  * 活动控制器

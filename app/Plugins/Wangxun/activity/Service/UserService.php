@@ -1,7 +1,7 @@
 <?php
-namespace Wangxun\Common\Service;
+namespace Wangxun\Activity\Service;
 
-use Wangxun\Common\Model\User;
+use Wangxun\Activity\Model\User;
 
 /**
  * UserService

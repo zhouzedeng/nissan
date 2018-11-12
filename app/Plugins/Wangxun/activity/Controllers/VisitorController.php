@@ -2,8 +2,8 @@
 namespace Wangxun\Activity\Controllers;
 
 use Illuminate\Http\Request;
-use Wangxun\Common\Service\UserService;
-use Wangxun\Common\Service\VisitorService;
+use Wangxun\Activity\Service\UserService;
+use Wangxun\Activity\Service\VisitorService;
 
 /**
  * VisitorController

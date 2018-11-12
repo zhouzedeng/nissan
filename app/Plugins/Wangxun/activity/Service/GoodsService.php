@@ -1,8 +1,8 @@
 <?php
-namespace Wangxun\Common\Service;
+namespace Wangxun\Activity\Service;
 
-use Wangxun\Common\Model\Goods;
-use Wangxun\Common\Model\GoodsSeries;
+use Wangxun\Activity\Model\Goods;
+use Wangxun\Activity\Model\GoodsSeries;
 
 /**
  * 商品业务

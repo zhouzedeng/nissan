@@ -1,16 +1,15 @@
 <?php
-
-namespace Wangxun\Common\Service;
+namespace Wangxun\Activity\Service;
 
 use Illuminate\Support\Facades\Redis;
-use Wangxun\Common\Model\Activity;
-use Wangxun\Common\Model\ActivityGoods;
-use Wangxun\Common\Model\Cut;
-use Wangxun\Common\Model\CutVisitor;
-use Wangxun\Common\Model\Goods;
-use Wangxun\Common\Model\Seller;
-use Wangxun\Common\Model\User;
-use Wangxun\Common\Model\Visitor;
+use Wangxun\Activity\Model\Activity;
+use Wangxun\Activity\Model\ActivityGoods;
+use Wangxun\Activity\Model\Cut;
+use Wangxun\Activity\Model\CutVisitor;
+use Wangxun\Activity\Model\Goods;
+use Wangxun\Activity\Model\Seller;
+use Wangxun\Activity\Model\User;
+use Wangxun\Activity\Model\Visitor;
 use Illuminate\Support\Facades\DB;
 
 /**

@@ -1,6 +1,5 @@
 <?php
-
-namespace Wangxun\Common\Model;
+namespace Wangxun\Activity\Model;
 
 /**
  * 商品表

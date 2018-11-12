@@ -2,8 +2,8 @@
 namespace Wangxun\Activity\Controllers;
 
 use Illuminate\Http\Request;
-use Wangxun\Common\Model\GoodsSeries;
-use Wangxun\Common\Service\GoodsService;
+use Wangxun\Activity\Model\GoodsSeries;
+use Wangxun\Activity\Service\GoodsService;
 
 /**
  * 商品控制器

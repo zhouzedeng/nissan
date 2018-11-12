@@ -1,16 +1,15 @@
 <?php
-
-namespace Wangxun\Common\Model;
+namespace Wangxun\Activity\Model;
 
 /**
  * 砍价好友表
- * Class Visitor
+ * Class CutVisitor
  * @package Wangxun\Common\Model
  * @author quan
  * @since 2018-11-7
  */
-class Visitor extends Base
+class CutVisitor extends Base
 {
     const ID = 'id';
-    const TABLE = 'wangxun_visitor';
+    const TABLE = 'wangxun_cut_visitor';
 }

@@ -2,7 +2,7 @@
 namespace Wangxun\Activity\Controllers;
 
 use Illuminate\Http\Request;
-use Wangxun\Common\Service\UserService;
+use Wangxun\Activity\Service\UserService;
 
 /**
  * UserController

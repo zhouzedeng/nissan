@@ -1,7 +1,7 @@
 <?php
-namespace Wangxun\Common\Service;
+namespace Wangxun\Activity\Service;
 
-use Wangxun\Common\Model\Series;
+use Wangxun\Activity\Model\Series;
 
 /**
  * SeriesService

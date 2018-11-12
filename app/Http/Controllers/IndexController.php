@@ -6,8 +6,7 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
-use Wangxun\Activity\Controllers\BaseController;
-use Wangxun\Common\Service\SellerService;
+use Wangxun\Activity\Service\SellerService;
 
 
 /**

@@ -8,6 +8,7 @@ use Wangxun\Activity\Model\Cut;
 use Wangxun\Activity\Model\CutVisitor;
 use Wangxun\Activity\Model\Goods;
 use Wangxun\Activity\Model\Seller;
+use Wangxun\Activity\Model\Series;
 use Wangxun\Activity\Model\User;
 use Wangxun\Activity\Model\Visitor;
 use Illuminate\Support\Facades\DB;
@@ -410,4 +411,19 @@ class ApiService
         return $result;
     }
 
+    /**
+     * 获取车系
+     * @param array $param
+     * @return array
+     * @author quan
+     * @since 2018-11-14
+     */
+    public static function getSeries($param = [])
+    {
+        $result = array('code' => 0, 'msg' => '', 'data' => array());
+
+        $series_info = Series::getListByParam();
+        $result ['data'] = $series_info;
+        return $result;
+    }
 }

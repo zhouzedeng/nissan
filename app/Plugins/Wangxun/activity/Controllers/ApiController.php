@@ -96,5 +96,17 @@ class ApiController extends BaseController
 
     }
 
+    /**
+     *  获取车系
+     * @author shengquan
+     * @since 2018-11-14
+     */
+    public function getSeries()
+    {
+        $result = ApiService::getSeries($this->params);
+        return $result;
+
+    }
+
 }
 

@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth_admin'], function () {
     Route::get('/thirdApi_getCarSeriesInfo', 'ThridApiController@getCarSeriesInfo')->name('thirdApi.getCarSeriesInfo');
     Route::get('/thirdApi_sendSmsCode', 'ThridApiController@sendSmsCode')->name('thirdApi.sendSmsCode');
     Route::get('/api_getActivity', 'ApiController@getActivity')->name('api.getActivity');
+    Route::get('/api_getSeries', 'ApiController@getSeries')->name('api.getSeries');
 //});
 
 

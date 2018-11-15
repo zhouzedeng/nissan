@@ -83,8 +83,12 @@ class ApiService
         if ($seller_info) {
             $data['seller_name'] = $seller_info->name;
         }
-        $row = User::add($data);
-
+        $user_info = User::getOneByParam([ 'seller_id' => $seller_id, 'wx_openid' => $wx_openid,'phone' => $phone,]);
+        if($user_info ){
+            $row = $user_info->id;
+        }else{
+            $row = User::add($data);
+        }
         if ($row) {
             $data ['car_series_id'] = $car_series_id;
             //保存到车巴巴

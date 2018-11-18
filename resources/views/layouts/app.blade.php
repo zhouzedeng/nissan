@@ -36,7 +36,7 @@
 
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
-            @if (IS_OWN_SHOP == 0)
+
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">砍价游戏</a>
@@ -57,9 +57,7 @@
                     </dl>
                 </li>
             </ul>
-            @endif
 
-            @if (IS_ADMIN == 1)
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;"> 总部后台</a>
@@ -81,7 +79,6 @@
                 </li>
 
             </ul>
-            @endif
         </div>
     </div>
 

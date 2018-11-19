@@ -154,9 +154,6 @@ class ActivityController extends BaseController
         $where = [];
         $where['activity_id'] = $params['activity_id'];
         $result = ActivityGoods::getOneByParam($where);
-        if(empty($result)){
-            return ['code'=> 100001];
-        }
         return $this->apiSuccess('success',$result);
     }
 }

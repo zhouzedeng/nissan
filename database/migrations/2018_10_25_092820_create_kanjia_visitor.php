@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKanjiaUsers extends Migration
+class CreateKanjiaVisitor extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateKanjiaUsers extends Migration
      */
     public function up()
     {
-        Schema::create('kanjia_users', function (Blueprint $table) {
+        Schema::create('kanjia_visitor', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('phone');
             $table->string('wx_name');
+            $table->string('wx_openid');
             $table->string('wx_head_img_url');
             $table->string('seller_id');
-            $table->string('seller_name');
             $table->integer('created_at')->nullable();
             $table->integer('updated_at')->nullable();
             $table->integer('deleted_at')->default(0)->nullable();
@@ -34,6 +32,6 @@ class CreateKanjiaUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kanjia_users');
+        Schema::dropIfExists('kanjia_visitor');
     }
 }

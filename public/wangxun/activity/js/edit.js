@@ -46,8 +46,9 @@ layui.use(['form', 'layedit', 'laydate','flow'], function(){
                         success: function(data){
                             var lis = [];
                             for (var i = 0; i < data.data.length; i++) {
+
                                 if(activity_goods.indexOf(String(data.data[i].id)) != -1){
-                                    lis.push('<input type="checkbox"  checked name="goods_id['+data.data[i].id+']" title="'+data.data[i].goods_name+'">')
+                                    lis.push('<input type="checkbox" checked   name="goods_id['+data.data[i].id+']" title="'+data.data[i].goods_name+'">')
                                 }else{
                                     lis.push('<input type="checkbox"   name="goods_id['+data.data[i].id+']" title="'+data.data[i].goods_name+'">')
                                 }
@@ -59,8 +60,11 @@ layui.use(['form', 'layedit', 'laydate','flow'], function(){
                     });
                 }
             });
+
         }
     });
+
+
 
 
 

@@ -31,7 +31,7 @@ class UploadController extends BaseController
         $file = $request->file('file');
 
         // 储存图片
-        $filename = "plugins/wangxun/images";
+        $filename = "/plugins/wangxun/kanjia";
         $path = Storage::disk('oss')->putFile($filename, $file);
 
         // 返回数据

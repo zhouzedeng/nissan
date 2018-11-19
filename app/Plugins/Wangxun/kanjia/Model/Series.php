@@ -8,5 +8,5 @@ namespace Wangxun\Kanjia\Model;
 class Series extends Base
 {
     const ID = 'id';
-    const TABLE = 'kanjia_series';
+    const TABLE = 'wangxun_kanjia_series';
 }

@@ -13,7 +13,7 @@ class CreateKanjiaUsers extends Migration
      */
     public function up()
     {
-        Schema::create('kanjia_users', function (Blueprint $table) {
+        Schema::create('wangxun_kanjia_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('phone');
@@ -34,6 +34,6 @@ class CreateKanjiaUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kanjia_users');
+        Schema::dropIfExists('wangxun_kanjia_users');
     }
 }

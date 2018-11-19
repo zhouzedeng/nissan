@@ -13,7 +13,7 @@ class CreateKanjiaCut extends Migration
      */
     public function up()
     {
-        Schema::create('kanjia_cut', function (Blueprint $table) {
+        Schema::create('wangxun_kanjia_cut', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('activity_id');
             $table->integer('goods_id');
@@ -33,6 +33,6 @@ class CreateKanjiaCut extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kanjia_cut');
+        Schema::dropIfExists('wangxun_kanjia_cut');
     }
 }

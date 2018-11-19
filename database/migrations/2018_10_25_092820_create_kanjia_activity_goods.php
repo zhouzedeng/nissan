@@ -13,7 +13,7 @@ class CreateKanjiaActivityGoods extends Migration
      */
     public function up()
     {
-        Schema::create('kanjia_activity_goods', function (Blueprint $table) {
+        Schema::create('wangxun_kanjia_activity_goods', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('activity_id');
             $table->string('goods_id');
@@ -27,6 +27,6 @@ class CreateKanjiaActivityGoods extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kanjia_activity_goods');
+        Schema::dropIfExists('wangxun_kanjia_activity_goods');
     }
 }

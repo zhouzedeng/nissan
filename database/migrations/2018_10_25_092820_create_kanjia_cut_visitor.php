@@ -13,7 +13,7 @@ class CreateKanjiaCutVisitor extends Migration
      */
     public function up()
     {
-        Schema::create('kanjia_cut_visitor', function (Blueprint $table) {
+        Schema::create('wangxun_kanjia_cut_visitor', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cut_id');
             $table->integer('visitor_id');
@@ -27,6 +27,6 @@ class CreateKanjiaCutVisitor extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kanjia_cut_visitor');
+        Schema::dropIfExists('wangxun_kanjia_cut_visitor');
     }
 }

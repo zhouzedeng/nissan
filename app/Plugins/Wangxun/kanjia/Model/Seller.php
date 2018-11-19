@@ -11,5 +11,5 @@ namespace Wangxun\Kanjia\Model;
 class Seller extends Base
 {
     const ID = 'id';
-    const TABLE = 'kanjia_seller';
+    const TABLE = 'wangxun_kanjia_seller';
 }

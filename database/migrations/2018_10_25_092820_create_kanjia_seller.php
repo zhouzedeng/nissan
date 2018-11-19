@@ -13,7 +13,7 @@ class CreateKanjiaSeller extends Migration
      */
     public function up()
     {
-        Schema::create('kanjia_seller', function (Blueprint $table) {
+        Schema::create('wangxun_kanjia_seller', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('created_at')->nullable();
@@ -29,6 +29,6 @@ class CreateKanjiaSeller extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kanjia_seller');
+        Schema::dropIfExists('wangxun_kanjia_seller');
     }
 }

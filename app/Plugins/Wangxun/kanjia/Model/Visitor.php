@@ -11,5 +11,5 @@ namespace Wangxun\Kanjia\Model;
 class Visitor extends Base
 {
     const ID = 'id';
-    const TABLE = 'kanjia_visitor';
+    const TABLE = 'wangxun_kanjia_visitor';
 }

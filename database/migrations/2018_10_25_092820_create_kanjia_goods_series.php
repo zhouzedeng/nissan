@@ -13,7 +13,7 @@ class CreateKanjiaGoodsSeries extends Migration
      */
     public function up()
     {
-        Schema::create('kanjia_goods_series', function (Blueprint $table) {
+        Schema::create('wangxun_kanjia_goods_series', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('goods_id');
             $table->string('series_ids');
@@ -27,6 +27,6 @@ class CreateKanjiaGoodsSeries extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kanjia_goods_series');
+        Schema::dropIfExists('wangxun_kanjia_goods_series');
     }
 }

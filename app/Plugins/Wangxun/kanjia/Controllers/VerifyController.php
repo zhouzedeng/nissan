@@ -24,7 +24,7 @@ class VerifyController extends BaseController
      */
     public function index()
     {
-        return view('wangxun.verify.index');
+        return view('wangxun.kanjia.verify.index');
     }
 
     /**

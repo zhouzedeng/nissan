@@ -2,6 +2,8 @@
 namespace Wangxun\Kanjia\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
+use Wangxun\Kanjia\Service\SellerService;
 
 /**
  * 首页控制器
@@ -18,10 +20,18 @@ class HomeController extends BaseController
     }
 
 
-    public function index(Request  $request)
+    public function index()
     {
-        echo $request->cookie('token');
-        return view('wangxun.home.index');
+        return view('wangxun.kanjia.home.index');
+    }
+
+    /**
+     * getToken
+     * @return string
+     */
+    protected function getToken()
+    {
+        return md5(uniqid() . uniqid());
     }
 }
 

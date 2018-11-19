@@ -26,12 +26,13 @@ class UploadController extends BaseController
      */
     public function upload(Request $request)
     {
+        $this->checkPermission();
         // 获取参数
         $file = $request->file('file');
 
         // 储存图片
-        $filename = "";
-        $path = Storage::disk('public')->putFile($filename, $file);
+        $filename = "plugins/wangxun/images";
+        $path = Storage::disk('oss')->putFile($filename, $file);
 
         // 返回数据
         $data = [];

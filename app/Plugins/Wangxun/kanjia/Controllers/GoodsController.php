@@ -19,7 +19,6 @@ class GoodsController extends BaseController
         parent::__construct();
     }
 
-
     /**
      * 列表页
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -28,7 +27,7 @@ class GoodsController extends BaseController
      */
     public function index()
     {
-        return view('wangxun.goods.index');
+        return view('wangxun.kanjia.goods.index');
     }
 
     /**
@@ -39,7 +38,7 @@ class GoodsController extends BaseController
      */
     public function add()
     {
-        return view('wangxun.goods.add');
+        return view('wangxun.kanjia.goods.add');
     }
 
     /**
@@ -48,9 +47,9 @@ class GoodsController extends BaseController
      * @author Zed
      * @since 2018-11-2
      */
-    public function getList(Request $request)
+    public function getList()
     {
-        $this->setSellerToParams($request);
+
         $result = GoodsService::getList($this->params);
         return $result;
     }
@@ -62,9 +61,9 @@ class GoodsController extends BaseController
      * @author Zed
      * @since 2018-11-2
      */
-    public function save(Request $request)
+    public function save()
     {
-        $this->setSellerToParams($request);
+        $this->checkPermission();
         $params = $this->params;
         if (empty($params['name'])) {
             return $this->apiFail('100001', '商品名称必填');
@@ -107,7 +106,7 @@ class GoodsController extends BaseController
      */
     public function edit(Request $request)
     {
-        $this->setSellerToParams($request);
+
         $params = $this->params;
         if($request->isMethod('post')){
             if (empty($params['name'])) {
@@ -127,7 +126,7 @@ class GoodsController extends BaseController
         }
 
         $result = GoodsService::getFind($params);
-        return view('wangxun.goods.edit',['goods_info'=>$result['data']]);
+        return view('wangxun.kanjia.goods.edit',['goods_info'=>$result['data']]);
     }
 
     /**
@@ -136,7 +135,6 @@ class GoodsController extends BaseController
      */
     public function findGoodsSeries(Request $request)
     {
-        $this->setSellerToParams($request);
         $params = $this->params;
         if (empty($params['goods_id'])) {
             return $this->apiFail('100001', '商品ID必填');

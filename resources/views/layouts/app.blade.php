@@ -73,9 +73,7 @@
                     <dl class="layui-nav-child">
                         <dd><a href="{{route('visitor.allIndex')}}">全部访客</a></dd>
                     </dl>
-                    <dl class="layui-nav-child">
-                        <dd><a href="{{route('count.index')}}">数据统计</a></dd>
-                    </dl>
+
                 </li>
 
             </ul>

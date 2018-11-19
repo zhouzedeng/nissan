@@ -26,7 +26,7 @@ class CutController extends BaseController
      */
     public function index()
     {
-        return view('wangxun.cut.index');
+        return view('wangxun.kanjia.cut.index');
     }
 
     /**
@@ -34,9 +34,9 @@ class CutController extends BaseController
      * @author Zed
      * @since 2018-11-6
      */
-    public function getList(Request $request)
+    public function getList()
     {
-        $this->setSellerToParams($request);
+
         $result = CutService::getList($this->params);
         return $result;
     }
@@ -48,7 +48,7 @@ class CutController extends BaseController
      */
     public function allIndex()
     {
-        return view('wangxun.cut.allIndex');
+        return view('wangxun.kanjia.cut.allIndex');
     }
 
     /**

@@ -24,8 +24,9 @@ class VisitorService extends BaseService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
 
         // 查询数据
+        $userInfo = session('user_info');
         $param = [];
-        $param['seller_id'] = $data['seller']['seller']['sellerId'];
+        $param['seller_id'] = $userInfo->store_id;
         $order = array('id' , 'desc');
         $list = Visitor::getListByParam($param, $data['page'], $data['limit'], null, $order);
         $total = Visitor::getCntByParam($param);

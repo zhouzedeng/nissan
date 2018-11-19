@@ -11,7 +11,7 @@ layui.use('table', function(){
             ,{field:'theme', title: '主题'}
             ,{field:'brand', title: '品牌'}
             ,{field:'bg_img_url', templet:function(data){
-                   return '<img style="width: 300px;height: 300px;" src="' + full_url + "/" + data.bg_img_url + '">'
+                   return '<img style="width: 300px;height: 300px;" src="' + data.bg_img_url + '">'
                 } ,title: '活动背景图'}
             ,{field:'check_status', templet:function(data){
                 if (data.check_status == 0) {

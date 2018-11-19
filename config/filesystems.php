@@ -62,6 +62,15 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+        'oss' => [
+                    'driver'        => 'oss',
+                    'access_id'     => env('OSS_ACCESS_ID'),
+                    'access_key'    =>env('OSS_ACCESS_KEY'),
+                    'bucket'        => env('OSS_BUCKET'),
+                    'endpoint'      => env('OSS_API_URL'),
+                    'isCName'       => false,
+                    'debug'         => true,
+        ],
 
     ],
 

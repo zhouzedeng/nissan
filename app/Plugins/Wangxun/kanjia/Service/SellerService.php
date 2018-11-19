@@ -21,13 +21,14 @@ class SellerService extends BaseService
      * @author Zed
      * @since 2018-11-4
      */
-    public static function save($seller)
+    public static function save()
     {
-        $seller_record = Seller::getOneByParam(['id' => $seller['seller']['sellerId']]);
+        $userInfo = session('user_info');
+        $seller_record = Seller::getOneByParam(['id' => $userInfo->store_id]);
         if (!$seller_record) {
             $data = [
-                'id' => $seller['seller']['sellerId'],
-                'name' => $seller['seller']['sellerName'],
+                'id' =>  $userInfo->store_id,
+                'name' =>  $userInfo->store_name,
                 'created_at' => time(),
                 'updated_at' => time()
             ];
@@ -66,10 +67,10 @@ class SellerService extends BaseService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
         // 查询数据
         $userInfo = session('user_info');
-        $where['seller_id'] = $userInfo->seller->sellerId;
+        $where['seller_id'] = $userInfo->store_id;
         $where['deleted_at'] = 0;
         $find = Activity::getOneByParam($where,'*');
-        $find->storage_bg_img_url = '/storage/'.$find->bg_img_url;
+        $find->storage_bg_img_url =  'https://'.env('OSS_CDN_DOMAIN').'/'.$find->bg_img_url;
         $result['data'] = $find;
         return $result;
     }

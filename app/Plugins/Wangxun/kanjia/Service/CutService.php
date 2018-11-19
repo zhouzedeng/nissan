@@ -27,8 +27,9 @@ class CutService extends BaseService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
 
         // 获取经销商下的所有有效活动ID
+        $userInfo = session('user_info');
         $param = [];
-        $param['seller_id'] = $data['seller']['seller']['sellerId'];
+        $param['seller_id'] = $userInfo->store_id;
         $param['deleted_at'] = 0;
         $activity_list = Activity::getListByParam($param);
         $activity_list = json_decode(json_encode($activity_list), true);

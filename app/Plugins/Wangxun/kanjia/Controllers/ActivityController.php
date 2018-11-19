@@ -26,7 +26,7 @@ class ActivityController extends BaseController
      */
     public function index(Request $request)
     {
-        return view('wangxun.activity.index');
+        return view('wangxun.kanjia.activity.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class ActivityController extends BaseController
      */
     public function add()
     {
-        return view('wangxun.activity.add');
+        return view('wangxun.kanjia.activity.add');
     }
 
     /**
@@ -44,9 +44,9 @@ class ActivityController extends BaseController
      * @author Zed
      * @since 2018-11-1
      */
-    public function getList(Request $request)
+    public function getList()
     {
-        $this->setSellerToParams($request);
+        $this->checkPermission();
         $result = ActivityService::getList($this->params);
         return $result;
     }
@@ -56,9 +56,9 @@ class ActivityController extends BaseController
      * @author Zed
      * @since 2018-11-1
      */
-    public function save(Request $request)
+    public function save()
     {
-        $this->setSellerToParams($request);
+        $this->checkPermission();
         $params = $this->params;
         if (empty($params['name'])) {
             return $this->apiFail('100001', '主题必填');
@@ -106,7 +106,7 @@ class ActivityController extends BaseController
     */
     public function edit(Request $request)
     {
-        $this->setSellerToParams($request);
+        $this->checkPermission();
         $params = $this->params;
         if($request->isMethod('post')){
             if (empty($params['name'])) {
@@ -137,16 +137,16 @@ class ActivityController extends BaseController
             return $result;
         }
         $result = ActivityService::getFind($params);
-        return view('wangxun.activity.edit',['activity_info'=>$result['data']]);
+        return view('wangxun.kanjia.activity.edit',['activity_info'=>$result['data']]);
     }
 
     /**
      * 查询活动关联商品
      *  @return \Illuminate\Http\JsonResponse
      */
-    public function fingActivityGoods(Request $request)
+    public function fingActivityGoods()
     {
-        $this->setSellerToParams($request);
+        $this->checkPermission();
         $params = $this->params;
         if (empty($params['activity_id'])) {
             return $this->apiFail('100001', '活动ID必填');

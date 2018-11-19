@@ -27,7 +27,7 @@ class VisitorController extends BaseController
      */
     public function index()
     {
-        return view('wangxun.visitor.index');
+        return view('wangxun.kanjia.visitor.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class VisitorController extends BaseController
      */
     public function getList(Request $request)
     {
-        $this->setSellerToParams($request);
+        $this->checkPermission();
         $result = VisitorService::getList($this->params);
         return $result;
     }
@@ -49,7 +49,7 @@ class VisitorController extends BaseController
      */
     public function allIndex()
     {
-        return view('wangxun.visitor.allIndex');
+        return view('wangxun.kanjia.visitor.allIndex');
     }
 
     /**

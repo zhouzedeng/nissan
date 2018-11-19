@@ -4,6 +4,7 @@ namespace Wangxun\Kanjia\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Wangxun\Kanjia\Service\SellerService;
 
 
 /**
@@ -21,14 +22,15 @@ class BaseController extends Controller
     }
 
     /**
-     * getSellerInfo
-     * @param Request $request
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function setSellerToParams(Request $request)
+    public function checkPermission()
     {
-        $seller =  json_decode(json_encode($request->session('user_info')), true);
-        $this->params['seller'] = $seller;
+        $seller = session('user_info');
+        if (empty($seller)) {
+            return redirect(config('plugin.login_page'));
+        }
+        SellerService::save();
     }
 
     /**

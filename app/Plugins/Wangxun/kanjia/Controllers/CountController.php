@@ -25,7 +25,7 @@ class CountController extends BaseController
      */
     public function index()
     {
-        return view('wangxun.count.index');
+        return view('wangxun.kanjia.count.index');
     }
 
     /**
@@ -33,9 +33,9 @@ class CountController extends BaseController
      * @author Zed
      * @since 2018-11-6
      */
-    public function getList(Request $request)
+    public function getList()
     {
-        $this->setSellerToParams($request);
+        $this->checkPermission();
         $result = VisitorService::getList($this->params);
         return $result;
     }

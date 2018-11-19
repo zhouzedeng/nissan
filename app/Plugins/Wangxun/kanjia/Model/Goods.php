@@ -11,5 +11,5 @@ namespace Wangxun\Kanjia\Model;
 class Goods extends Base
 {
     const ID = 'id';
-    const TABLE = 'wangxun_goods';
+    const TABLE = 'kanjia_goods';
 }

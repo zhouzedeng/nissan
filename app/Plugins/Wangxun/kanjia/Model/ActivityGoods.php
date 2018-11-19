@@ -11,5 +11,5 @@ namespace Wangxun\Kanjia\Model;
 class ActivityGoods extends Base
 {
     const ID = 'id';
-    const TABLE = 'wangxun_activity_goods';
+    const TABLE = 'kanjia_activity_goods';
 }

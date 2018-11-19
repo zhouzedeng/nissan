@@ -10,5 +10,5 @@ namespace Wangxun\Kanjia\Model;
 class User extends Base
 {
     const ID = 'id';
-    const TABLE = 'wangxun_users';
+    const TABLE = 'kanjia_users';
 }

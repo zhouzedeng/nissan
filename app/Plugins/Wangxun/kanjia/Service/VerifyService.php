@@ -38,6 +38,7 @@ class VerifyService extends BaseService
         $list = Activity::getListByParam($param, $data['page'], $data['limit'], null, $order);
         $total = Activity::getCntByParam($param);
         foreach ($list as $k => $v) {
+            $list[$k]->bg_img_url = 'https:'.env('OSS_CDN_DOMAIN').'/'.$v->bg_img_url;;
             $list[$k]->seller_name = isset($seller_list[$v->seller_id]) ? $seller_list[$v->seller_id] : '';
         }
 

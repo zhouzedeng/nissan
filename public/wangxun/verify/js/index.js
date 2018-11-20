@@ -10,7 +10,9 @@ layui.use('table', function(){
             ,{field:'id', title: 'ID', sort: true, fixed: true}
             ,{field:'theme', title: '主题'}
             ,{field:'brand', title: '品牌'}
-            ,{field:'bg_img_url', title: '活动背景图', sort: true}
+            ,{field:'bg_img_url', templet:function(data){
+                    return '<img style="width: 300px;height: 300px;" src="' + data.bg_img_url + '">'
+                } ,title: '活动背景图'}
             ,{field:'seller_name', title: '经销商', sort: true}
             ,{field:'check_status', templet:function(data){
                 if (data.check_status == 0) {

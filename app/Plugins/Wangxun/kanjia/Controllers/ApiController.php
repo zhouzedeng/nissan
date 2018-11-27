@@ -1,7 +1,9 @@
 <?php
 namespace Wangxun\Kanjia\Controllers;
 
+use Wangxun\Kanjia\Service\SeriesService;
 use Wangxun\Kanjia\Service\ApiService;
+use Wangxun\Kanjia\Service\ThirdApiService;
 
 /**
  * ApiController
@@ -103,9 +105,10 @@ class ApiController extends BaseController
      */
     public function getSeries()
     {
+        $result = ThirdApiService::getCarSeriesInfo($this->params);
+        SeriesService::save($result['data']);
         $result = ApiService::getSeries($this->params);
         return $result;
-
     }
 
 }

@@ -150,20 +150,25 @@ class ThirdApiService extends BaseService
         $result = array('code' => 0, 'msg' => '', 'data' => array());
 
         // 参数验证
-        if (empty($data['mobile']) || empty($data['verify_code'])) {
+        if (empty($data['phone']) || empty($data['code'])) {
             $result['code'] = 300003;
             $result['msg'] = '参数不完整，请重试';
             return $result;
         }
         // 获取第三方数据
-        $client = new Client();
-        $query = 'client_ip=' . $_SERVER['REMOTE_ADDR'] . "&mobile=" . $data['mobile'] . '&verify_code=' . $data['verify_code'];
-        $api_url = config('plugin.api.open.api') . '/open/v1/api/sms/verifycode?' . $query;
-        $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()]];
-        $response = $client->request('GET', $api_url, $header);
-        $body = $response->getBody();
-        $string_body = (string)$body;
-        $info = json_decode($string_body);
+        try{
+            $client = new Client();
+            $query = 'client_ip=' . $_SERVER['REMOTE_ADDR'] . "&mobile=" . $data['phone'] . '&verify_code=' . $data['code'];
+            $api_url = config('plugin.api.open.api') . '/open/v1/api/sms/verifycode?' . $query;
+            $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()]];
+            $response = $client->request('GET', $api_url, $header);
+            $body = $response->getBody();
+            $string_body = (string)$body;
+            $info = json_decode($string_body);
+        }catch (\Exception $e){
+            $result['code'] = -1;
+            $info = [];
+        }
 
         // 数据返回
         $result['data'] = $info;
@@ -262,8 +267,8 @@ class ThirdApiService extends BaseService
         }
         // 获取第三方数据
         $client = new Client();
-        $query = 'template_code=SMS_145656541&client_ip=' . $_SERVER['REMOTE_ADDR'] . "&mobile=" . $data['mobile'] ;
-        $api_url = config('plugin.api.open.api') . '/open/v1/api/sms/sendmess?' . $query;
+        $query = 'template_code=' .env('SMS_CODE') . '&client_ip=' . $_SERVER['REMOTE_ADDR'] . "&mobile=" . $data['mobile'] ;
+        $api_url = config('plugin.api.open.api') . '/open/v1/api/sms/sendsms?' . $query;
         $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()]];
         $response = $client->request('GET', $api_url, $header);
         $body = $response->getBody();
@@ -272,6 +277,8 @@ class ThirdApiService extends BaseService
 
         // 数据返回
         $result['data'] = $info;
+        $result['url'] = $api_url;
+        $result['$header'] = $header;
         return $result;
     }
 

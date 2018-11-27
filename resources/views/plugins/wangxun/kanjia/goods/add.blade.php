@@ -72,6 +72,6 @@
 
     <script>
     </script>
-    <script src="{{asset('/wangxun/goods/js/add.js')}}?v=51009000000"></script>
+    <script src="{{asset('/wangxun/goods/js/add.js')}}?v=5100019000000"></script>
 
 @endsection

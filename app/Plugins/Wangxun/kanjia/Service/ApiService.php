@@ -64,7 +64,7 @@ class ApiService
         $wx_head_img_url = $param['wx_head_img_url'];
         //验证验证码
         $verifyCode = ThirdApiService::verifyCode($param);
-        if($verifyCode ['data'] ['code'] == 0){
+        if($verifyCode['code'] != 0){
             $result = array('code' => 100006, 'msg' => '验证码错误', 'data' => array());
             return $result;
         }
@@ -142,7 +142,7 @@ class ApiService
         $param = ['id', $goods_id_list];
         $goods_list = Goods::getListByParamIn([], $param);
         foreach ($goods_list as $k=>$v){
-            $v->goods_img = config('plugins.api.open.app_img_url'). $v->goods_img;
+            $v->goods_img = 'https:'.env('OSS_CDN_DOMAIN').'/'. $v->goods_img;
         }
         $result ['data'] = $goods_list;
         return $result;
@@ -253,8 +253,8 @@ class ApiService
         }
         $activity_info = Activity::getOneByParam(['id' => $cut_info->activity_id]);
         $goods_info = Goods::getOneByParam(['id' => $cut_info->goods_id]);
-        $activity_info->bg_img_url = config('plugins.api.open.app_img_url').$activity_info->bg_img_url;
-        $goods_info->goods_img = config('plugins.api.open.app_img_url').$goods_info->goods_img;
+        $activity_info->bg_img_url =  'https:'.env('OSS_CDN_DOMAIN').'/'.$activity_info->bg_img_url;
+        $goods_info->goods_img = 'https:'.env('OSS_CDN_DOMAIN').'/'.$goods_info->goods_img;
         $result ['data'] ['activity_info'] = $activity_info;
         $result ['data'] ['goods_info'] = $goods_info;
         $result ['data'] ['cut_info'] = $cut_info;
@@ -279,8 +279,17 @@ class ApiService
         $visitor_ids_arr = json_decode(json_encode(CutVisitor::getListByParam(['cut_id' => $cut_id])), true);
         $visitor_ids = array_column($visitor_ids_arr, 'visitor_id');
         $param = ['id', $visitor_ids];
-        $visitor_list = Visitor::getListByParamIn([], $param, null, null, ['id', 'wx_name', 'wx_head_img_url']);
-
+        $visitor_list = Visitor::getListByParamIn([], $param, null, null, ['id', 'wx_name', 'wx_head_img_url','created_at']);
+        $cut_info = Cut::getOneByParam(['id' => $cut_id]);
+        if (empty($cut_info)) {
+            $result = array('code' => 100002, 'msg' => '找不到砍价详情信息', 'data' => array());
+            return $result;
+        }
+        $goods_info = Goods::getOneByParam(['id' => $cut_info->goods_id]);
+        foreach ($visitor_list as $k => $v) {
+            $visitor_list[$k]->money = $goods_info->goods_price / $goods_info->need_cut_num ;
+            $visitor_list[$k]->time = $v->created_at;
+        }
         $result ['data'] ['visitor_cut_list'] = $visitor_list;
         return $result;
     }
@@ -323,6 +332,7 @@ class ApiService
         $visitor_info = Visitor::getOneByParam(['wx_openid'=>$param ['wx_openid']]);
         if(empty($visitor_info)){
             $visitor_data = array(
+                'seller_id' =>$seller_id,
                 'wx_openid' => $param ['wx_openid'],
                 'wx_name' => $param ['wx_name'],
                 'wx_head_img_url' => $param ['wx_head_img_url'],
@@ -410,7 +420,7 @@ class ApiService
         }
 
         $activity_info = Activity::getOneByParam(['id'=>$activity_id,'seller_id'=>$seller_id]);
-        $activity_info->bg_img_url = config('plugins.api.open.app_img_url').$activity_info->bg_img_url;
+        $activity_info->bg_img_url =  'https:'.env('OSS_CDN_DOMAIN').'/'.$activity_info->bg_img_url;
         $result ['data'] = $activity_info;
         return $result;
     }

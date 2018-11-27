@@ -17,6 +17,7 @@ class CreateKanjiaUsers extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('phone');
+            $table->string('wx_openid');
             $table->string('wx_name');
             $table->string('wx_head_img_url');
             $table->string('seller_id');

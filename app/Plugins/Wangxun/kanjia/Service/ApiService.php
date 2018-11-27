@@ -330,6 +330,7 @@ class ApiService
 
         DB::beginTransaction();
         //查询访客是否已经添加
+        $param ['wx_openid'] = $param ['wx_openid'] . "_" . $seller_id . '_' . $_SERVER['REMOTE_ADDR'];
         $visitor_info = Visitor::getOneByParam(['wx_openid'=>$param ['wx_openid']]);
         if(empty($visitor_info)){
             $visitor_data = array(

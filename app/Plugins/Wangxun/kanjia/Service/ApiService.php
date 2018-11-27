@@ -435,7 +435,6 @@ class ApiService
     public static function getSeries($param = [])
     {
         $result = array('code' => 0, 'msg' => '', 'data' => array());
-
         $series_info = Series::getListByParam();
         $result ['data'] = $series_info;
         return $result;

@@ -1,6 +1,7 @@
 <?php
 namespace Wangxun\Kanjia\Service;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
 use Wangxun\Kanjia\Model\Activity;
 use Wangxun\Kanjia\Model\ActivityGoods;
@@ -359,7 +360,6 @@ class ApiService
         if($already_cut_num >= $goods_info->need_cut_num){
             $data['is_finish'] = 1;
         }
-
         $row = Cut::updateById($data,$cut_id);
         if($visitor_id == false || $cut_vis_id == false || $row == false){
             DB::rollBack();
@@ -387,9 +387,9 @@ class ApiService
             $getCoupon = ThirdApiService::getCoupon($coupon_data);
             if($getCoupon ['data']['code'] == 1){
                 $sen_data = [
-                    'mobile' =>   $user_info->mobile,
+                    'mobile' =>  $user_info['phone'],
                     'card_name' =>   $goods_info->coupon_title,
-                    'card_code' =>   $getCoupon ['card_code'],
+                    'card_code' =>   $getCoupon['data']['card_code'],
                 ];
                 //发送业务短信
                 ThirdApiService::sendSms($sen_data);

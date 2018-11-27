@@ -2,6 +2,7 @@
 namespace Wangxun\Kanjia\Service;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Redis;
 
 /**
  * 开放接口服务
@@ -124,14 +125,13 @@ class ThirdApiService extends BaseService
 
         // 获取第三方数据
         $client = new Client();
-        $query = 'channel=2&template_code=SMS_145656541&client_ip=' . $_SERVER['REMOTE_ADDR'] . "&mobile=" . $data['mobile'] . "&card_name=" . $data['card_name'] . "&card_code" . $data['card_code'];
+        $query = 'channel=2&template_code='.env('SMS_MESS_CODE').'&client_ip=' . $_SERVER['REMOTE_ADDR'] . "&mobile=" . $data['mobile'] . "&card_name=" . $data['card_name'] . "&card_code=" . $data['card_code'];
         $api_url = config('plugin.api.open.api') . '/open/v1/api/sms/sendmess?' . $query;
         $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()]];
         $response = $client->request('GET', $api_url, $header);
         $body = $response->getBody();
         $string_body = (string)$body;
         $info = json_decode($string_body);
-
         // 数据返回
         $result['data'] = $info;
         return $result;

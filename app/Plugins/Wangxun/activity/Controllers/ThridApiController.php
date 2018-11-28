@@ -77,5 +77,18 @@ class ThridApiController extends BaseController
         $result = ThirdApiService::sendSmsCode($this->params);
         return $result;
     }
+
+    /**
+     * 获取东风日产公众号分享链接信息
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @by quan
+     * @since 2018-11-29
+     */
+    public function shaerInfo()
+    {
+        $result = ThirdApiService::shaerInfo($this->params);
+        return $result;
+    }
 }
 

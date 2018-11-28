@@ -150,14 +150,14 @@ class ThirdApiService extends BaseService
         $result = array('code' => 0, 'msg' => '', 'data' => array());
 
         // 参数验证
-        if (empty($data['mobile']) || empty($data['verify_code'])) {
+        if (empty($data['phone']) || empty($data['code'])) {
             $result['code'] = 300003;
             $result['msg'] = '参数不完整，请重试';
             return $result;
         }
         // 获取第三方数据
         $client = new Client();
-        $query = 'client_ip=' . $_SERVER['REMOTE_ADDR'] . "&mobile=" . $data['mobile'] . '&verify_code=' . $data['verify_code'];
+        $query = 'client_ip=' . $_SERVER['REMOTE_ADDR'] . "&mobile=" . $data['phone'] . '&verify_code=' . $data['code'];
         $api_url = config('plugin.api.open.api') . '/open/v1/api/sms/verifycode?' . $query;
         $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()]];
         $response = $client->request('GET', $api_url, $header);
@@ -264,6 +264,38 @@ class ThirdApiService extends BaseService
         $client = new Client();
         $query = 'template_code=SMS_145656541&client_ip=' . $_SERVER['REMOTE_ADDR'] . "&mobile=" . $data['mobile'] ;
         $api_url = config('plugin.api.open.api') . '/open/v1/api/sms/sendmess?' . $query;
+        $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()]];
+        $response = $client->request('GET', $api_url, $header);
+        $body = $response->getBody();
+        $string_body = (string)$body;
+        $info = json_decode($string_body);
+
+        // 数据返回
+        $result['data'] = $info;
+        return $result;
+    }
+
+    /**
+     * 获取东风日产公众号分享链接信息
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @author quan
+     * @since 2018-11-29
+     */
+    public static function shaerInfo($data = array())
+    {
+        // 初始化
+        $result = array('code' => 0, 'msg' => '', 'data' => array());
+
+        // 参数验证
+        if (empty($data['http_referer'])) {
+            $result['code'] = 100001;
+            $result['msg'] = 'http_referer参数不能为空';
+            return $result;
+        }
+        // 获取第三方数据
+        $client = new Client();
+        $api_url = config('plugin.api.open.api') . '/wechat/nissan/share/info?http_referer=' . urlencode($data['http_referer']);
         $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()]];
         $response = $client->request('GET', $api_url, $header);
         $body = $response->getBody();

@@ -72,7 +72,7 @@ Route::get('/thirdApi_getCarSeriesInfo', 'ThridApiController@getCarSeriesInfo')-
 Route::get('/thirdApi_sendSmsCode', 'ThridApiController@sendSmsCode')->name('thirdApi.sendSmsCode');
 Route::get('/api_getActivity', 'ApiController@getActivity')->name('api.getActivity');
 Route::get('/api_getSeries', 'ApiController@getSeries')->name('api.getSeries');
-Route::get('/shaerInfo_sendSmsCode', 'ThridApiController@shaerInfo')->name('thirdApi.shaerInfo');
+Route::get('/api_getShareInfo', 'ThridApiController@shaerInfo')->name('thirdApi.shaerInfo');
 
 //});
 

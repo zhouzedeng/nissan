@@ -301,7 +301,7 @@ class ThirdApiService extends BaseService
         }
         // 获取第三方数据
         $client = new Client();
-        $api_url = config('plugin.api.open.api') . '/wechat/nissan/share/info?http_referer='.urlencode($data['http_referer']);
+        $api_url = config('plugin.api.open.api') . '/open/wechat/nissan/share/info?http_referer='.urlencode($data['http_referer']);
         $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()]];
         $response = $client->request('GET', $api_url, $header);
         $body = $response->getBody();

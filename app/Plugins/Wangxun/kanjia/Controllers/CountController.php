@@ -25,6 +25,7 @@ class CountController extends BaseController
      */
     public function index()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.count.index');
     }
 

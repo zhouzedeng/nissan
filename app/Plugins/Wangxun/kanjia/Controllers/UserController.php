@@ -26,6 +26,7 @@ class UserController extends BaseController
      */
     public function index()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.user.index');
     }
 
@@ -48,6 +49,7 @@ class UserController extends BaseController
      */
     public function allIndex()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.user.allIndex');
     }
 
@@ -58,6 +60,7 @@ class UserController extends BaseController
      */
     public function allList()
     {
+        $this->checkPermission();
         $result = UserService::getAllList($this->params);
         return $result;
     }

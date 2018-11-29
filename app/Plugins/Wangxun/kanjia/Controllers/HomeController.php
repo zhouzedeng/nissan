@@ -22,6 +22,7 @@ class HomeController extends BaseController
 
     public function index()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.home.index');
     }
 
@@ -31,6 +32,7 @@ class HomeController extends BaseController
      */
     protected function getToken()
     {
+        $this->checkPermission();
         return md5(uniqid() . uniqid());
     }
 }

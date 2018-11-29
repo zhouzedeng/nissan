@@ -27,6 +27,7 @@ class UploadController extends BaseController
     public function upload(Request $request)
     {
         $this->checkPermission();
+        $this->checkPermission();
         // 获取参数
         $file = $request->file('file');
 

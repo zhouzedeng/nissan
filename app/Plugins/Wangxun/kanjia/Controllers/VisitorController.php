@@ -27,6 +27,7 @@ class VisitorController extends BaseController
      */
     public function index()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.visitor.index');
     }
 
@@ -37,6 +38,7 @@ class VisitorController extends BaseController
      */
     public function getList(Request $request)
     {
+        $this->checkPermission();
         $this->checkPermission();
         $result = VisitorService::getList($this->params);
         return $result;
@@ -49,6 +51,7 @@ class VisitorController extends BaseController
      */
     public function allIndex()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.visitor.allIndex');
     }
 
@@ -59,6 +62,7 @@ class VisitorController extends BaseController
      */
     public function allList()
     {
+        $this->checkPermission();
         $result = VisitorService::getAllList($this->params);
         return $result;
     }

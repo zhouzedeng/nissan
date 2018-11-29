@@ -26,6 +26,7 @@ class ActivityController extends BaseController
      */
     public function index(Request $request)
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.activity.index');
     }
 
@@ -36,6 +37,7 @@ class ActivityController extends BaseController
      */
     public function add()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.activity.add');
     }
 
@@ -92,6 +94,7 @@ class ActivityController extends BaseController
      */
     public function del()
     {
+        $this->checkPermission();
         $params = $this->params;
         if (empty($params['id'])) {
             return $this->apiFail('100001', '活动ID必填');

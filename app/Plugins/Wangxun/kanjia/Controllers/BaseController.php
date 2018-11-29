@@ -19,6 +19,7 @@ class BaseController extends Controller
     public function __construct()
     {
         parent::__construct();
+
     }
 
     /**
@@ -28,8 +29,9 @@ class BaseController extends Controller
     {
         $seller = session('user_info');
         if (empty($seller)) {
-            return redirect(config('plugin.login_page'));
+            return redirect(config('plugin.login_page'))->send();
         }
+
         SellerService::save();
     }
 

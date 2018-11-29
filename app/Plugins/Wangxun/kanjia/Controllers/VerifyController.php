@@ -24,6 +24,7 @@ class VerifyController extends BaseController
      */
     public function index()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.verify.index');
     }
 
@@ -34,6 +35,7 @@ class VerifyController extends BaseController
      */
     public function getList()
     {
+        $this->checkPermission();
         $result = VerifyService::getCheckActivityList($this->params);
         return $result;
     }
@@ -46,6 +48,7 @@ class VerifyController extends BaseController
      */
     public function check()
     {
+        $this->checkPermission();
         $result = VerifyService::check($this->params);
         return $result;
     }

@@ -27,6 +27,7 @@ class GoodsController extends BaseController
      */
     public function index()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.goods.index');
     }
 
@@ -38,6 +39,7 @@ class GoodsController extends BaseController
      */
     public function add()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.goods.add');
     }
 
@@ -49,7 +51,7 @@ class GoodsController extends BaseController
      */
     public function getList()
     {
-
+        $this->checkPermission();
         $result = GoodsService::getList($this->params);
         return $result;
     }
@@ -91,6 +93,7 @@ class GoodsController extends BaseController
      */
     public function del()
     {
+        $this->checkPermission();
         $params = $this->params;
         if (empty($params['id'])) {
             return $this->apiFail('100001', '商品ID必填');
@@ -106,7 +109,7 @@ class GoodsController extends BaseController
      */
     public function edit(Request $request)
     {
-
+        $this->checkPermission();
         $params = $this->params;
         if($request->isMethod('post')){
             if (empty($params['name'])) {
@@ -135,6 +138,7 @@ class GoodsController extends BaseController
      */
     public function findGoodsSeries(Request $request)
     {
+        $this->checkPermission();
         $params = $this->params;
         if (empty($params['goods_id'])) {
             return $this->apiFail('100001', '商品ID必填');

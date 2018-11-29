@@ -26,6 +26,7 @@ class CutController extends BaseController
      */
     public function index()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.cut.index');
     }
 
@@ -36,7 +37,7 @@ class CutController extends BaseController
      */
     public function getList()
     {
-
+        $this->checkPermission();
         $result = CutService::getList($this->params);
         return $result;
     }
@@ -48,6 +49,7 @@ class CutController extends BaseController
      */
     public function allIndex()
     {
+        $this->checkPermission();
         return view('wangxun.kanjia.cut.allIndex');
     }
 
@@ -58,6 +60,7 @@ class CutController extends BaseController
      */
     public function allList()
     {
+        $this->checkPermission();
         $result = CutService::getAllList($this->params);
         return $result;
     }

@@ -29,10 +29,6 @@ layui.use('table', function(){
             ,{field:'check_status', templet:function(data){
                    return h5_url + "?activity_id=" + data.id + "&seller_id=" + data.seller_id;
                 } ,title: '活动链接'}
-            ,{field:'check_status', templet:function(data){
-                  
-                } ,title: '二维码链接'}
-
             ,{field:'created_at', title: '创建时间', sort: true}
             ,{field:'created_at', title: '操作', toolbar: '#bar'}
 

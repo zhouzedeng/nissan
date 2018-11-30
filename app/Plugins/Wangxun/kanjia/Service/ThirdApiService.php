@@ -269,7 +269,7 @@ class ThirdApiService extends BaseService
         // 获取第三方数据
         $client = new Client();
         $query = 'template_code=SMS_145656541&client_ip=' . $_SERVER['REMOTE_ADDR'] . "&mobile=" . $data['mobile'] ;
-        $api_url = config('plugin.api.open.api') . '/open/v1/api/sms/sendmess?' . $query;
+        $api_url = config('plugin.api.open.api') . '/open/v1/api/sms/sendsms?' . $query;
         $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()]];
         $response = $client->request('GET', $api_url, $header);
         $body = $response->getBody();

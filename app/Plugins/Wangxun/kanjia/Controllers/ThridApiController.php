@@ -26,7 +26,6 @@ class ThridApiController extends BaseController
      */
     public function getCarSeriesInfo()
     {
-        $this->checkPermission();
         $result = ThirdApiService::getCarSeriesInfo($this->params);
         SeriesService::save($result['data']);
         return $result;
@@ -39,7 +38,6 @@ class ThridApiController extends BaseController
      */
     public function getCouponList()
     {
-        $this->checkPermission();
         $result = ThirdApiService::getCouponList($this->params);
         return $result;
     }
@@ -51,7 +49,6 @@ class ThridApiController extends BaseController
      */
     public function getCouponInfo()
     {
-        $this->checkPermission();
         $result = ThirdApiService::getCouponInfo($this->params);
         return $result;
     }
@@ -78,7 +75,6 @@ class ThridApiController extends BaseController
      */
     public function sendSmsCode()
     {
-        $this->checkPermission();
         $result = ThirdApiService::sendSmsCode($this->params);
         return $result;
     }
@@ -92,7 +88,6 @@ class ThridApiController extends BaseController
      */
     public function shaerInfo()
     {
-        $this->checkPermission();
         $result = ThirdApiService::shaerInfo($this->params);
         return $result;
     }

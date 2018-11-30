@@ -13,12 +13,18 @@
     <table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
 
     <!-- 操作 -->
+    <script type="text/html" id="qrcode">
+        <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+    </script>
+
+    <!-- 操作 -->
     <script type="text/html" id="bar">
         <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
     </script>
 
     <!-- js -->
+    <script type="text/javascript" src="http://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
     <script>
         var full_url = "{{asset('storage')}}";
         var h5_url = "{{env('H5_URI_PREFIX')}}";

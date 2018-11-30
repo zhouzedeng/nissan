@@ -26,7 +26,6 @@ class ApiController extends BaseController
      */
     public function addUser()
     {
-        $this->checkPermission();
         $result = ApiService::addUser($this->params);
         return $result;
     }
@@ -37,7 +36,6 @@ class ApiController extends BaseController
      */
     public function getAllSellerGoods()
     {
-        $this->checkPermission();
         $result = ApiService::getAllSellerGoods($this->params);
         return $result;
 
@@ -49,7 +47,6 @@ class ApiController extends BaseController
      */
     public function addGoodsToCut()
     {
-        $this->checkPermission();
         $result = ApiService::addGoodsToCut($this->params);
         return $result;
 
@@ -61,7 +58,6 @@ class ApiController extends BaseController
      */
     public function getCutInfo()
     {
-        $this->checkPermission();
         $result = ApiService::getCutInfo($this->params);
         return $result;
 
@@ -73,7 +69,6 @@ class ApiController extends BaseController
      */
     public function getCutVisitor()
     {
-        $this->checkPermission();
         $result = ApiService::getCutVisitor($this->params);
         return $result;
 
@@ -86,7 +81,6 @@ class ApiController extends BaseController
      */
     public function cut()
     {
-        $this->checkPermission();
         $result = ApiService::cut($this->params);
         return $result;
 
@@ -98,7 +92,6 @@ class ApiController extends BaseController
      */
     public function getActivity()
     {
-        $this->checkPermission();
         $result = ApiService::getActivity($this->params);
         return $result;
 
@@ -111,7 +104,6 @@ class ApiController extends BaseController
      */
     public function getSeries()
     {
-        $this->checkPermission();
         $result = ThirdApiService::getCarSeriesInfo($this->params);
         SeriesService::save($result['data']);
         $result = ApiService::getSeries($this->params);

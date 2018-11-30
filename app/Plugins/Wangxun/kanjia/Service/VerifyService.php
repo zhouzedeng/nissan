@@ -40,6 +40,7 @@ class VerifyService extends BaseService
         foreach ($list as $k => $v) {
             $list[$k]->bg_img_url = 'https:'.env('OSS_CDN_DOMAIN').'/'.$v->bg_img_url;;
             $list[$k]->seller_name = isset($seller_list[$v->seller_id]) ? $seller_list[$v->seller_id] : '';
+            $list[$k]->created_at = date("Y-m-d H:i:s", $v->created_at);
         }
 
         // return

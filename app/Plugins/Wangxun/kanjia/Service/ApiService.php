@@ -379,8 +379,10 @@ class ApiService
                 }
                 $user_info = json_decode(json_encode($user_info),true);
             }
+            $seller = Seller::getOneByParam(['id'=>$goods_info->seller_id]);
             $coupon_data = [
                 'coupon_id' => $goods_info->coupon_id,
+                'activity_store_code' => $seller->activity_store_code,
                 'mobile' => $user_info['phone'],
                 'name' => $user_info['name'],
             ];

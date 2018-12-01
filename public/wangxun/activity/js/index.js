@@ -29,6 +29,7 @@ layui.use('table', function(){
             ,{field:'check_status', templet:function(data){
                    return h5_url + "?activity_id=" + data.id + "&seller_id=" + data.seller_id;
                 } ,title: '活动链接'}
+            ,{field:'qecode',title: '链接二维码', toolbar: '#qrcode'}
             ,{field:'created_at', title: '创建时间', sort: true}
             ,{field:'created_at', title: '操作', toolbar: '#bar'}
 
@@ -69,6 +70,14 @@ layui.use('table', function(){
         } else if(obj.event === 'edit'){
             //layer.alert('编辑行：<br>'+ JSON.stringify(data))
             window.location.href =  "activity_edit?id=" + data.id ;
+        }else if(obj.event === 'qrcode'){
+            content = h5_url + "?activity_id=" + data.id + "&seller_id=" + data.seller_id;
+            layer.open({
+                type: 1,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['300px', '300px'], //宽高
+                content: '<div id="qrcodeurl"  ></div><script>new QRCode(document.getElementById("qrcodeurl"),content);</script>'
+            });
         }
     });
 

@@ -234,7 +234,7 @@ class ThirdApiService extends BaseService
             'mobile' => $data['mobile'],
             'surname' => $data['name'],
             'source' => 1,
-            'activity_store_code' => 'H2901X',
+            'activity_store_code' => $data['activity_store_code'],
         ];
         $api_url = config('plugin.api.open.api') . '/open/v1/api/coupon/common-coupon';
         $header = ['headers' => ['Authorization' => 'Bearer ' . get_plugin_open_api_access_token()],

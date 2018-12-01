@@ -14,7 +14,7 @@
 
     <!-- 操作 -->
     <script type="text/html" id="qrcode">
-        <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+        <a lay-event="qrcode" >查看二维码</a>
     </script>
 
     <!-- 操作 -->

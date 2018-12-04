@@ -139,6 +139,17 @@ class ApiService
             return $result;
         }
 
+        $activity = Activity::getOneByParam(['id' => $activity_id]);
+        if ($activity && $activity->check_status != 1) {
+            $result = array('code' => 10000, 'msg' => '审核未通过', 'data' => array());
+            return $result;
+        }
+
+        if ($activity && ($activity->start_time > time() || time() > $activity->end_time)) {
+            $result = array('code' => 10001, 'msg' => '未在活动时间内', 'data' => array());
+            return $result;
+        }
+
         $goods_id_list = explode(',', $goods_ids->goods_id);
         $param = ['id', $goods_id_list];
         $goods_list = Goods::getListByParamIn([], $param);

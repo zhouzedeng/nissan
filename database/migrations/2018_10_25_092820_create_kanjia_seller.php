@@ -16,6 +16,7 @@ class CreateKanjiaSeller extends Migration
         Schema::create('wangxun_kanjia_seller', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+			$table->string('activity_store_code');
             $table->integer('created_at')->nullable();
             $table->integer('updated_at')->nullable();
             $table->integer('deleted_at')->nullable()->default(0);

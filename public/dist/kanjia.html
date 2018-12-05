@@ -30,6 +30,7 @@
         window.location.href = 'https://passport.chebaba.com/horse/sso/oauth/wx/authorize?returnUrl=' + returnUrl;
       } else {
         var wx_result = getParam('wx_result');
+        window.location.pushState({}, 'nissan', window.location.href.replace('wx_result', 'wx_result_used'));
         try {
           wx_result = window.atob(wx_result);
           wx_result = JSON.parse(wx_result);
@@ -89,4 +90,4 @@
           100% {
             transform: rotate(0);
           }
-        }</style><link href=css/kanjia.5ffe29a6.css rel=preload as=style><link href=js/chunk-vendors.cdbe3460.js rel=preload as=script><link href=js/kanjia.e0a8e482.js rel=preload as=script><link href=css/kanjia.5ffe29a6.css rel=stylesheet></head><body><noscript><strong>We're sorry but nissan doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app><div class=loading><div class=loading-text></div></div></div><script src=js/chunk-vendors.cdbe3460.js></script><script src=js/kanjia.e0a8e482.js></script></body></html>
+        }</style><link href=css/kanjia.d0e36222.css rel=preload as=style><link href=js/chunk-vendors.2b617340.js rel=preload as=script><link href=js/kanjia.b529bbbd.js rel=preload as=script><link href=css/kanjia.d0e36222.css rel=stylesheet></head><body><noscript><strong>We're sorry but nissan doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app><div class=loading><div class=loading-text></div></div></div><script src=js/chunk-vendors.2b617340.js></script><script src=js/kanjia.b529bbbd.js></script></body></html>

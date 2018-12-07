@@ -17,6 +17,24 @@
         if (!results[2]) return ''
         return decodeURIComponent(results[2].replace(/\+/g, ' '))
       }
+      function getStorage (key) {
+        key = key.toString()
+        let val = window.localStorage.getItem(key)
+
+        if (val) {
+          val = JSON.parse(val)
+          val = val.val
+        }
+
+        return val
+      }
+      function setStorage (key, val) {
+        let val_str = { val }
+        val_str = JSON.stringify(val_str)
+        key = key.toString()
+
+        window.localStorage.setItem(key, val_str)
+      }
 
       var isWeixinCient = isWeixinCient();
       var isRedirected = getParam('isRedirected');
@@ -27,17 +45,23 @@
       console.log(isWeixinCient, isRedirected);
 
       if (isWeixinCient && !isRedirected) {
-        window.location.href = 'https://passport.chebaba.com/horse/sso/oauth/wx/authorize?returnUrl=' + returnUrl;
+        var wx_result_ts = Date.now();
+        setStorage('wx_result_ts', wx_result_ts);
+        window.location.href = 'https://passport.chebaba.com/horse/sso/oauth/wx/authorize?returnUrl=' + returnUrl + '&wx_result_ts=' + wx_result_ts;
       } else {
         var wx_result = getParam('wx_result');
-        window.history.pushState({}, 'nissan', window.location.href.replace('wx_result', 'wx_result_used'));
-        try {
-          wx_result = window.atob(wx_result);
-          wx_result = JSON.parse(wx_result);
-          window.wx_result = wx_result;
-          console.log(wx_result);
-        } catch (ex) {
-          console.log(ex);
+        var wx_result_ts_query = getParam('wx_result_ts');
+        var wx_result_ts_local = getStorage('wx_result_ts');
+
+        if (wx_result && wx_result_ts_query == wx_result_ts_local) {
+          try {
+            wx_result = window.atob(wx_result);
+            wx_result = JSON.parse(wx_result);
+            window.wx_result = wx_result;
+            console.log(wx_result);
+          } catch (ex) {
+            console.log(ex);
+          }
         }
       }</script><script src=http://res.wx.qq.com/open/js/jweixin-1.0.0.js></script><style>.loading {
           position: absolute;
@@ -90,4 +114,4 @@
           100% {
             transform: rotate(0);
           }
-        }</style><link href=css/share.be685fe0.css rel=preload as=style><link href=js/chunk-vendors.2b617340.js rel=preload as=script><link href=js/share.248fee5b.js rel=preload as=script><link href=css/share.be685fe0.css rel=stylesheet></head><body><noscript><strong>We're sorry but nissan doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app><div class=loading><div class=loading-text></div></div></div><script src=js/chunk-vendors.2b617340.js></script><script src=js/share.248fee5b.js></script></body></html>
+        }</style><link href=css/share.be685fe0.css rel=preload as=style><link href=js/chunk-vendors.2b617340.js rel=preload as=script><link href=js/share.80ca5198.js rel=preload as=script><link href=css/share.be685fe0.css rel=stylesheet></head><body><noscript><strong>We're sorry but nissan doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app><div class=loading><div class=loading-text></div></div></div><script src=js/chunk-vendors.2b617340.js></script><script src=js/share.80ca5198.js></script></body></html>

@@ -17,24 +17,7 @@
         if (!results[2]) return ''
         return decodeURIComponent(results[2].replace(/\+/g, ' '))
       }
-      function getStorage (key) {
-        key = key.toString()
-        let val = window.localStorage.getItem(key)
 
-        if (val) {
-          val = JSON.parse(val)
-          val = val.val
-        }
-
-        return val
-      }
-      function setStorage (key, val) {
-        let val_str = { val }
-        val_str = JSON.stringify(val_str)
-        key = key.toString()
-
-        window.localStorage.setItem(key, val_str)
-      }
 
       var isWeixinCient = isWeixinCient();
       var isRedirected = getParam('isRedirected');
@@ -46,7 +29,7 @@
 
       if (isWeixinCient && !isRedirected) {
         var wx_result_ts = Date.now();
-        setStorage('wx_result_ts', wx_result_ts);
+
         window.location.href = 'https://passport.chebaba.com/horse/sso/oauth/wx/authorize?returnUrl=' + returnUrl + '&wx_result_ts=' + wx_result_ts;
       } else {
         var wx_result = getParam('wx_result');

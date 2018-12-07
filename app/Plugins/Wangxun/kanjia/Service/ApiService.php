@@ -266,6 +266,7 @@ class ApiService
         $activity_info = Activity::getOneByParam(['id' => $cut_info->activity_id]);
         $goods_info = Goods::getOneByParam(['id' => $cut_info->goods_id]);
         $activity_info->bg_img_url =  'https:'.env('OSS_CDN_DOMAIN').'/'.$activity_info->bg_img_url;
+        $activity_info->end_time = $activity_info->end_time * 1000;
         $goods_info->goods_img = 'https:'.env('OSS_CDN_DOMAIN').'/'.$goods_info->goods_img;
         $result ['data'] ['activity_info'] = $activity_info;
         $result ['data'] ['goods_info'] = $goods_info;

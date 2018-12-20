@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -39,10 +37,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-
-        //plugin路由
-        $this->mapWebPluginRoutes();
-        $this->mapApiPluginRoutes();
     }
 
     /**
@@ -72,39 +66,5 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
-    }
-
-    /**
-     * plugin Web路由
-     */
-    protected function mapWebPluginRoutes()
-    {
-        foreach (glob(base_path("routes/web/plugins/*")) as $provider_path) {
-            foreach (glob($provider_path . '/*.php') as $file) {
-                $ucFirst = ucfirst(basename($provider_path));
-                $append_namespaces =$ucFirst  . '\\' . basename($file, '.php') . '\\Controllers';
-                Route::prefix('/' . basename($provider_path))
-                    ->middleware(['web','plugin_web'])
-                    ->namespace($append_namespaces)
-                    ->group($file);
-            }
-        }
-    }
-
-    /**
-     * plugin Api路由
-     */
-    public function mapApiPluginRoutes()
-    {
-        foreach (glob(base_path("routes/api/plugins/*")) as $provider_path) {
-            foreach (glob($provider_path . '/*.php') as $file) {
-                $ucFirst = ucfirst(basename($provider_path));
-                $append_namespaces =$ucFirst  . '\\' . basename($file, '.php') . '\\Controllers';
-                Route::prefix('api/' . basename($provider_path))
-                    //->middleware('plugin_api')
-                    ->namespace($append_namespaces)
-                    ->group($file);
-            }
-        }
     }
 }

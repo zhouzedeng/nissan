@@ -1,7 +1,31 @@
 <?php
-if (!function_exists('get_plugin_open_api_access_token')) {
-    function get_plugin_open_api_access_token()
-    {
-        return \Illuminate\Support\Facades\Redis::get('plugin:open:api:access_token');
-    }
+/**
+ * api操作成功
+ * @param string $msg
+ * @param array $data
+ * @return array
+ */
+function apiSuccess($msg = 'success', $data = [])
+{
+    $result = [
+        'code' => 0,
+        'msg' => $msg,
+        'data' => $data
+    ];
+    return $result;
+}
+
+/**
+ * api操作失败
+ * @param $code
+ * @param string $msg
+ * @return array
+ */
+function apiFail($code, $msg = '操作失败')
+{
+    $result = [
+        'code' => $code,
+        'msg' => $msg,
+    ];
+    return $result;
 }

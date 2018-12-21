@@ -24,10 +24,7 @@ class ActivityService extends BaseService
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
 
-        // 查询数据
-        $userInfo = session('user_info');
         $param = [];
-        $param['seller_id'] = $userInfo->store_id;
         $param['deleted_at'] = 0;
         $order = array('id' , 'desc');
         $list = Activity::getListByParam($param, $data['page'], $data['limit'], null, $order);
@@ -55,13 +52,13 @@ class ActivityService extends BaseService
     public static function save($params = array())
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
-        $userInfo = session('user_info');
+
         $data = [
             'theme' => $params['name'],
             'brand' => $params['brand'],
             'desc'  => $params['desc'],
             'bg_img_url' => $params['img'],
-            'seller_id' => $userInfo->store_id,
+            'seller_id' => 0,
             'start_time' => strtotime($params['start_time']),
             'end_time' => strtotime($params['end_time']),
             'check_status' => 0,
@@ -114,10 +111,8 @@ class ActivityService extends BaseService
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
         // 查询数据
-        $userInfo = session('user_info');
         $where = [];
         $where ['id'] = $params ['id'];
-        $where['seller_id'] = $userInfo->store_id;
         $where['deleted_at'] = 0;
         $find = Activity::getOneByParam($where,'*');
         $find->storage_bg_img_url =  'https:'.env('OSS_CDN_DOMAIN').'/'.$find->bg_img_url;

@@ -25,10 +25,8 @@ class GoodsService extends BaseService
         $result = array('code' => 0,  'msg' => '', 'data' => array());
 
         // 查询数据
-        $userInfo = session('user_info');
         $param = [];
         $order = array('id' , 'desc');
-        $param['seller_id'] = $userInfo->store_id;
         $param['deleted_at'] = 0;
         $list = Goods::getListByParam($param, $data['page'], $data['limit'], null, $order);
         $total = Goods::getCntByParam($param);
@@ -64,13 +62,13 @@ class GoodsService extends BaseService
             $result = array('code' => 200001,  'msg' => '卡券ID错误', 'data' => array());
             return $result;
         }
-        $userInfo = session('user_info');
+
         $data = [
             'goods_name' => $params['name'],
             'goods_price' => $params['price'],
             'coupon_id'  => $params['coupon_id'],
             'goods_img' => $params['img'],
-            'seller_id' => $userInfo->store_id,
+            'seller_id' => 0,
             'coupon_price' => 0,
             'need_cut_num' => $params['need_cut_num'],
             'card_code' => empty($res['data']->card_code) ? '' : $res['data']->card_code,
@@ -122,10 +120,8 @@ class GoodsService extends BaseService
     {
         $result = array('code' => 0,  'msg' => '', 'data' => array());
         // 查询数据
-        $userInfo = session('user_info');
         $where = [];
         $where ['id'] = $params ['id'];
-        $where['seller_id'] = $userInfo->store_id;
         $where['deleted_at'] = 0;
         $find = Goods::getOneByParam($where,'*');
         $find->storage_goods_img = 'https://'.env('OSS_CDN_DOMAIN').'/'.$find->goods_img;

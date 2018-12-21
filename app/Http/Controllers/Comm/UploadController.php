@@ -13,32 +13,25 @@ use Illuminate\Support\Facades\Storage;
  */
 class UploadController
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * 上传图片文件接口
      * @return \Illuminate\Http\JsonResponse
      * @author Zed
      * @since 2018-11-1
      */
-    public function upload(Request $request)
+    public function upload()
     {
-        $this->checkPermission();
-        $this->checkPermission();
         // 获取参数
-        $file = $request->file('file');
+        $file = request()->file('file');
 
         // 储存图片
-        $filename = "/plugins/wangxun/kanjia";
-        $path = Storage::disk('oss')->putFile($filename, $file);
+        $filename = "img";
+        $path = Storage::disk('public')->putFile($filename, $file);
 
         // 返回数据
         $data = [];
         $data['path'] = $path;
-        return $this->apiSuccess('成功', $data);
+        return apiSuccess('成功', $data);
     }
 }
 

@@ -28,6 +28,11 @@ Route::group(['namespace' => 'Api'], function() {
 
 });
 
+// 控制器在 App\Http\Controllers\Api命名空间下
+Route::group(['namespace' => 'Comm'], function() {
+    Route::post('upload_upload', 'UploadController@upload')->name('upload');
+});
+
 
 
 

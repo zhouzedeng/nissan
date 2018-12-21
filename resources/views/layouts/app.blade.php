@@ -17,7 +17,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    //JavaScript代码区域
+
     layui.use('element', function(){
         var element = layui.element;
     });
@@ -25,26 +25,25 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">后台管理系统</div>
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="{{route('home.index')}}">控制台</a></li>
-        </ul>
-      {{--  <ul class="layui-nav layui-layout-right">
+        <div class="layui-logo">回收宝管理系统</div>
+        <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item"><a href="">退出</a></li>
-        </ul>--}}
+        </ul>
     </div>
 
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
-
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">砍价游戏</a>
+                    <a class="" href="{{route('home.index')}}">首页</a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">目录一</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('activity.index')}}">砍价活动</a></dd>
+                        <dd><a href="{{route('activity.index')}}">子目录一</a></dd>
                     </dl>
                     <dl class="layui-nav-child">
-                        <dd><a href="{{route('goods.index')}}">砍价商品库</a></dd>
+                        <dd><a href="{{route('goods.index')}}">子目录二</a></dd>
                     </dl>
                 </li>
             </ul>

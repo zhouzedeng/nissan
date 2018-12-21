@@ -87,6 +87,6 @@
 
     <script>
     </script>
-    <script src="{{asset('/wangxun/activity/js/edit.js')}}?v=222290200"></script>
+    <script src="{{asset('js/admin//activity/edit.js')}}?v=222290200"></script>
 
 @endsection

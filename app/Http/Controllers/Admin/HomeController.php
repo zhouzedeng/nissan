@@ -27,7 +27,6 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        var_dump(555);
         return view('home.index');
     }
 }

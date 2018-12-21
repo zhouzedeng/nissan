@@ -29,6 +29,6 @@
         var full_url = "{{asset('storage')}}";
         var h5_url = "{{env('H5_URI_PREFIX')}}";
     </script>
-    <script src="{{asset('/wangxun/activity/js/index.js')}}?v=555105"></script>
+    <script src="{{asset('js/admin/activity/index.js')}}?v=555105"></script>
 
 @endsection

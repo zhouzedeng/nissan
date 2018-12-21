@@ -6,7 +6,6 @@
     </fieldset>
     <div class="layui-col-md6">
         <div class="layui-card">
-
         </div>
     </div>
 @endsection

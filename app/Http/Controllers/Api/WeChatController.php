@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
  * @Author Zed
  * @Time 2018/12/26 16:31
  */
-class WechatController extends BaseController
+class WeChatController extends BaseController
 {
     public function __construct()
     {

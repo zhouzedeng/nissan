@@ -25,7 +25,7 @@ Route::group(['namespace' => 'Admin'], function() {
 
 // 控制器在 App\Http\Controllers\Api命名空间下
 Route::group(['namespace' => 'Api'], function() {
-
+    Route::any('/wechat', 'WeChatController@serve');
 });
 
 // 控制器在 App\Http\Controllers\Api命名空间下

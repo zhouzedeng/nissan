@@ -43,8 +43,5 @@ class ApiController extends BaseController
         return $result;
 
     }
-
-
-
 }
 

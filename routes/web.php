@@ -27,6 +27,7 @@ Route::group(['namespace' => 'Admin'], function() {
 Route::group(['namespace' => 'Api'], function() {
     Route::any('/wechat', 'WeChatController@serve');
     Route::any('/oauth2', 'WeChatController@oauth2');
+    Route::any('/wxCallBack', 'WeChatController@wxCallBack');
 
 });
 

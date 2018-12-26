@@ -45,7 +45,7 @@ class WeChatController extends BaseController
      */
     public function oauth2()
     {
-        $app = Factory::officialAccount();
+        $app = app('wechat.official_account');
         $response = $app->oauth->scopes(['snsapi_userinfo'])->redirect();
         return $response;
     }

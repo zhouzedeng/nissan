@@ -49,5 +49,13 @@ class WeChatController extends BaseController
         $response = $app->oauth->scopes(['snsapi_userinfo'])->redirect();
         return $response;
     }
+
+
+    public function wxCallBack()
+    {
+        $app = app('wechat.official_account');
+        $response = $app->oauth->user();
+        return $response;
+    }
 }
 

@@ -28,7 +28,6 @@ Route::group(['namespace' => 'Api'], function() {
     Route::any('/wechat', 'WeChatController@serve');
     Route::any('/oauth2', 'WeChatController@oauth2');
     Route::any('/wxCallBack', 'WeChatController@wxCallBack');
-
 });
 
 // 控制器在 App\Http\Controllers\Api命名空间下

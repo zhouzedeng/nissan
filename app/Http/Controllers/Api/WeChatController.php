@@ -34,8 +34,15 @@ class WeChatController extends BaseController
     public function wxCallBack()
     {
         $app = Factory::officialAccount(config('wechat.official_account.default'));
-        $response = $app->oauth->user();
-        return $response;
+        $user = $app->oauth->user();
+        return $user->getAvatar();;
+    }
+
+    public function jssdkConfig()
+    {
+        $app = Factory::officialAccount(config('wechat.official_account.default'));
+        $config = $app->jssdk->buildConfig();
+        return $config;;
     }
 }
 

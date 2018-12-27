@@ -41,8 +41,8 @@ class WeChatController extends BaseController
     public function jssdkConfig()
     {
         $app = Factory::officialAccount(config('wechat.official_account.default'));
-        $config = $app->jssdk->buildConfig(array('onMenuShareQQ', 'onMenuShareWeibo'), true);
-        return $config;;
+        $config = $app->jssdk->setUrl('http://w.d.com/index.html')->buildConfig(array('onMenuShareQQ', 'onMenuShareWeibo'), true);
+        return $config;
     }
 }
 

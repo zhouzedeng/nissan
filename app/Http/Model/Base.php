@@ -14,16 +14,20 @@ class Base
 {
     const ID = 'id';
     const TABLE = 'base';
+
     /**
-     * 新增记录
-     * @param array $data
-     * @return int 新增记录行的id
-     * @author Zed
-     * @since 2018-10-30
+     * @param $data
+     * @return mixed
+     * @throws \Exception
+     * @Author Zed
+     * @Time 2018/12/29 15:18
      */
     public static function add($data)
     {
         $id = DB::table(self::getTable())->insertGetId($data);
+        if ($id === false) {
+            apiFail('100001');
+        }
         return $id;
     }
 
@@ -94,6 +98,9 @@ class Base
         $where && $query->where($where);
         $field && $query->select($field);
         $result = $query->first();
+        if ($result === false) {
+            apiFail('100001');
+        }
         return $result;
     }
 
@@ -107,6 +114,9 @@ class Base
         $query = DB::table(self::getTable());
         $where && $query->where($where);
         $result = $query->count();
+        if ($result === false) {
+            apiFail('100001');
+        }
         return $result;
     }
 
@@ -121,6 +131,9 @@ class Base
         $order && $query->orderBy($order[0], $order[1]);
         !is_null($page) &&  $query->offset(($page - 1) * $pagesize)->limit($pagesize);
         $result = $query->get()->all();
+        if ($result === false) {
+            apiFail('100001');
+        }
         return $result;
     }
 

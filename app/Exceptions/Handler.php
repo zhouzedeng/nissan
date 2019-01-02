@@ -46,6 +46,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof Exception) {
+            $message      = $exception->getMessage() ?: '您没有权限操作';
+            $code     = $exception->getCode() ?: 100000;
+            $result = [
+                'code' => $code,
+                'msg' => $message,
+                'data' => []
+            ];
+            return response()->json($result);
+        }
+
         return parent::render($request, $exception);
     }
 }

@@ -1,31 +1,30 @@
 <?php
+
 /**
- * api操作成功
+ * @param int $code
  * @param string $msg
- * @param array $data
- * @return array
+ * @throws Exception
+ * @Author Zed
+ * @Time 2018/12/29 15:03
  */
-function apiSuccess($msg = 'success', $data = [])
+function apiFail($code = 100000, $msg = 'error')
+{
+    throw new Exception($msg, $code);
+}
+
+/**
+ * @param array $data
+ * @param string $msg
+ * @return \Illuminate\Http\JsonResponse
+ * @Author Zed
+ * @Time 2018/12/29 14:55
+ */
+function apiSuccess($data = [], $msg = 'success')
 {
     $result = [
         'code' => 0,
         'msg' => $msg,
         'data' => $data
     ];
-    return $result;
-}
-
-/**
- * api操作失败
- * @param $code
- * @param string $msg
- * @return array
- */
-function apiFail($code, $msg = '操作失败')
-{
-    $result = [
-        'code' => $code,
-        'msg' => $msg,
-    ];
-    return $result;
+    return response()->json($result);
 }

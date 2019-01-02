@@ -27,7 +27,7 @@
     <div class="layui-header">
         <div class="layui-logo">回收宝管理系统</div>
         <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="{{route('admin.logout')}}">退出</a></li>
         </ul>
     </div>
 

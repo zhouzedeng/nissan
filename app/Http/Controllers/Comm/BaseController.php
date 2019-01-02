@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Comm;
 
+use Exception;
 use App\Http\Controllers\Controller;
 
 /**
@@ -12,9 +13,12 @@ use App\Http\Controllers\Controller;
  */
 class BaseController extends Controller
 {
+    public $params = null;
+
     public function __construct()
     {
         parent::__construct();
+        $this->params = array_merge($_GET, $_POST);
     }
 }
 

@@ -9,11 +9,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    public $params = null;
-
     public function __construct()
     {
-        $this->params = array_merge($_GET, $_POST);
+
     }
 }

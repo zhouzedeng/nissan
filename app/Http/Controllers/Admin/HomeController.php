@@ -21,6 +21,7 @@ class HomeController extends BaseController
     }
 
     /**
+     * 首页
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @Author Zed
      * @Time 2018/12/20 18:30
